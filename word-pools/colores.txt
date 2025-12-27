@@ -1,0 +1,12 @@
+# 🌈 Colores
+Rojo
+Azul
+Verde
+Amarillo
+Morado
+Naranja
+Negro
+Blanco
+Gris
+Rosa
+

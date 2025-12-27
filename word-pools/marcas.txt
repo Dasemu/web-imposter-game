@@ -1,0 +1,93 @@
+# 🛍️ Marcas
+Apple
+Samsung
+Google
+Microsoft
+Amazon
+Meta
+Tesla
+Toyota
+Honda
+Ford
+BMW
+Mercedes
+Audi
+Volkswagen
+Porsche
+Ferrari
+Lamborghini
+Maserati
+McLaren
+Chevrolet
+Nissan
+Kia
+Hyundai
+Peugeot
+Renault
+Volvo
+Jaguar
+Land Rover
+Fiat
+Alfa Romeo
+Ducati
+Yamaha
+Canon
+Nikon
+Sony
+Panasonic
+LG
+Philips
+Siemens
+Bosch
+Whirlpool
+Ikea
+Zara
+H&M
+Uniqlo
+Nike
+Adidas
+Puma
+Reebok
+New Balance
+Under Armour
+Converse
+Vans
+Patagonia
+The North Face
+Columbia
+Levi’s
+Calvin Klein
+Gucci
+Prada
+Louis Vuitton
+Chanel
+Hermès
+Dior
+Rolex
+Omega
+Casio
+Pepsi
+Coca-Cola
+Fanta
+Red Bull
+Monster
+Starbucks
+Nespresso
+Nestlé
+Danone
+Kellogg’s
+Oreo
+Intel
+AMD
+Nvidia
+Qualcomm
+TikTok
+Netflix
+Disney
+Warner Bros
+HBO
+Spotify
+Airbnb
+Uber
+Booking
+

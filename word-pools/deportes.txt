@@ -1,0 +1,66 @@
+# 🏅 Deportes
+Fútbol
+Baloncesto
+Tenis
+Pádel
+Bádminton
+Voleibol
+Béisbol
+Rugby
+Hockey hielo
+Hockey césped
+Golf
+Boxeo
+MMA
+Judo
+Karate
+Taekwondo
+Esgrima
+Tiro con arco
+Halterofilia
+Crossfit
+Atletismo
+Maratón
+Triatlón
+Ciclismo ruta
+Ciclismo montaña
+BMX
+Natación
+Waterpolo
+Surf
+Vela
+Remo
+Piragüismo
+Esquí
+Snowboard
+Patinaje artístico
+Patinaje velocidad
+Curling
+Escalada
+Senderismo
+Trail running
+Parkour
+Gimnasia artística
+Gimnasia rítmica
+Trampolín
+Skate
+Breakdance
+Carreras coches
+Fórmula 1
+Rally
+Karting
+Motociclismo
+Enduro
+Motocross
+Equitación
+Polo
+Críquet
+Billar
+Dardos
+Petanca
+Pickleball
+Ultimate frisbee
+Paintball
+Airsoft
+eSports
+

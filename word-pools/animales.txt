@@ -1,0 +1,12 @@
+# 🐾 Animales
+Perro
+Gato
+Conejo
+Hamster
+Pajaro
+Tortuga
+Caballo
+Vaca
+Oveja
+Cerdo
+

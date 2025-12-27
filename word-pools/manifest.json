@@ -1,0 +1,9 @@
+[
+  { "id": "animales_naturaleza", "name": "Animales y naturaleza", "emoji": "🌿" },
+  { "id": "vida_cotidiana", "name": "Vida cotidiana", "emoji": "🏠" },
+  { "id": "deportes", "name": "Deportes", "emoji": "🏅" },
+  { "id": "marcas", "name": "Marcas", "emoji": "🛍️" },
+  { "id": "musica", "name": "Música", "emoji": "🎵" },
+  { "id": "personajes", "name": "Personajes", "emoji": "🧙" }
+]
+

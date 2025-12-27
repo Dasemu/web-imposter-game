@@ -1,0 +1,12 @@
+# 🍔 Comida
+Pizza
+Hamburguesa
+Sushi
+Tacos
+Pasta
+Ramen
+Paella
+Burrito
+Arepa
+Ensalada
+
