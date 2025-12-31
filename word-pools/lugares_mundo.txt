@@ -1,0 +1,90 @@
+# Categoría 6
+Gran Muralla China|Muro de Berlín
+Dubái|Doha
+Plaza de San Marcos (Venecia)|Plaza Navona (Roma)
+Torre Eiffel (París)|Torre de Pisa (Italia)
+Hawái|Islandia
+La Meca|Jerusalén
+Empire State (NY)|Burj Khalifa (Dubái)
+Times Square (NY)|Piccadilly Circus (Londres)
+Coliseo (Roma)|Partenón (Atenas)
+Fontana di Trevi|Panteón de Roma
+Machu Picchu (Perú)|Petra (Jordania)
+Cataratas del Niágara|Cataratas del Iguazú
+Plaza Roja (Moscú)|Plaza Tiananmen (Pekín)
+Ópera de Sídney|Ópera de Viena
+Estadio Olímpico de Berlín|Estadio Olímpico de Londres
+Santorini (Grecia)|Capri (Italia)
+Venecia|París
+Tokio|Seúl
+Pekín|Shanghái
+Angkor Wat (Camboya)|Borobudur (Indonesia)
+Estatua de la Libertad (NY)|Cristo Redentor (Río)
+Monte Fuji (Japón)|Monte Kilimanjaro (Tanzania)
+Sahara|Gobi
+Yellowstone|Gran Cañón
+Milán|París
+Neuschwanstein (Alemania)|Edimburgo (Escocia)
+Golden Gate (San Francisco)|Tower Bridge (Londres)
+Piazza San Marco (Venecia)|Piazza Navona (Roma)
+Roma|Estambul
+Versalles (Francia)|Buckingham (Londres)
+Oxford|Cambridge
+Estocolmo|Copenhague
+Tallin|Riga
+Nairobi|El Cairo
+Kilimanjaro|Serengeti
+Maldivas|Seychelles
+Babilonia|Ur
+Plaza de San Pedro (Roma)|Esplanada de las Mezquitas (Jerusalén)
+CN Tower (Toronto)|Space Needle (Seattle)
+Lima|Santiago
+La Habana|Santo Domingo
+Aconcagua|Chimborazo
+Atacama|Nazca
+Salvador de Bahía|Recife
+Plaza de Armas (Lima)|Zócalo (CDMX)
+Córdoba|Rosario
+La Boca (Buenos Aires)|El Raval (Barcelona)
+Maracaná|Wembley
+Etna (Italia)|Vesubio (Italia)
+Innsbruck|Garmisch
+Danubio|Rin
+Ganges|Mekong
+Partenón|Templo de Zeus
+Tikal (Guatemala)|Copán (Honduras)
+Titicaca|Baikal
+Amazonía|Borneo
+Cartagena|San Juan
+Jamaica|Cuba
+Río de Janeiro|Venecia
+Oktoberfest (Múnich)|San Fermín (Pamplona)
+Gran Vía (Madrid)|Champs-Élysées (París)
+Central Park (NY)|Hyde Park (Londres)
+Teatro Colón (Buenos Aires)|La Scala (Milán)
+Louvre (París)|Hermitage (San Petersburgo)
+Trafalgar Square (Londres)|Plaza Roja (Moscú)
+Gran Bazar (Estambul)|Khan el-Khalili (El Cairo)
+Grand Central (NY)|Gare du Nord (París)
+Córcega|Cerdeña
+Niza|Cannes
+Chamonix|Zermatt
+Sídney|Melbourne
+Copacabana|Ipanema
+Gran Barrera (Australia)|Belice
+Everest|Mont Blanc
+Vilna|Riga
+Reikiavik|Helsinki
+Kruger|Masái Mara
+Marrakech|Túnez
+Madeira|Azores
+Lisboa|Río de Janeiro
+Allianz Arena (Múnich)|San Siro (Milán)
+Mausoleo de Lenin|Madre Patria (Kiev)
+Plaza de España (Sevilla)|Plaza Mayor (Salamanca)
+Valparaíso|Veracruz
+Creta|Chipre
+Taj Mahal (India)|Ópera de Sídney
+Ávila (España)|Dubrovnik (Croacia)
+Canberra|Wellington
+Pirámides de Giza (Egipto)|Chichén Itzá (México)

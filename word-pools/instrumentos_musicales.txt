@@ -1,0 +1,107 @@
+# Categoría 12
+Violín|Violonchelo
+Guitarra|Bajo
+Batería|Percusión
+Flauta|Clarinete
+Trompeta|Trombón
+Saxofón|Oboe
+Piano|Teclado
+Arpa|Lira
+Pandereta|Maracas
+Armónica|Melódica
+Ukelele|Mandolina
+Gaita|Didgeridoo
+Flauta dulce|Piccolo
+Xilófono|Metalófono
+Acordeón|Concertina
+Conga|Bongo
+Guitarra eléctrica|Amplificador
+Rock|Metal
+Jazz|Blues
+Pop|Dance
+Hip-hop|Trap
+Reggae|Ska
+Clásica|Ópera
+Country|Bluegrass
+Funk|Soul
+EDM|House
+Trance|Techno
+Grunge|Punk
+Indie|Alternativo
+Disco|Boogie
+Dubstep|Bassline
+Salsa|Merengue
+Tango|Flamenco
+Bossa Nova|Samba
+Metallica|Megadeth
+Nirvana|Pearl Jam
+Queen|Led Zeppelin
+The Beatles|The Rolling Stones
+AC/DC|Guns N' Roses
+Coldplay|Imagine Dragons
+U2|Radiohead
+Pink Floyd|Genesis
+Green Day|Blink-182
+Arctic Monkeys|The Strokes
+Muse|Placebo
+Red Hot Chili Peppers|Foo Fighters
+The Killers|The 1975
+Daft Punk|Justice
+ABBA|Boney M.
+BTS|EXO
+BLACKPINK|TWICE
+Rihanna|Beyoncé
+Taylor Swift|Katy Perry
+Madonna|Lady Gaga
+Adele|Sam Smith
+Bruno Mars|Justin Timberlake
+Ariana Grande|Selena Gomez
+Billie Eilish|Olivia Rodrigo
+The Weeknd|Frank Ocean
+Drake|Post Malone
+Eminem|Kendrick Lamar
+Jay-Z|Nas
+Kanye West|Travis Scott
+Ed Sheeran|Shawn Mendes
+Justin Bieber|Charlie Puth
+Harry Styles|Zayn Malik
+Dua Lipa|Camila Cabello
+Sia|Halsey
+Cardi B|Nicki Minaj
+Bad Bunny|J Balvin
+Shakira|Jennifer Lopez
+Mariah Carey|Christina Aguilera
+Celine Dion|Whitney Houston
+Bob Dylan|Neil Young
+Elvis Presley|Chuck Berry
+Aretha Franklin|Etta James
+Johnny Cash|Willie Nelson
+Frank Sinatra|Dean Martin
+Michael Jackson|Prince
+Elton John|Billy Joel
+David Bowie|Freddie Mercury
+Coachella|Lollapalooza
+Glastonbury|Reading Festival
+Rock in Rio|Primavera Sound
+Tomorrowland|Ultra Festival
+Burning Man|EDC
+Montreux Jazz|Newport Jazz
+Woodstock|Isle of Wight
+Summerfest|Bonnaroo
+Stagecoach|Country Thunder
+Hardwell|Martin Garrix
+Tiësto|Armin van Buuren
+Steve Aoki|Marshmello
+Avicii|Kygo
+Deadmau5|Skrillex
+Carl Cox|David Guetta
+Alan Walker|Zedd
+Calvin Harris|Diplo
+Paul van Dyk|Eric Prydz
+Tame Impala|MGMT
+Bon Iver|Fleet Foxes
+Vampire Weekend|Of Monsters and Men
+Florence + The Machine|Hozier
+Noah Kahan|Vance Joy
+The Lumineers|Mumford & Sons
+Cage the Elephant|Foster the People

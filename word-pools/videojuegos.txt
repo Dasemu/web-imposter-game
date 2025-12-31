@@ -1,0 +1,129 @@
+# Categoría 13
+Monopoly|Clue
+Catan|Carcassonne
+FIFA|PES
+Skyrim|The Witcher
+Mario Kart|Sonic Racing
+Tetris|Puyo Puyo
+Gran Turismo|Forza Horizon
+Magic: The Gathering|Yu-Gi-Oh!
+Pikachu|Charmander
+Risk|Axis & Allies
+Call of Duty|Battlefield
+Candy Land|Chutes and Ladders
+Oculus Quest|HTC Vive
+GTA|Saints Row
+Among Us|Town of Salem
+Angry Birds|Cut the Rope
+Minecraft|Terraria
+Dungeons & Dragons|Pathfinder
+Go|Shogi
+PUBG|Free Fire
+The Sims|Animal Crossing
+Pikmin|Chibi-Robo
+Doom|Quake
+Cranium|Trivial Pursuit
+Dixit|Mysterium
+League of Legends|Dota 2
+StarCraft|Age of Empires
+Overwatch|Paladins
+Rocket League|Turbo League
+Baldur’s Gate|Neverwinter Nights
+Clash Royale|Clash of Clans
+NES|SNES
+Tekken|Mortal Kombat
+Street Fighter|King of Fighters
+Just Dance|Dance Central
+Genshin Impact|Honkai: Star Rail
+Fall Guys|Human Fall Flat
+Poker|Blackjack
+Roblox Tycoon|Theme Park Tycoon
+Mafia|Werewolf
+Arkham Horror|Eldritch Horror
+Jenga|Kerplunk
+PlayStation|Xbox
+Flappy Bird|Jetpack Joyride
+GeoGuessr|Worldle
+Assassin's Creed|Ghost of Tsushima
+Horizon Zero Dawn|God of War
+Donkey Kong|Diddy Kong
+Duck Hunt|Hogan’s Alley
+Pandemic|Forbidden Island
+Civilization|SimCity
+Bioshock|Dishonored
+Geometry Dash|Super Meat Boy
+NBA 2K|Madden NFL
+Game of Life|Sorry!
+Tic Tac Toe|Connect Four
+Pictionary|Charades
+Scrabble|Boggle
+Beyblade|Bakugan
+Resident Evil|Silent Hill
+Magic 8-Ball|Ouija Board
+Checkers|Chinese Checkers
+Bomberman|Dig Dug
+Peg Solitaire|Mancala
+Bop It|Simon Says
+Gameboy|PSP
+PS5|Xbox Series X
+Halo|Destiny
+Nintendo Switch|Steam Deck
+GameCube|Dreamcast
+Ludo|Parcheesi
+Atari|Intellivision
+Wordle|Connections
+Fortnite|Roblox
+Hangman|Crosswords
+Pokémon|Digimon
+Craps|Roulette
+Kirby|Meta Knight
+Slither.io|Agar.io
+Five Nights at Freddy's|Bendy and the Ink Machine
+Pac-Man|Space Invaders
+Apex Legends|Valorant
+Fire Emblem|Advance Wars
+Zelda|Link
+Cuphead|Hollow Knight
+Animal Crossing|Stardew Valley
+Cooking Mama|Overcooked
+LittleBigPlanet|Sackboy’s Adventure
+Super Mario|Luigi's Mansion
+Wii Sports|Wii Fit
+Beat Saber|Pistol Whip
+Portal|Half-Life
+Cartas|Póker
+Sudoku|Kakuro
+Mando|Teclado
+Mesa|Tablero
+Tamagotchi|Nintendogs
+Puntos|Monedas
+Nivel|Rango
+Vidas|Continuaciones
+Misión|Misión secundaria
+Equipo|Alianza
+Oponente|Jefe
+Twister|Limbo
+UNO|Skip-Bo
+Perder|Fin del juego
+Inicio|Vestíbulo
+Meta|Línea de meta
+Tiempo|Cuenta regresiva
+Recompensa|Tesoro
+Dificultad|Modo difícil
+Estrategia|Plan
+Chess|Checkers
+Diablo|Path of Exile
+Elden Ring|Dark Souls
+Exploding Kittens|Unstable Unicorns
+Guitar Hero|Rock Band
+Hearthstone|Legends of Runeterra
+Kinect|Wii Remote
+Magic Arena|MTG Online
+Plants vs. Zombies|Bloons TD
+Solitaire|Minesweeper
+Subway Surfers|Temple Run
+Uno Flip|Phase 10
+Dados|Ruleta
+Tablero|Rompecabezas
+Jugador|Personaje
+Ganar|Trofeo

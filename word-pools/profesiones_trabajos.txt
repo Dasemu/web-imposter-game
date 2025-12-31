@@ -1,0 +1,95 @@
+# Profesiones y Trabajos
+Receta|Médico
+Aguja|Enfermero
+Cirujano|Sierra
+Dentista|Corona
+Farmacéutico|Mostrador
+Rescate|Paramédico
+Veterinario|Diagnóstico
+Hipnosis|Terapeuta
+Español|Profesor
+Profesor|Universidad
+Investigador|Diario
+Científico|Teoría
+Ingeniero|Construir
+Arquitecto|Plano
+Aplicación|Desarrollador de Software
+Diseñador Gráfico|Publicidad
+Historia|Animador
+Reportero|Fotógrafo
+Director|Presupuesto
+Actor|Máscara
+Presentación|Música
+Vocalista|Audífono
+Escenario|Bailar
+Escritor|Freelancer
+Investigar|Periodista
+Editor|Publicación
+Traductor|Egipto
+Bibliotecario|Archivo
+Orden|Abogado
+Juez|Martillo
+Estrella|Policía
+Cazar|Detective
+Árbol|Bombero
+Soldado|Arma
+Tripulación|Azafata
+Aterrizar|Piloto
+Marinero|Nudo
+Película|Taxista
+Camionero|Carretera
+Escuela|Cafetería
+Maquinista|Estación
+Agricultor|Naranja
+Pescador|Red
+Chef|Estrella
+Pastelero|Azúcar
+Bar|Mesero
+Barista|Sirena
+Guardia de discoteca|Barman
+Cajero|Cartera
+Contador|Gerente
+Distribuidor|Banquero
+Estadísticas|Economista
+Obrero de construcción|Electricista
+Electricista|Mecánico
+Plomero|Carpintero
+Mecánico|Soldador
+Carpintero|Decorador
+Cincel|Plata
+Diseño|Sastre
+Etiqueta|Estilista
+Estilista|Peluquero
+Maquillador|Pincel
+Competencia|Atleta
+Silbato|Tarjeta roja
+Árbitro|Entrenador
+Entrenador personal|Gimnasta
+Guía turístico|Intérprete
+Historiador|Ruinas
+Político|Reglas
+Diplomático|Mediador
+Boda|Cura
+Asistente social|Psicólogo
+Organizador de eventos|Boda
+Emprendedor|Inventor
+Oro|Mina
+Geólogo|Volcán
+Piloto|Astronauta
+Telescopio|Astrónomo
+Pronóstico|Investigación
+Genética|Biología
+Botánico|Herbolario
+Físico|Matemáticas
+Zoólogo|Cuidador del zoológico
+Guardabosques|Torre
+Pala|Arqueólogo
+Doctorado|Antropología
+Urbanista|Arquitecto
+Correo|Mensajero
+Guardia|Patrulla
+Llave|Conserje
+Recepcionista|Teléfono
+Agenda|Secretaria
+Queja|Recursos Humanos
+Especialista en marketing|Campaña

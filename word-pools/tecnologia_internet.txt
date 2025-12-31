@@ -1,0 +1,64 @@
+# Categoría 10
+Router|Módem
+Reloj inteligente|Fitbit
+Cargador|Power Bank
+Navegador|Buscador
+Teléfono inteligente|Tableta
+Amazon|eBay
+Android|iOS
+Batería|Enchufe
+Calculadora|Calendario
+Cámara|Teléfono
+Reloj|Alarma
+Nube|Disco Duro
+Dron|Avión
+Dropbox|Google Drive
+Correo electrónico|Mensaje de texto
+Emoji|GIF
+Facebook|Instagram
+Gmail|Outlook
+Google|Bing
+Google Maps|Waze
+GPS|Brújula
+Hashtag|Tendencia
+HBO|Amazon Prime
+iPhone|Smartwatch
+Teclado|Mando a distancia
+LinkedIn|Facebook
+Meme|Pegatina
+Micrófono|Auriculares con micrófono
+Monitor|Televisión
+Ratón|Panel táctil
+Netflix|Disney+
+Nintendo Switch|Wii
+Comercio electrónico|App Store
+Photoshop|Canva
+Pinterest|Tumblr
+PlayStation|Xbox
+Podcast|Radio
+Impresora|Fotocopiadora
+Reddit|Quora
+Mando a distancia|Mando de videojuegos
+Coche autónomo|Coche eléctrico
+Selfie|Foto de perfil
+Siri|Alexa
+Skype|Zoom
+Gafas inteligentes|Gafas de sol
+Televisión|Proyector
+Snapchat|Instagram
+Spotify|Apple Music
+Streaming|Descarga
+Teams|Google Meet
+Tesla|Toyota
+Pantalla táctil|Teclado
+Twitter (X)|Threads
+Uber|Lyft
+Memoria USB|Tarjeta de memoria
+Videollamada|Llamada telefónica
+WhatsApp|Telegram
+Wi-Fi|Bluetooth
+Wikipedia|Google
+Windows|MacOS
+YouTube|TikTok
+Kindle|Ordenador
+MacBook|Impresora

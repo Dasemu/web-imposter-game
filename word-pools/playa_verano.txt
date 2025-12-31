@@ -1,0 +1,70 @@
+# Categoría 20
+Aviador|Wayfarer
+Barbacoa|Picnic
+Playa|Piscina
+Toalla|Colchoneta
+Vacaciones en la playa|Acampada
+Vóley playa|Palas
+Abeja|Mosquito
+Bikini|Chanclas
+Repelente|Mosquitera
+Hoguera|Parrilla
+Helado de nata|Polo de fruta
+Cine al aire libre|Concierto
+Ventilador|Abanico
+Buscando a Nemo|Spider-Man
+Luciérnaga|Mosquito
+Fuegos artificiales|Estrellas
+Pez|Tortuga
+Pilla-pilla con linterna|Escondite
+Chanclas|Sandalias
+Frisbee|Marco Polo
+Barbacoa a gas|Barbacoa de carbón
+Gelato|Helado
+Hora dorada|Hora de cenar
+Uvas|Salchichas
+Hamaca|Colchón inflable
+Camisa hawaiana|Camiseta de tirantes
+Rayuela|Béisbol
+Helado|Galleta
+Agua fría|Té helado
+Aro|Flamenco inflable
+Jazmín|Limón
+Medusa|Corriente
+Linterna|Fuego
+Lavanda|Carbón
+Silla plegable|Hamaca
+Limonada|Mojito
+Socorrista|Surfista
+Mango|Manzana
+Canoa|Paddle surf
+Melocotón|Naranja
+Piscina|Jardín
+Flotador|Canoa
+Gambas fritas|Patatas fritas
+Leer|Dormir
+Resort|Descapotable
+Viaje en coche|Avión
+Sandalias|Zapatillas
+Castillos|Fútbol playa
+Bocadillo|Ensalada
+Gaviota|Pelota de playa
+Pantalones cortos|Falda
+Batido|Zumo
+Granizado|Helado suave
+Refresco|Agua de coco
+Cascada|Aspersor
+Sombrero de paja|Gorro
+Fresa|Kiwi
+Sol|Fuego de campamento
+Bronceado|Quemadura
+Gafas de sol|Toalla
+Sombrero|Riñonera
+Protector solar|Sombrero
+Atardecer|Fuegos artificiales
+Surf|Moto de agua
+Bañador|Bolsa de playa
+Sombrilla|Toldo
+Vóley|Castillo de arena
+Sandía|Uvas
+Olas|Risas

@@ -1,0 +1,117 @@
+# Categoría 16
+Luis Miguel|Alejandro Fernández
+Vicente Fernández|Juan Gabriel
+Juan Gabriel|José José
+Thalía|Paulina Rubio
+Paulina Rubio|Gloria Trevi
+Gloria Trevi|Alejandra Guzmán
+Belinda|Danna Paola
+Danna Paola|Karol Sevilla
+Eugenio Derbez|Omar Chaparro
+Omar Chaparro|Adal Ramones
+Adal Ramones|Facundo
+Facundo|Jordi Rosado
+Kate del Castillo|Salma Hayek
+Salma Hayek|Eiza González
+Eiza González|Ana de la Reguera
+Diego Luna|Gael García Bernal
+Gael García Bernal|Tenoch Huerta
+Tenoch Huerta|Alfonso Herrera
+Alfonso Herrera|Poncho de Nigris
+Poncho de Nigris|Roberto Palazuelos
+Roberto Palazuelos|Andrés García
+Andrés García|Fernando Colunga
+Fernando Colunga|Eduardo Yáñez
+Eduardo Yáñez|Jorge Salinas
+Jorge Salinas|Sebastián Rulli
+Sebastián Rulli|William Levy
+William Levy|David Zepeda
+David Zepeda|Gabriel Soto
+Gabriel Soto|José Ron
+José Ron|Mario Cimarro
+Karol G|Becky G
+Becky G|Natti Natasha
+Natti Natasha|Anitta
+Anitta|Tini Stoessel
+Yalitza Aparicio|Maya Zapata
+Maya Zapata|Ilse Salas
+Ilse Salas|Cecilia Suárez
+Cecilia Suárez|Mariana Treviño
+Mariana Treviño|Aislinn Derbez
+Aislinn Derbez|Zuria Vega
+Zuria Vega|Maite Perroni
+Maite Perroni|Angelique Boyer
+Angelique Boyer|Livia Brito
+Livia Brito|Claudia Martín
+Claudia Martín|Esmeralda Pimentel
+Esmeralda Pimentel|Bárbara de Regil
+Bárbara de Regil|Michelle Renaud
+Michelle Renaud|Camila Sodi
+Camila Sodi|Sherlyn
+Sherlyn|África Zavala
+Peso Pluma|Natanael Cano
+Natanael Cano|Junior H
+Junior H|Fuerza Regida
+Christian Nodal|Ángela Aguilar
+Ángela Aguilar|Leonardo Aguilar
+Leonardo Aguilar|Majo Aguilar
+Majo Aguilar|El Fantasma
+El Fantasma|Gerardo Ortiz
+Gerardo Ortiz|Pancho Barraza
+Pancho Barraza|Julión Álvarez
+Julión Álvarez|Banda MS
+Banda MS|La Arrolladora
+La Arrolladora|Los Tucanes de Tijuana
+Los Tucanes|Los Tigres del Norte
+Los Tigres del Norte|Bronco
+Bronco|Grupo Firme
+Grupo Firme|Calibre 50
+Bad Bunny|J Balvin
+J Balvin|Maluma
+Maluma|Rauw Alejandro
+Rauw Alejandro|Feid
+Feid|Manuel Turizo
+Manuel Turizo|Myke Towers
+Myke Towers|Arcángel
+Arcángel|Nicky Jam
+Nicky Jam|Daddy Yankee
+Daddy Yankee|Don Omar
+Don Omar|Wisin
+Wisin|Yandel
+Yandel|Zion & Lennox
+Camilo|Sebastián Yatra
+Sebastián Yatra|Morat
+Morat|Reik
+Reik|Jesse & Joy
+Jesse & Joy|Río Roma
+Río Roma|Ha*Ash
+Ha*Ash|Pandora
+Pandora|Flans
+Flans|Timbiriche
+Timbiriche|OV7
+OV7|Jeans
+Maná|Caifanes
+Caifanes|Zoé
+Zoé|Enjambre
+Enjambre|DLD
+DLD|Moderatto
+Moderatto|Molotov
+Molotov|Café Tacvba
+Café Tacvba|Panteón Rococó
+Panteón Rococó|Inspector
+Inspector|El Gran Silencio
+El Gran Silencio|Control Machete
+Control Machete|Cartel de Santa
+Cartel de Santa|Alemán
+Alemán|Santa Fe Klan
+Santa Fe Klan|C-Kan
+Andrés Manuel López Obrador|Marcelo Ebrard
+Marcelo Ebrard|Claudia Sheinbaum
+Claudia Sheinbaum|Xóchitl Gálvez
+Xóchitl Gálvez|Margarita Zavala
+Margarita Zavala|Josefina Vázquez Mota
+Vicente Fox|Felipe Calderón
+Felipe Calderón|Enrique Peña Nieto
+Enrique Peña Nieto|Carlos Salinas
+Carlos Salinas|Luis Donaldo Colosio
+Luis Donaldo Colosio|Manuel Clouthier

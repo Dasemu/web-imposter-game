@@ -1,0 +1,130 @@
+# Categoría 19
+Corazón|Arteria
+Pulmón|Oxígeno
+Cerebro|Neurona
+Músculo|Tendón
+Hueso|Médula
+Piel|Poro
+Riñón|Vejiga
+Hígado|Vesícula
+Estómago|Intestino
+Ojo|Retina
+Oído|Cóclea
+Nariz|Sinusitis
+Boca|Lengua
+Dientes|Esmalte
+Brazo|Codo
+Pierna|Rodilla
+Pie|Talón
+Mano|Muñeca
+Dedo|Nudillo
+Dedo del pie|Uña
+Sangre|Plasma
+Vena|Capilar
+Columna|Vértebra
+Pecho|Costilla
+Cadera|Pelvis
+Garganta|Laringe
+Cuello|Cervical
+Hombro|Clavícula
+Tobillo|Tendón de Aquiles
+Espalda|Lumbar
+Sudor|Glándula
+Fiebre|Termómetro
+Tos|Mucosidad
+Resfriado|Virus
+Gripe|Vacuna
+Dolor de cabeza|Migraña
+Infección|Antibiótico
+Virus|Bacteria
+Dolor|Nervio
+Lesión|Venda
+Herida|Cicatriz
+Corte|Sangrado
+Moretón|Hinchazón
+Fractura|Yeso
+Cirugía|Bisturí
+Médico|Enfermero
+Paciente|Clínica
+Hospital|Ambulancia
+Farmacia|Receta
+Medicamento|Pastilla
+Tratamiento|Diagnóstico
+Enfermedad|Síntoma
+Vacuna|Inmunidad
+Terapia|Recuperación
+Salud|Bienestar
+Condición física|Cardio
+Gimnasio|Cinta de correr
+Ejercicio|Estiramiento
+Correr|Trote
+Nadar|Piscina
+Yoga|Relajarse
+Meditación|Atención plena
+Dieta|Nutrición
+Calorías|Grasa
+Proteína|Músculo
+Carbohidrato|Energía
+Vitamina|Suplemento
+Peso|Báscula
+Sueño|Descanso
+Estrés|Cortisol
+Ansiedad|Respiración
+Depresión|Psicoterapia
+Presión arterial|Hipertensión
+Diabetes|Insulina
+Asma|Inhalador
+Alergia|Antihistamínico
+Cáncer|Quimioterapia
+Latido|Pulso
+Colesterol|Triglicérido
+Radiografía|Radiología
+Resonancia|Escáner
+Ecografía|Gel
+Dentista|Fresa dental
+Oculista|Gafas
+Fisioterapeuta|Rehabilitación
+Quiropráctico|Ajuste
+Carné de vacuna|Refuerzo
+Chequeo|Cribado
+Higiene|Saneamiento
+Jabón|Microbio
+Cepillo de dientes|Pasta dental
+Desodorante|Transpiración
+Crema|Hidratación
+Champú|Cuero cabelludo
+Protector solar|Rayos UV
+Visión|Lente
+Audición|Audífono
+Olfato|Olfativo
+Gusto|Papilas
+Tacto|Receptor
+Reflejo|Respuesta
+Equilibrio|Oído interno
+Digestión|Enzima
+Metabolismo|Tiroides
+Hormona|Estrógeno
+Adrenalina|Lucha o huida
+Sistema inmune|Anticuerpo
+Análisis de sangre|Muestra
+Diagnóstico|Escáner
+Recuperación|Fisioterapia
+App de fitness|Monitor
+IMC|Índice
+RCP|Compresión
+Primeros auxilios|Botiquín
+Mascarilla|Protección
+Gel hidroalcohólico|Alcohol
+Termómetro|Temperatura
+Calambre|Espasmo
+Ampolla|Fricción
+Acné|Grano
+Sarpullido|Picor
+Picor|Rascado
+Mareo|Vértigo
+Fatiga|Agotamiento
+Hidratación|Agua
+Nutricionista|Plan de comidas
+Pediatra|Niño
+Dermatólogo|Cuidado de la piel
+Cardiólogo|Palpitación

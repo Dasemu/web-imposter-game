@@ -1,0 +1,98 @@
+# Categoría 11
+Camión|Carga
+Moto de nieve|Jet ski
+Cinturón de seguridad|Airbag
+Coche|Espejo retrovisor
+Señal de alto|Autobús
+Tren|Estación
+Tranvía|Riel
+Metro|Surf
+Andén|Subterráneo
+Taxi|Propina
+Bicicleta|Casco
+Scooter|Italia
+Motocicleta|Paseo
+Furgoneta|Blanca
+Shuttle|Minibús
+Teleférico|Elevador
+Ferry|Río
+Marina|Barco
+Bote|Mar
+Puerto deportivo|Yate
+Velero|Carrera
+Vacaciones|Crucero
+Jet|Piloto
+Pasillo|Avión
+Helicóptero|Evacuación
+Fuego|Globo aerostático
+Planeador|Alas
+Misil|Cohete
+Nave espacial|Astronauta
+Submarino|Guerra
+Aerodeslizador|Cojín
+Tour|Segway
+Tubería|Patineta
+Patines|Derby
+Trineo|Perro
+Granja|Tractor
+Topadora|Construcción
+Montacargas|Ascensor
+Ambulancia|Sirena
+Camión de bomberos|Escalera
+Emergencia|Patrulla
+Chofer|Limusina
+Pickup|Camioneta
+Tanque|Orugas
+Telesilla|Esquí
+Canal|Góndola
+Canoa|Remo
+Rápidos|Kayak
+Jet ski|Motor
+Remos|Bote de remos
+Contenedor|Barco de carga
+Barco carguero|Cajas
+Remolcador|Remolque
+Vela|Viento
+Hélice|Cuchilla
+Combustible|Motor
+Rueda|Pedal
+Goma|Llanta
+Freno|Despacio
+Marcha|Transmisión
+Volante|Llaves
+Tablero|Velocidad
+Licencia|Pase
+Conductor|Licencia
+Piloto|Tripulación
+Capitán|Barco
+Pasajero|Equipaje
+Boleto|Viaje
+Espacio|Andén
+Estación|Subte
+Terminal|Duty free
+Carga|Puerto
+Muelle|Dársena
+Pista|Aterrizaje
+Despegue|Aeropuerto
+Autopista|Carril
+Avenida|Calle
+Puente|Cruzar
+Túnel|Metro
+Cruce|Rojo
+Semáforo|Peatón
+Señal|Alto
+Mapa|GPS
+Dirección|Brújula
+Ruta|Desvío
+Intersección|Tráfico
+Velocidad|Gas
+Gasolina|Aceite
+Energía|Eléctrico
+Híbrido|Toyota
+Diésel|Topadora
+Carril|Carpool
+Viaje compartido|Uber
+Traslado|Cambio
+Escala|Trayecto
+Destino|Escapada
+Movimiento|Viajar

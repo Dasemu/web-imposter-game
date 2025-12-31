@@ -1,0 +1,146 @@
+# Comida y Bebidas
+Pan|Mantequilla
+Chocolate|Cacao
+Cerveza|Cereal
+Ensalada|Crutones
+Queso|Fondue
+Taco|Tortilla
+Donut|Churro
+Cereal|Leche
+Langosta|Camarón
+Falafel|Garbanzo
+Risotto|Arroz
+Ramen|Caldo
+Palomitas|Maíz
+Gnocchi|Patata
+Tofu|Soja
+Guacamole|Aguacate
+Anacardo|Nuez
+Trufa|Hongo
+Pavo|Pollo
+Pan de jengibre|Galletas
+Macaron|Éclair
+Pepinillo|Coliflor
+Sidra|Manzana
+Fondue|Brocheta
+Calzone|Pizza
+Pan de pita|Kebab
+Boba|Tapioca
+Edamame|Guisantes
+Carbonara|Tocino
+Matcha|Té verde
+Café|Latte
+Panqueque|Waffle
+Limonada|Té helado
+Tortilla francesa|Queso
+Kebab|Falafel
+Empanada|Crab cake
+Tocino|Jamón
+Tostada|Sándwich caliente
+Tarta de manzana|Tarta de almendra
+Granola|Muesli
+Lasaña|Canelones
+Baguette|Cuchillo
+Pretzel|Breadstick
+Almeja|Mejillón
+Vieiras|Ostras
+Chile|Tabasco
+Rollito de primavera|Tempura
+Cupcake|Cake pop
+Brownie|Muffin de chocolate
+Raviolis|Tortellini
+Enchilada|Burrito
+Sangría|Wine cooler
+Sake|Jerez
+Paella|Pollo con arroz
+Jamón|Prosciutto
+Pierogi|Empanada
+Albóndigas|Puré
+Sardina|Caballa
+Chorizo|Salami
+Papas fritas|Cheetos
+Churro|Funnel cake
+Kimchi|Col
+Ceviche|Sushi
+Vino|Alcohol
+Té|Leche
+Azúcar|Miel
+Pimienta|Chile
+Italia|Aceite de oliva
+Mantequilla|Sal
+Pesto|Albahaca
+Cebolla|Chutney
+Tomate|Ensalada
+Lechuga|Iceberg
+Pollo|Caldo
+Ternera|Japón
+Cerdo|Tocino
+Camarón|Naranja
+Cangrejo|Rey
+Pasta|Salsa
+Pizza|Salsa de tomate
+Hamburguesa|Lechuga
+Sopa|Patata
+Verano|Ensalada
+Sándwich|Mantequilla de maní
+Cuchillo|Filete
+Miel|Panqueque
+Sushi|Salmón
+Maíz|Tacos
+Burrito|Frijoles
+Curry|Especias
+Fideos|Arroz
+Dumplings|Ravioli
+Tabla de quesos|Galletas saladas
+Charcutería|Frutos secos
+Helado|Chocolate
+Sprinkles|Tarta
+Galleta|Masa
+Pie|Manzana
+Muffin|Arándano
+Glaseado|Donut
+Croissant|Pain au chocolat
+Salmón|Bagel
+Yogur|Cuchara
+Smoothie|Plátano
+Zumo|Rodaja
+Batido|Crema batida
+Refresco|Lata
+Cóctel|Café
+Whisky|Cáscara
+Vodka|Refresco
+Ron|Coca-Cola
+Champán|Zumo de naranja
+Capuchino|Espuma
+Latte|Starbucks
+Barista|Moca
+Chef|Pinzas
+Camarero|Plato
+Menú|Restaurante
+Propina|Camarero
+Cuenta|Postre
+Plato|Comida
+Tenedor|Trinchado
+Cuchara|Sopa
+Servilleta|Delantal
+Vaso|Cuenco
+Taza|Té
+Pajita|Smoothie
+Botella|Vino
+Horno|Parrilla
+Estufa|Olla
+Olla|Tapa
+Parrilla|Fuego
+Tabla de cortar|Preparación
+Receta|Ingrediente
+Especia|Ralladura
+Salsa|Tarro
+Kétchup|Hamburguesa
+Mostaza|Hot dog
+Mayonesa|Vinagre
+Vinagre|Vino blanco
+Albahaca|Piñón
+Romero|Lavanda
+Canela|Bollo
+Hielo|Cóctel
+Postre|Cheesecake

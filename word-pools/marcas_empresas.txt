@@ -1,0 +1,82 @@
+# Marcas y Empresas
+Apple|Samsung
+Samsung|Huawei
+Nike|Adidas
+Adidas|Puma
+Coca-Cola|Pepsi
+Pepsi|Sprite
+McDonald’s|Burger King
+Burger King|Taco Bell
+KFC|Wendy's
+Starbucks|Dunkin' Donuts
+Google|Bing
+Microsoft|Sony
+Amazon|Temu
+Netflix|HBO
+YouTube|Spotify
+Facebook|Instagram
+Instagram|TikTok
+TikTok|Snapchat
+X (Twitter)|Threads
+Tesla|BYD
+Toyota|Honda
+BMW|Mercedes
+Mercedes|Ferrari
+Ferrari|Lamborghini
+Rolex|Omega
+Swatch|Casio
+Nintendo|Sega
+Xbox|Playstation
+Intel|AMD
+AMD|Nvidia
+Lenovo|Asus
+LG|Samsung
+Whirlpool|LG
+H&M|Zara
+Patagonia|North Face
+Columbia|Patagonia
+Reebok|Puma
+Puma|Nike
+New Balance|ASICS
+Vans|Converse
+Crocs|Havaianas
+Levi’s|Wrangler
+Calvin Klein|Ralph Lauren
+Gucci|Chanel
+Prada|Louis Vuitton
+Chanel|Dior
+Louis Vuitton|Lancôme
+Hermès|Versace
+Tiffany|Swarovski
+Ray-Ban|Oakley
+Canon|Nikon
+DJI|GoPro
+Beats|JBL
+Bose|Beats
+Spotify|Apple Music
+Swarovski|Pandora
+Hasbro|LEGO
+Mattel|Hasbro
+LEGO|Playmobil
+Disney|Dreamworks
+Pixar|Illumination
+Marvel|DC
+HBO|Disney+
+Paramount|Lionsgate
+Sony Pictures|Warner Bros
+Airbnb|Booking.com
+Uber|Lyft
+Expedia|Skyscanner
+Red Bull|Monster
+Domino’s|Pizza Hut
+Emirates|Qatar Airways
+Ben & Jerry’s|Häagen-Dazs
+Ryanair|EasyJet
+Heineken|Corona
+FedEx|UPS
+T-Mobile|Verizon
+KitKat|Twix
+Pantene|Head & Shoulders
+Pedigree|Purina
+Magnum|Cornetto
+Vespa|Harley-Davidson

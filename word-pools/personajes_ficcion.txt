@@ -1,0 +1,125 @@
+# Categoría 18
+Harry Potter|Hermione Granger
+Darth Vader|Luke Skywalker
+Frodo|Sam
+Batman|Robin
+Iron Man|Capitán América
+Elsa|Anna
+Simba|Nala
+Shrek|Burro
+Katniss Everdeen|Peeta Mellark
+Spider-Man|Mary Jane
+Sherlock Holmes|Dr. Watson
+Gandalf|Saruman
+Goku|Vegeta
+Naruto|Sasuke
+Drácula|Van Helsing
+James Bond|Austin Powers
+Aladdín|Genio
+Mujer Maravilla|Cheetah
+Thanos|Gamora
+Loki|Thor
+Capitán Jack Sparrow|Will Turner
+Princesa Leia|Han Solo
+Yoda|Obi-Wan Kenobi
+Tony Stark|Pepper Potts
+Deadpool|Cable
+Megatron|Optimus Prime
+Winnie the Pooh|Piglet
+Scooby-Doo|Shaggy
+Bob Esponja|Patricio
+Rick Sánchez|Morty
+Once (Eleven)|Mike
+Geralt|Yennefer
+Arya Stark|Jon Snow
+Daenerys|Drogon
+Tyrion Lannister|Bronn
+Michael Scott|Dwight Schrute
+Chandler Bing|Joey Tribbiani
+Monica Geller|Rachel Green
+Barney Stinson|Ted Mosby
+Sheldon Cooper|Leonard Hofstadter
+Mr. Bean|Osito
+Ash Ketchum|Pikachu
+Mario|Luigi
+Link|Zelda
+Kratos|Atreus
+Lara Croft|Jonah Maiava
+Ellie|Joel
+Nathan Drake|Elena Fisher
+Cloud Strife|Tifa Lockhart
+Sonic|Tails
+Donkey Kong|Diddy Kong
+Bugs Bunny|Pato Lucas
+Tom|Jerry
+Bart Simpson|Lisa Simpson
+Homero Simpson|Marge Simpson
+Stewie Griffin|Brian Griffin
+Aang|Zuko
+Korra|Mako
+Deku|Bakugo
+Tanjiro|Nezuko
+Inuyasha|Kagome
+Sailor Moon|Tuxedo Mask
+Bob Esponja|Calamardo
+Scooby-Doo|Vilma
+Phineas|Ferb
+Perry el Ornitorrinco|Dr. Doofenshmirtz
+Coraje|Muriel
+Jimmy Neutrón|Carl Wheezer
+Kim Possible|Ron Imparable
+Danny Phantom|Tucker Foley
+Timmy Turner|Cosmo
+Wanda|Visión
+Agatha Harkness|Bruja Escarlata
+Neo|Morfeo
+Trinity|Agente Smith
+Legolas|Gimli
+Aragorn|Boromir
+Eren Jaeger|Mikasa Ackerman
+Levi Ackerman|Erwin Smith
+Obi-Wan Kenobi|Anakin Skywalker
+Rey|Kylo Ren
+Poe Dameron|Finn
+Luffy|Zoro
+Nami|Sanji
+Chopper|Robin
+Dumbledore|McGonagall
+Hagrid|Fang
+Bellatrix|Voldemort
+Percy Jackson|Annabeth Chase
+Grover Underwood|Tyson
+Hipo|Desdentao
+Astrid|Estoico
+Baymax|Hiro
+Rapunzel|Flynn Rider
+Moana|Maui
+Mulán|Mushu
+Cenicienta|Hada Madrina
+Bella|Bestia
+Ariel|Flounder
+Stitch|Lilo
+Tiana|Naveen
+Mérida|Reina Elinor
+Wall-E|Eva
+Sulley|Mike Wazowski
+Woody|Buzz Lightyear
+Jessie|Perdigón
+Rex|Hamm
+Rayo McQueen|Mate
+Cruz Ramírez|Jackson Storm
+Miguel|Héctor
+Ernesto de la Cruz|Imelda
+Frankie Stein|Cleo de Nile
+Barbie|Ken
+Max|Duke
+Po|Maestro Shifu
+Gru|Dr. Nefario
+Agnes|Edith
+Megamente|Servil
+Mr. Increíble|Elastigirl
+Dash|Violeta
+Jack-Jack|Frozone
+Betty|Forky
+Remy|Linguini
+Anton Ego|Colette

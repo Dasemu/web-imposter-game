@@ -1,66 +1,98 @@
-# 🏅 Deportes
-Fútbol
-Baloncesto
-Tenis
-Pádel
-Bádminton
-Voleibol
-Béisbol
-Rugby
-Hockey hielo
-Hockey césped
-Golf
-Boxeo
-MMA
-Judo
-Karate
-Taekwondo
-Esgrima
-Tiro con arco
-Halterofilia
-Crossfit
-Atletismo
-Maratón
-Triatlón
-Ciclismo ruta
-Ciclismo montaña
-BMX
-Natación
-Waterpolo
-Surf
-Vela
-Remo
-Piragüismo
-Esquí
-Snowboard
-Patinaje artístico
-Patinaje velocidad
-Curling
-Escalada
-Senderismo
-Trail running
-Parkour
-Gimnasia artística
-Gimnasia rítmica
-Trampolín
-Skate
-Breakdance
-Carreras coches
-Fórmula 1
-Rally
-Karting
-Motociclismo
-Enduro
-Motocross
-Equitación
-Polo
-Críquet
-Billar
-Dardos
-Petanca
-Pickleball
-Ultimate frisbee
-Paintball
-Airsoft
-eSports
-
+# Deportes
+Fútbol|Campo
+Baloncesto|Períodos
+Tenis|Césped
+Béisbol|Carrera
+Golf|Palo
+Rugby|Patada
+Vóley|Playa
+Críquet|Australia
+Hielo|Hockey
+Boxeo|Ring
+Lucha libre|Tatami
+Montaña|Esquí
+Snowboard|Skate
+Surf|Tubo
+Skateboard|Baranda
+Correr|Podcast
+Ciclismo|Piernas
+Natación|Espalda
+Gimnasia|Barras
+Tiro con arco|Blanco
+Pluma|Bádminton
+Tenis de mesa|Red
+Balonmano|Portero
+Esgrima|Máscara
+Patada|Karate
+Judo|Combate
+Agua|Remo
+Vela|Mar
+Escalada|Rappel
+Buceo|Barco
+Canotaje|Remos
+Hockey|Patinaje sobre hielo
+Maratón|Tiempo
+Carrera|Prueba
+Salto de longitud|Arena
+Salto con pértiga|Suecia
+Palo|Golpear
+Gol|Pelota
+Raqueta|Mano
+Red|Equipos
+Ganar|Gol
+Casco|Gorro
+Guantes|Defensa
+Botines|Estadio
+Silbato|Prórroga
+Camiseta|Número
+Marcador|Baloncesto
+Trofeo|Victoria
+Medalla|Gimnasia
+Podio|Medalla
+Entrenador|Silbato
+Jugador|Correr
+Árbitro|Reglas
+Capitán|Líder
+Portero|Resultado
+Delantero|Penalti
+Defensa|Cortar
+Mariscal de campo|Fútbol americano
+Velocista|Olímpicos
+Saco|Boxeador
+Gorro|Nadador
+Gimnasta|Saltar
+Equipo|Once
+Partido|Competencia
+Torneo|Trofeo
+Campeonato|Playoffs
+Asociación|Liga
+Victoria|Partido
+Penalti|Patear
+Prórroga|Empate
+Entrenar|Gimnasio
+Fitness|Flexiones
+Resistencia|Maratón
+Competencia|Rival
+Récord|Medalla de oro
+Cronómetro|Velocidad
+Fuerza|Músculos
+Enfoque|Mentalidad
+Ronaldo|Real Madrid
+Messi|Barcelona
+Neymar|Messi
+Mbappé|Griezmann
+Djokovic|Nadal
+Alcaraz|Sinner
+Federer|Murray
+Nadal|Federer
+Phelps|Lochte
+LeBron|Kobe Bryant
+Serena Williams|Naomi Osaka
+Iga Świątek|Sabalenka
+Coco Gauff|Emma Raducanu
+Simone Biles|Alexa Moreno
+Zlatan|Milán
+Tiger Woods|Golf
+Tom Brady|Super Bowl
+Pelé|Leyenda
+Sinner|Saque

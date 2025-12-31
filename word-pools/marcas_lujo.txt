@@ -1,0 +1,109 @@
+# Categoría 17
+Gucci|Prada
+Louis Vuitton|Hermès
+Chanel|Dior
+Versace|Balmain
+Burberry|Ralph Lauren
+Fendi|Valentino
+Givenchy|Balenciaga
+Armani|Hugo Boss
+Zara|H&M
+Uniqlo|Muji
+Mango|Stradivarius
+Pull&Bear|Bershka
+Nike|Adidas
+Puma|Reebok
+Converse|Vans
+New Balance|Asics
+Levi’s|Wrangler
+Diesel|G-Star
+Tommy Hilfiger|Calvin Klein
+Lacoste|Fred Perry
+Moncler|Canada Goose
+North Face|Patagonia
+Columbia|Jack Wolfskin
+Timberland|Dr. Martens
+Crocs|Birkenstock
+Skechers|Saucony
+Guess|DKNY
+Coach|Michael Kors
+Kate Spade|Tory Burch
+Céline|Loewe
+Miu Miu|Moschino
+Off-White|Supreme
+Alexander McQueen|Vivienne Westwood
+Stella McCartney|Victoria Beckham
+Jacquemus|Zimmermann
+Dockers|Pantalones chino
+Traje|Esmoquin
+Blazer|Americana
+Cárdigan|Jersey
+Sudadera con capucha|Sudadera
+Polo|Camiseta de rugby
+Camiseta|Top
+Vaqueros|Denim
+Pantalones cortos|Bermudas
+Falda|Minifalda
+Vestido|Vestido largo
+Vestido de cóctel|Vestido de noche
+Vestido de novia|Traje de novia
+Mono|Monito
+Peto|Dungarees
+Gabardina|Chubasquero
+Parka|Anorak
+Chaqueta|Cazadora ligera
+Chaqueta de cuero|Cazadora bomber
+Chaleco|Chaleco de traje
+Bufanda|Chal
+Guantes|Manoplas
+Sombrero|Gorro
+Gorro|Boina
+Sombrero fedora|Panamá
+Cinturón|Tirantes
+Calcetines|Medias
+Medias|Leggings
+Tacones|Zapatos de tacón
+Zapatillas deportivas|Bambas
+Sandalias|Chanclas
+Botas|Botines
+Mocasines|Zapatos Oxford
+Zapatillas de casa|Mules
+Alpargatas|Zuecos
+Gafas de sol|Gafas graduadas
+Reloj|Pulsera
+Collar|Gargantilla
+Anillo|Alianza
+Pendientes|Aros
+Bolso|Tote
+Bolso de mano|Cartera
+Mochila|Bolsa de viaje
+Cartera|Tarjetero
+Perfume|Colonia
+Pintalabios|Brillo de labios
+Base|BB Cream
+Máscara de pestañas|Delineador
+Esmalte de uñas|Manicura
+Diadema|Scrunchie
+Peluca|Extensiones
+Corbata|Pajarita
+Gemelos|Pasador de corbata
+Pañuelo de bolsillo|Alfiler de solapa
+Chándal|Pantalones deportivos
+Pantalones de yoga|Leggings
+Top deportivo|Crop top
+Bañador|Bikini
+Bañador de hombre|Bañador tipo bermuda
+Botas cowboy|Botas de montar
+Cazadora vaquera|Chaqueta tejana
+Pantalones cargo|Pantalones de combate
+Bomber|Cazadora universitaria
+Abrigo|Topcoat
+Botines Chelsea|Desert boots
+Camiseta estampada|Camiseta con logotipo
+Camisa de cuadros|Franela
+Pantalones de cuero|Pantalones de vinilo
+Prenda de punto|Jersey de lana
+Corsé|Bustier
+Body|Catsuit
+Capa|Poncho
+Gorro deportivo|Gorro de béisbol

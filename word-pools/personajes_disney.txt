@@ -1,0 +1,134 @@
+# Categoría 15
+Mickey Mouse|Minnie Mouse
+Pato Donald|Pato Lucas (Daffy)
+Goofy|Pluto
+Daisy|Clarabella
+Tío Gilito|Goldito Pato (Glomgold)
+Jaimito|Juanito
+Chip|Chop
+Simba|Mufasa
+Scar|Jafar
+Timón|Pumba
+Nala|Kiara
+Rafiki|Zazú
+Ariel|Melody
+Úrsula|Maléfica
+Sebastián|Flounder
+Cenicienta|Blancanieves
+Príncipe Encantador|Príncipe Eric
+Hada Madrina|Hada Azul
+Madrastra|Reina Malvada
+Bella|Aurora
+Bestia|Gastón
+Lumière|Din Don (Cogsworth)
+Señora Potts|Hada Madrina
+Jasmín|Pocahontas
+Aladdín|Flynn Rider
+Genio|Mushu
+Jafar|Hades
+Abu|Rajah
+Alfombra|Pegaso
+Elsa|Anna
+Olaf|Sven
+Kristoff|Hans
+Rapunzel|Mérida
+Pascal|Pua
+Maximus|Sven
+Moana|Lilo
+Maui|Hércules
+Heihei|Scuttle
+Stitch|Experimento 625
+Nani|Moana
+Kida|Esmeralda
+Hércules|Tarzán
+Megara|Esmeralda
+Hades|Úrsula
+Filoctetes|Timón
+Tarzán|Mowgli
+Jane|Wendy
+Kala|Sarabi
+Terk|Tantor
+Peter Pan|Robin Hood
+Campanita|Silvermist
+Capitán Garfio|Dr. Facilier
+Wendy|Alicia
+Niños Perdidos|Siete Enanitos
+Dumbo|Bambi
+Timoteo|Pepito Grillo
+Reina (Lady)|Vagabundo
+Jock|Trusty
+Bambi|Tambor
+Flor|Mofeta
+Faline|Nala
+Geppetto|Maurice
+Pepito Grillo|Sebastián
+Monstruo|Ballena
+Alicia|Wendy
+Sombrerero Loco|Liebre de Marzo
+Gato de Cheshire|Fígaro
+Conejo Blanco|Conejo (Winnie the Pooh)
+Reina de Corazones|Reina Malvada
+Winnie the Pooh|Paddington
+Tigre (Tigger)|Roo
+Piglet|Igor (Ígor)
+Conejo|Búho
+Cangu (Kanga)|Rito (Roo)
+Christopher Robin|Andy
+Rayo McQueen|Jackson Storm
+Mate|Luigi
+Sally Carrera|Flo
+Doc Hudson|Smokey
+Buzz Lightyear|Zurg
+Woody|Jessie
+Bo Peep|Barbie
+Señor Patata|Señora Patata
+Rex|Hamm
+Forky|Sporky
+Lotso|Stinky Pete
+WALL·E|EVA
+Remy|Emile
+Linguini|Alfredo
+Anton Ego|Skinner
+Miguel (Coco)|Héctor
+Mamá Imelda|Abuelita Coco
+Ernesto de la Cruz|Gastón
+Dante|Sven
+Sulley|Baloo
+Mike Wazowski|Roz
+Boo|Vanellope
+Randall|Kaa
+Jack Skellington|Oogie Boogie
+Zero|Pluto
+Shrek|Fiona
+Burro|Mushu
+Gato con Botas|Fígaro
+Jengibre (Gingy)|Olaf
+Kung Fu Panda (Po)|Baymax
+Maestro Shifu|Rafiki
+Tigresa|Nala
+Desdentao|Stitch
+Hipo (Hiccup)|Kristoff
+Astrid|Anna
+Baymax|WALL·E
+Hiro|Dash
+Violeta|Elastigirl
+Mr. Increíble|Superman
+Síndrome|Zurg
+Frozono|Hombre de Hielo
+Ralph|Donkey Kong
+Fix-It Felix|Mario
+Judy Hopps|Nick Wilde
+Jefe Bogo|Shere Khan
+Flash (Perezoso)|Crush (Tortuga)
+Kuzco|Kronk
+Yzma|Madre Gothel
+Pacha|Maui
+Chicken Little|Heihei
+Bolt|Max (Mascotas)
+Mittens|Marie (Aristogatos)
+Oliver|Dodger
+Duquesa|Reina (Lady)
+Thomas O’Malley|Vagabundo
+Marie|Toulouse
+Edgar|Ratigan
+Robin Hood|Peter Pan

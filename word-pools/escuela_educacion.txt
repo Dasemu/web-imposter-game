@@ -1,0 +1,115 @@
+# Categoría 9
+Maestro|Director
+Tarea|Actividad
+Libro De Texto|Cuaderno De Ejercicios
+Mochila|Estuche
+Recreo|Patio
+Matemáticas|Álgebra
+Ciencias|Biología
+Cafetería|Almuerzo
+Biblioteca|Bibliotecario
+Escritorio|Silla
+Pluma|Tinta
+Regla|Transportador
+Pizarrón Blanco|Marcador
+Gis|Borrador
+Globo Terráqueo|Mapa
+Gimnasio|Pelota
+Arte|Papel
+Teatro|Máscara
+Química|Fuego
+Biología|Microscopio
+Física|Imán
+Estudiante|Clase
+Conserje|Trapeador
+Orientador|Consejería
+Examen|Calificación
+Prueba|Cuestionario
+Graduación|Diploma
+Casillero|Combinación
+Pasillo|Corredor
+Reloj|Manecillas
+Proyector|Pantalla
+Castigo|Sanción
+Cuestionario|Preguntas
+Laboratorio|Experimento
+Boleta De Calificaciones|Promedio
+Ensayo|Introducción
+Sala De Cómputo|Monitor
+Escáner|Fotocopiadora
+Resaltador|Apuntes
+Carpeta|Archivador
+Uniforme|Corbata
+Educación Física|Silbato
+Silbato|Entrenador
+Borrador|Goma
+Sacapuntas|Cuchilla
+Concurso De Ortografía|Podio
+Música|Flauta Dulce
+Orquesta|Violín
+Debate|Argumento
+Geografía|Brújula
+Historia|Línea De Tiempo
+Economía|Gráfica
+Literatura|Novela
+Lectura|Comprensión
+Escritura|Lápiz
+Francés|Conjugación
+Español|Acento
+Lenguaje|Gramática
+Ortografía|Sílaba
+Actividades Extracurriculares|Club
+Fútbol|Equipo
+Baloncesto|Cancha
+Atletismo|Cronómetro
+Autobús Escolar|Chofer
+Excursión|Permiso
+Asamblea|Orador
+Anuncio|Altavoz
+Pase De Pasillo|Baño
+Baño|Caseta
+Simulacro De Incendio|Alarma
+Seguridad|Evacuación
+Lonchera|Termo
+Refrigerio|Cajita De Jugo
+Engrapadora|Grapas
+Clip|Documentos
+Barra De Pegamento|Manualidad
+Tijeras|Cartulina
+Arte Y Manualidades|Pegamento
+Jardín De Infancia|Colchoneta
+Preescolar|Pintura De Dedos
+Grado|Reporte
+Cuadro De Honor|Ceremonia
+Mejor Promedio|Discurso
+Junta Escolar|Superintendente
+Anuario|Fotos
+Exalumnos|Reencuentro
+Campus|Edificio
+Colegiatura|Cuotas
+Horario|Calendario
+Período|Timbre
+Semana De Exámenes|Estrés
+Semestre|Vacaciones
+Inducción|Recorrido
+Vestidor|Banca
+Hora De Estudio|Silencio
+Trabajo En Grupo|Colaboración
+Plagio|Cita
+Hoja De Castigo|Firma
+Asociación De Padres|Colecta
+Suplente|Asistencia
+Asistencia|Lista
+Enfermera Escolar|Termómetro
+Botiquín De Primeros Auxilios|Curita
+Reglamento|Normas
+Código De Conducta|Comportamiento
+Bata De Laboratorio|Gafas De Seguridad
+Banca|Banquito
+Hoja|Márgenes
+Memoria Usb|Archivos
+Corrector Blanco|Cinta Correctora
+Tablón De Anuncios|Chinchetas
+Marcador|Tapa
+Hoja De Examen|Hoja De Respuestas
+Aula|Pizarrón

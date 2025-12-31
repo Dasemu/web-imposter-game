@@ -4,13 +4,10 @@ const MIN_PLAYERS = 3;
 const POOLS_CACHE_KEY = 'impostorWordPoolsV1';
 const POOLS_MANIFEST_URL = 'word-pools/manifest.json';
 
+// Pools embebidas con palabras de impostores [palabra_civil, palabra_impostor]
 const EMBEDDED_POOLS = [
-  { id: 'animales_naturaleza', name: 'Animales y naturaleza', emoji: '🌿', words: ['Perro','Gato','Lobo','Zorro','Oso','Tigre','León','Pantera','Jaguar','Puma','Guepardo','Elefante','Rinoceronte','Hipopótamo','Jirafa','Cebra','Camello','Dromedario','Canguro','Koala','Panda','Mapache','Nutria','Castor','Foca','Morsa','Delfín','Ballena','Tiburón','Orca','Pulpo','Calamar','Medusa','Tortuga','Lagarto','Cocodrilo','Serpiente','Anaconda','Iguana','Rana','Sapo','Búho','Halcón','Águila','Cóndor','Gaviota','Loro','Flamenco','Pingüino','Avestruz','Gallina','Pato','Ganso','Cisne','Abeja','Hormiga','Mariquita','Libélula','Mariposa','Escarabajo','Grillo','Saltamontes','Araña','Escorpión','Lombriz','Caracol','Estrella de mar','Coral','Musgo','Helecho','Pino','Roble','Encina','Palmera','Cactus','Bambú','Rosa','Tulipán','Girasol','Lavanda','Montaña','Río','Lago','Mar','Playa','Desierto','Selva','Bosque','Pradera','Glaciar','Volcán'] },
-  { id: 'vida_cotidiana', name: 'Vida cotidiana', emoji: '🏠', words: ['Pan','Leche','Café','Té','Agua','Jugo','Refresco','Cerveza','Vino','Pizza','Hamburguesa','Sándwich','Taco','Burrito','Pasta','Arroz','Paella','Sushi','Ramen','Ensalada','Sopa','Croqueta','Tortilla','Empanada','Arepa','Queso','Jamón','Chorizo','Pollo','Carne','Cerdo','Pescado','Marisco','Patata','Tomate','Cebolla','Ajo','Pimiento','Zanahoria','Lechuga','Brócoli','Coliflor','Manzana','Plátano','Naranja','Pera','Uva','Fresa','Mango','Piña','Melón','Sandía','Yogur','Galletas','Chocolate','Helado','Cereales','Mantequilla','Aceite','Sal','Pimienta','Azúcar','Harina','Huevo','Cuchara','Tenedor','Cuchillo','Plato','Vaso','Taza','Olla','Sartén','Microondas','Horno','Nevera','Mesa','Silla','Sofá','Cama','Almohada','Sábana','Toalla','Ducha','Jabón','Champú','Cepillo','Pasta de dientes'] },
-  { id: 'deportes', name: 'Deportes', emoji: '🏅', words: ['Fútbol','Baloncesto','Tenis','Pádel','Bádminton','Voleibol','Béisbol','Rugby','Hockey hielo','Hockey césped','Golf','Boxeo','MMA','Judo','Karate','Taekwondo','Esgrima','Tiro con arco','Halterofilia','Crossfit','Atletismo','Maratón','Triatlón','Ciclismo ruta','Ciclismo montaña','BMX','Natación','Waterpolo','Surf','Vela','Remo','Piragüismo','Esquí','Snowboard','Patinaje artístico','Patinaje velocidad','Curling','Escalada','Senderismo','Trail running','Parkour','Gimnasia artística','Gimnasia rítmica','Trampolín','Skate','Breakdance','Carreras coches','Fórmula 1','Rally','Karting','Motociclismo','Enduro','Motocross','Equitación','Polo','Críquet','Billar','Dardos','Petanca','Pickleball','Ultimate frisbee','Paintball','Airsoft','eSports'] },
-  { id: 'marcas', name: 'Marcas', emoji: '🛍️', words: ['Apple','Samsung','Google','Microsoft','Amazon','Meta','Tesla','Toyota','Honda','Ford','BMW','Mercedes','Audi','Volkswagen','Porsche','Ferrari','Lamborghini','Maserati','McLaren','Chevrolet','Nissan','Kia','Hyundai','Peugeot','Renault','Volvo','Jaguar','Land Rover','Fiat','Alfa Romeo','Ducati','Yamaha','Canon','Nikon','Sony','Panasonic','LG','Philips','Siemens','Bosch','Whirlpool','Ikea','Zara','H&M','Uniqlo','Nike','Adidas','Puma','Reebok','New Balance','Under Armour','Converse','Vans','Patagonia','The North Face','Columbia','Levi’s','Calvin Klein','Gucci','Prada','Louis Vuitton','Chanel','Hermès','Dior','Rolex','Omega','Casio','Pepsi','Coca-Cola','Fanta','Red Bull','Monster','Starbucks','Nespresso','Nestlé','Danone','Kellogg’s','Oreo','Intel','AMD','Nvidia','Qualcomm','TikTok','Netflix','Disney','Warner Bros','HBO','Spotify','Airbnb','Uber','Booking'] },
-  { id: 'musica', name: 'Música', emoji: '🎵', words: ['Guitarra','Piano','Violín','Batería','Bajo','Saxofón','Trompeta','Flauta','Clarinete','Acordeón','Ukelele','Arpa','Sintetizador','DJ','Micrófono','Altavoz','Concierto','Festival','Vinilo','Rock','Pop','Punk','Metal','Heavy','Thrash','Death metal','Jazz','Blues','Soul','Funk','R&B','Rap','Hip hop','Trap','Reggaetón','Salsa','Bachata','Merengue','Cumbia','Vallenato','Flamenco','Rumba','Bossa nova','Samba','Tango','Country','EDM','Techno','House','Trance','Dubstep','Drum and bass','Lo-fi','Reggae','Ska','K-pop','J-pop','Indie','Gospel','Ópera','Sinfonía','Orquesta','Coro','Cantautor','Balada','Bolero','Ranchera','Corrido','Mariachi'] },
-  { id: 'personajes', name: 'Personajes', emoji: '🧙', words: ['Sherlock Holmes','Harry Potter','Hermione Granger','Ron Weasley','Albus Dumbledore','Voldemort','Frodo Bolsón','Sam Gamyi','Gandalf','Aragorn','Legolas','Gimli','Gollum','Bilbo Bolsón','Katniss Everdeen','Peeta Mellark','Batman','Bruce Wayne','Joker','Harley Quinn','Superman','Clark Kent','Lois Lane','Wonder Woman','Diana Prince','Flash','Barry Allen','Aquaman','Arthur Curry','Spider-Man','Peter Parker','Iron Man','Tony Stark','Capitán América','Steve Rogers','Black Widow','Natasha Romanoff','Hulk','Bruce Banner','Thor','Loki','Thanos','Doctor Strange','Wanda Maximoff','Vision','Star-Lord','Gamora','Groot','Rocket','Drax','Deadpool','Wolverine','Magneto','Professor X','Storm','Cyclops','Jean Grey','Mystique','Darth Vader','Luke Skywalker','Leia Organa','Han Solo','Chewbacca','Yoda','Obi-Wan Kenobi','Anakin Skywalker','Rey','Kylo Ren','R2-D2','C-3PO','Indiana Jones','Lara Croft','James Bond','Mario','Luigi','Princesa Peach','Bowser','Link','Zelda','Geralt de Rivia','Ciri','Yennefer','Kratos','Atreus','Ellie','Joel Miller','Nathan Drake','Master Chief','Cortana','Sonic','Tails','Ash Ketchum','Pikachu','Goku','Vegeta','Naruto','Sasuke','Luffy','Zoro','Nami','Tanjiro','Nezuko','Saitama','Light Yagami','L Lawliet'] }
+  { id: 'animales_naturaleza', name: 'Animales y Naturaleza', emoji: '🌿', words: [['Oso','Pez'],['Pavo real','Abanico'],['Camello','Arena'],['Lirio','Rana'],['Lobo','Luna'],['Represa','Castor'],['Elefante','Safari'],['Flamenco','Camarón'],['Búho','Nieve'],['Canguro','Koala'],['Jungla','Serpiente'],['Muerte','Cuervo'],['Delfín','Orca'],['Zorro','Gallina'],['Tortuga','Galápagos'],['León','Sabana'],['Polo Sur','Pingüino'],['Hormiga','Trabajo'],['Abeja','Verano'],['Ballena','Dory'],['Mandíbula','Tiburón'],['Río de Janeiro','Loro'],['Caballo','Libertad'],['Gorila','Plata'],['Murciélago','Fruta'],['Venado','Tambor'],['Misisipi','Águila'],['Cisne','Lago'],['Grillo','Campo'],['Leopardo','Manchas'],['Mascarilla','Mapache'],['Chita','Velocidad'],['Araña','Nueva York'],['Playa','Medusa'],['Glaciar','Oso polar'],['Jirafa','Madagascar'],['Maine','Langosta'],['Pulpo','Pluma'],['Cuervo','Pantera'],['Foca','Rosa'],['Mariposa','Algodoncillo'],['Burro','Santorini'],['Lluvia','Caracol'],['Cangrejo','Araña'],['Rana','Grillo'],['Siberia','Tigre'],['Gaviota','Playa'],['Cocodrilo','Nilo'],['Pingüino','Nueva Zelanda'],['Loro','Gato'],['Cuervo','Bandada'],['Conejo','Agujero'],['Tiburón','Paleozoico'],['Trueno','Júpiter'],['Sol','Playa'],['Océano Atlántico','Huracán'],['Tsunami','Derrumbe'],['Ola','Hawái'],['Papel','Árbol'],['Universo','Energía'],['Vida','Tiempo'],['Océano','Tormenta'],['Lago','Sal'],['Oxígeno','Fuego'],['Biología','Célula'],['Tiza','Hielo'],['Clima','Invierno'],['Planeta','Gas'],['Era de hielo','Bellota'],['Avalancha','Montaña'],['Bisonte','Llanuras'],['Floración','Néctar'],['Cañón','Águila'],['Ardilla listada','Nueces'],['Coral','Arrecife'],['Desierto','Espejismo'],['Ecosistema','Equilibrio'],['Halcón','Picado'],['Luciérnaga','Brillo'],['Gecko','Hoja'],['Colibrí','Azúcar'],['Koala','Eucalipto'],['Meteoro','Cráter'],['Nutria','Río'],['Selva tropical','Dosel'],['Rinoceronte','Cuerno'],['Volcán','Ceniza'],['Naturaleza salvaje','Huellas']] },
+  { id: 'objetos_cotidianos', name: 'Objetos Cotidianos', emoji: '🏠', words: [['Martillo','Tiburón'],['Silla','Espalda'],['Mesa','Café'],['Cuchara','Crema'],['Tenedor','Posidón'],['Cuchillo','Mantequilla'],['Plata','Plato'],['Copa','Campeonato'],['Vidrio','Arena'],['Botella','Aerosol'],['Lata','Boda'],['Teléfono','Radio'],['Laptop','Tarjeta'],['Teclado','Piano'],['Ratón','Laboratorio'],['Marco','Pantalla'],['Control','Satélite'],['Lámpara','Aceite'],['Horno','Bombilla'],['Vela','Corona de flores'],['Carro','Espejo'],['Ventana','Caja'],['Puerta','Armario'],['Llave','Auto'],['Candado','Sello'],['Monedero','Piel'],['Cartera','Etiqueta'],['Mochila','Avión'],['Maleta','Toalla'],['Sombrero','Paja'],['Zapatos','Vela'],['Calcetas','Medida'],['Playera','Algodón'],['Cierre','Pantalón'],['Abrigo','Pelo'],['Paraguas','Ala'],['Vacaciones','Gafas de sol'],['Reloj de pulsera','Monitor'],['Rueda','Anillo'],['Collar','Tiara'],['Manga','Tatuaje'],['Cama','Monstruo'],['Funda','Media'],['Manta','Cuna'],['Colchón','Aire'],['Libro','Pop-up'],['Revista','Diario'],['Periódico','Columna'],['Pluma','Bola'],['Lápiz','Delineador'],['Borrador','Goma'],['Dibujo','Cuaderno'],['Tijeras','Cabello'],['Regla','Parrilla'],['Pegamento','Tubo'],['Cinta adhesiva','Clip'],['Pincel','Escoba'],['Cesto','Arco'],['Caja','Zapato'],['Sobre','Carta'],['Sello','Fecha'],['Calendario','Luna'],['Reloj','Campana'],['Radio','Onda'],['Bocina','Pared'],['DJ','Audífonos'],['Micrófono','Televisión'],['Televisión','Imagen'],['Cámara','Láser'],['Trípode','Pierna'],['Ventilador','Oxígeno'],['Calefactor','Secadora'],['Estufa','Carbón'],['Refrigerador','Leche'],['Congelador','Helado'],['Microondas','Radar'],['Tostadora','Horno'],['Licuadora','Espátula'],['Olla','Sopa'],['Acero','Sartén'],['Tetera','Cobre'],['Esponja','Gelatina'],['Jabón','Barra'],['Toalla','Ducha'],['Cepillo de dientes','Lengua'],['Pasta de dientes','Gel'],['Marfil','Peine'],['Cepillo','Rastrillo'],['Navaja','Jabón'],['Champú','Sábila'],['Acondicionador','Espuma'],['Loción','Seda'],['Balde','Tierra'],['Trapeador','Piso'],['Escoba','Avión'],['Recogedor','Nube'],['Basurero','Camión'],['Reciclaje','Papel'],['Escalera','Cuerda']] }
 ];
 
 let availablePools = [];
@@ -36,7 +33,7 @@ let state = {
   votingPlayer: 0,
   selections: [],
   executed: [],
-  selectedPool: 'animales_naturaleza',
+  selectedPools: ['animales_naturaleza', 'objetos_cotidianos'], // Ahora es un array para múltiples pools
   votingPool: null,
   isTiebreak: false,
   tiebreakCandidates: []
@@ -94,41 +91,89 @@ async function loadPoolsList() {
 }
 
 function parseWordsFile(text) {
-  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
-  if (!lines.length) return [];
-  if (lines[0].startsWith('#')) return lines.slice(1);
-  return lines;
+  const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+  return lines.map(line => {
+    // Formato: palabra_civil|palabra_impostor
+    if (line.includes('|')) {
+      const [civil, impostor] = line.split('|').map(s => s.trim());
+      return [civil, impostor];
+    }
+    // Fallback: si no tiene pipe, usar la misma palabra para ambos
+    return [line, line];
+  });
 }
 
 async function pickWords() {
-  const poolId = state.selectedPool || 'default';
-  let words = [];
-  if (poolsCache[poolId]?.words) {
-    words = poolsCache[poolId].words;
-  } else if (poolId !== 'default') {
-    const res = await fetch(`word-pools/${poolId}.txt`);
-    if (!res.ok) throw new Error('No se pudo cargar el pool');
-    const text = await res.text();
-    words = parseWordsFile(text);
-    poolsCache[poolId] = { words, ts: Date.now() }; savePoolsCache();
-  } else {
-    words = EMBEDDED_POOLS[0].words;
+  const selectedIds = state.selectedPools && state.selectedPools.length > 0 ? state.selectedPools : ['animales_naturaleza'];
+  let allWords = [];
+
+  // Recopilar palabras de todos los pools seleccionados
+  for (const poolId of selectedIds) {
+    let words = [];
+
+    // Buscar en pools embebidas primero
+    const embeddedPool = EMBEDDED_POOLS.find(p => p.id === poolId);
+    if (embeddedPool) {
+      words = embeddedPool.words;
+    } else if (poolsCache[poolId]?.words) {
+      words = poolsCache[poolId].words;
+    } else {
+      try {
+        const res = await fetch(`word-pools/${poolId}.txt`);
+        if (res.ok) {
+          const text = await res.text();
+          words = parseWordsFile(text);
+          poolsCache[poolId] = { words, ts: Date.now() };
+          savePoolsCache();
+        }
+      } catch (_) {}
+    }
+
+    allWords = allWords.concat(words);
   }
-  const shuffled = [...words].sort(() => Math.random() - 0.5);
-  return { civilian: shuffled[0], impostor: shuffled[1] };
+
+  if (allWords.length === 0) {
+    // Fallback a pool embebida
+    allWords = EMBEDDED_POOLS[0].words;
+  }
+
+  const shuffled = [...allWords].sort(() => Math.random() - 0.5);
+  const wordPair = shuffled[0];
+
+  // wordPair es [palabra_civil, palabra_impostor]
+  return { civilian: wordPair[0], impostor: wordPair[1] };
 }
 
 function renderPoolButtons() {
   const container = document.getElementById('pool-buttons');
   if (!container) return;
   container.innerHTML = '';
+
+  // Asegurar que selectedPools sea un array
+  if (!Array.isArray(state.selectedPools)) {
+    state.selectedPools = [state.selectedPools || 'animales_naturaleza'];
+  }
+
   availablePools.forEach(pool => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'pool-btn';
     btn.textContent = `${pool.emoji || '🎲'} ${pool.name || pool.id}`;
-    if (state.selectedPool === pool.id) btn.classList.add('selected');
-    btn.onclick = () => { state.selectedPool = pool.id; saveState(); renderPoolButtons(); };
+    if (state.selectedPools.includes(pool.id)) btn.classList.add('selected');
+    btn.onclick = () => {
+      // Toggle selección múltiple
+      if (state.selectedPools.includes(pool.id)) {
+        state.selectedPools = state.selectedPools.filter(id => id !== pool.id);
+        // Asegurar que al menos haya uno seleccionado
+        if (state.selectedPools.length === 0) {
+          state.selectedPools = [pool.id];
+        }
+      } else {
+        state.selectedPools.push(pool.id);
+      }
+      saveState();
+      renderPoolButtons();
+    };
     container.appendChild(btn);
   });
 }
@@ -175,8 +220,9 @@ function startGame() {
   }).catch(() => {
     const fallback = EMBEDDED_POOLS[0].words;
     const shuffled = [...fallback].sort(() => Math.random() - 0.5);
-    state.civilianWord = shuffled[0];
-    state.impostorWord = shuffled[1];
+    const wordPair = shuffled[0];
+    state.civilianWord = wordPair[0];
+    state.impostorWord = wordPair[1];
     finalizeStart();
   });
 }
@@ -212,13 +258,20 @@ function renderSummary() {
   const el = document.getElementById('config-summary');
   const fmt = secs => `${Math.floor(secs/60)}:${(secs%60).toString().padStart(2,'0')}`;
   const startName = state.playerNames[state.startPlayer] || `Jugador ${state.startPlayer+1}`;
-  const poolMeta = availablePools.find(p => p.id === state.selectedPool) || EMBEDDED_POOLS[0];
+
+  // Generar lista de pools seleccionadas
+  const selectedIds = Array.isArray(state.selectedPools) ? state.selectedPools : [state.selectedPools || 'animales_naturaleza'];
+  const poolsText = selectedIds.map(id => {
+    const pool = availablePools.find(p => p.id === id) || EMBEDDED_POOLS.find(p => p.id === id);
+    return pool ? `${pool.emoji || '🎲'} ${pool.name || pool.id}` : id;
+  }).join(', ');
+
   el.innerHTML = `
     <p><strong>Jugadores:</strong> ${state.numPlayers}</p>
     <p><strong>Impostores:</strong> ${state.numImpostors}</p>
     <p><strong>Tiempo de partida:</strong> ${fmt(state.gameTime)}</p>
     <p><strong>Tiempo de deliberación:</strong> ${fmt(state.deliberationTime)}</p>
-    <p><strong>Pool:</strong> ${poolMeta.emoji || '🎲'} ${poolMeta.name || poolMeta.id}</p>
+    <p><strong>Pools:</strong> ${poolsText}</p>
     <p><strong>Empieza:</strong> ${startName} · <strong>Orden:</strong> ${state.turnDirection === 'horario' ? 'Horario' : 'Antihorario'}</p>
   `;
 }

@@ -1,0 +1,119 @@
+# Películas y Series
+Titanic|Avatar
+Breaking Bad|Better Call Saul
+El Padrino|Buenos Muchachos
+The Office|Parks and Recreation
+Friends|Cómo conocí a tu madre
+Juego de tronos|La casa del dragón
+Stranger Things|Dark
+The Crown|Victoria
+The Mandalorian|Andor
+Los Simpson|Padre de familia
+Star Wars|Star Trek
+Matrix|El origen
+Los Vengadores|La Liga de la Justicia
+Batman inicia|El caballero de la noche
+Sherlock|Elementary
+Black Mirror|Love, Death & Robots
+The Witcher|Sombra y hueso
+Loki|Moon Knight
+Lost|Manifest
+House of Cards|El ala oeste de la Casa Blanca
+Mad Men|The Newsroom
+Suits|Billions
+The Boys|Invencible
+The Walking Dead|Fear the Walking Dead
+The Flash|Arrow
+Supernatural|Lucifer
+True Detective|Fargo
+Dexter|Hannibal
+Ozark|Breaking Bad
+Peaky Blinders|Boardwalk Empire
+La teoría del Big Bang|El joven Sheldon
+Brooklyn Nine-Nine|Community
+Seinfeld|Curb Your Enthusiasm
+Euphoria|Skins
+Glee|High School Musical
+Bridgerton|La edad dorada
+The Umbrella Academy|Doom Patrol
+Smallville|Gotham
+Reacher|Jack Ryan
+Narcos|El Chapo
+Gambito de dama|The Chess Players
+La casa de papel|Caleidoscopio
+Prison Break|Wentworth
+Los Soprano|Ray Donovan
+The Last of Us|The Walking Dead
+Hannibal|Bates Motel
+Mr. Robot|Devs
+The Expanse|Battlestar Galactica
+True Blood|Diarios de vampiros
+Teen Wolf|Buffy, la cazavampiros
+13 razones|Euphoria
+The Good Place|Upload
+El cuento de la criada|El hombre en el castillo
+Vikingos|El último reino
+The Wire|Snowfall
+Homeland|24
+Grey’s Anatomy|ER
+Dr. House|The Resident
+Yellowstone|Longmire
+Fargo|True Detective
+American Horror Story|Channel Zero
+Westworld|Humans
+Los 100|Tierra Nova
+Carbono alterado|Black Mirror
+Lucifer|Constantine
+Constantine|The Sandman
+The Sandman|American Gods
+Arrow|Legends of Tomorrow
+Titanes|Doom Patrol
+El Castigador|Daredevil
+Daredevil|Jessica Jones
+Jessica Jones|Luke Cage
+Luke Cage|Iron Fist
+Iron Fist|The Defenders
+The Defenders|El Castigador
+WandaVision|Loki
+Moon Knight|Ms. Marvel
+Ms. Marvel|She-Hulk
+She-Hulk|Echo
+Los Increíbles|Grandes héroes
+Toy Story|Monsters Inc.
+Shrek|Mi villano favorito
+Frozen|Moana
+Encanto|Coco
+Zootopia|Sing
+Intensamente|Soul
+Cars|Aviones
+Kung Fu Panda|Cómo entrenar a tu dragón
+Hotel Transilvania|Los locos Addams
+Coraline|ParaNorman
+Spider-Man: Sin camino a casa|Doctor Strange
+Iron Man|Capitán América
+Thor|Pantera Negra
+Ant-Man|Guardianes de la galaxia
+Deadpool|Logan
+X-Men|Los 4 Fantásticos
+Indiana Jones|La momia
+Jumanji|Jungle Cruise
+Rápidos y furiosos|Need for Speed
+Misión imposible|Jason Bourne
+John Wick|Nadie
+Los juegos del hambre|Divergente
+Crepúsculo|Cazadores de sombras
+Percy Jackson|Harry Potter
+Animales fantásticos|Los secretos de Dumbledore
+Duna|Fundación
+Blade Runner|El fantasma en la concha
+Interestelar|Gravedad
+2001: Odisea del espacio|Solaris
+Un lugar en silencio|A ciegas
+El conjuro|La noche del demonio
+El juego del miedo|Escape Room
+Scream|Sé lo que hicieron el verano pasado
+El aro|La maldición
+Eso|Cementerio de mascotas
+El resplandor|Doctor Sueño
+¡Huye!|Nosotros
+¡Nop!|Candyman
