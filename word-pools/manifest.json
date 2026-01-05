@@ -4,133 +4,155 @@
     "name": "Objetos Cotidianos",
     "emoji": "🏠",
     "count": 99,
-    "local": true
+    "local": true,
+    "lang": "es"
   },
   {
     "id": "animales_naturaleza",
     "name": "Animales y Naturaleza",
     "emoji": "🌿",
     "count": 88,
-    "local": true
+    "local": true,
+    "lang": "es"
   },
   {
     "id": "marcas_empresas",
     "name": "Marcas y Empresas",
     "emoji": "🛍️",
-    "count": 81
+    "count": 81,
+    "lang": "es"
   },
   {
     "id": "profesiones_trabajos",
     "name": "Profesiones y Trabajos",
     "emoji": "💼",
-    "count": 94
+    "count": 94,
+    "lang": "es"
   },
   {
     "id": "comida_bebidas",
     "name": "Comida y Bebidas",
     "emoji": "🍕",
-    "count": 145
+    "count": 145,
+    "lang": "es"
   },
   {
     "id": "lugares_mundo",
     "name": "Lugares del Mundo",
     "emoji": "🌍",
-    "count": 89
+    "count": 89,
+    "lang": "es"
   },
   {
     "id": "deportes",
     "name": "Deportes",
     "emoji": "⚽",
-    "count": 97
+    "count": 97,
+    "lang": "es"
   },
   {
     "id": "peliculas_series",
     "name": "Películas y Series",
     "emoji": "🎬",
-    "count": 118
+    "count": 118,
+    "lang": "es"
   },
   {
     "id": "escuela_educacion",
     "name": "Escuela y Educación",
     "emoji": "📚",
-    "count": 114
+    "count": 114,
+    "lang": "es"
   },
   {
     "id": "tecnologia_internet",
     "name": "Tecnología e Internet",
     "emoji": "💻",
-    "count": 63
+    "count": 63,
+    "lang": "es"
   },
   {
     "id": "vehiculos_transporte",
     "name": "Vehículos y Transporte",
     "emoji": "🚗",
-    "count": 97
+    "count": 97,
+    "lang": "es"
   },
   {
     "id": "instrumentos_musicales",
     "name": "Instrumentos Musicales",
     "emoji": "🎸",
-    "count": 106
+    "count": 106,
+    "lang": "es"
   },
   {
     "id": "videojuegos",
     "name": "Videojuegos",
     "emoji": "🎮",
-    "count": 128
+    "count": 128,
+    "lang": "es"
   },
   {
     "id": "personajes_anime",
     "name": "Personajes de Anime",
     "emoji": "🎌",
-    "count": 133
+    "count": 133,
+    "lang": "es"
   },
   {
     "id": "personajes_disney",
     "name": "Personajes de Disney",
     "emoji": "🏰",
-    "count": 133
+    "count": 133,
+    "lang": "es"
   },
   {
     "id": "artistas_latinos",
     "name": "Artistas Latinos",
     "emoji": "🎤",
-    "count": 116
+    "count": 116,
+    "lang": "es"
   },
   {
     "id": "marcas_lujo",
     "name": "Marcas de Lujo",
     "emoji": "💎",
-    "count": 108
+    "count": 108,
+    "lang": "es"
   },
   {
     "id": "personajes_ficcion",
     "name": "Personajes de Ficción",
     "emoji": "🦸",
-    "count": 124
+    "count": 124,
+    "lang": "es"
   },
   {
     "id": "cuerpo_humano",
     "name": "Cuerpo Humano",
     "emoji": "🫀",
-    "count": 129
+    "count": 129,
+    "lang": "es"
   },
   {
     "id": "playa_verano",
     "name": "Playa y Verano",
     "emoji": "🏖️",
-    "count": 69
+    "count": 69,
+    "lang": "es"
   },
   {
     "id": "amor_romance",
     "name": "Amor y Romance",
     "emoji": "💕",
-    "count": 98
+    "count": 98,
+    "lang": "es"
   },
   {
     "id": "navidad_fiestas",
     "name": "Navidad y Fiestas",
     "emoji": "🎄",
-    "count": 88
+    "count": 88,
+    "lang": "es"
   }
 ]

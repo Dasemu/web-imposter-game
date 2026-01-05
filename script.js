@@ -4,11 +4,335 @@ const MIN_PLAYERS = 3;
 const POOLS_CACHE_KEY = 'impostorWordPoolsV1';
 const POOLS_MANIFEST_URL = 'word-pools/manifest.json';
 const THEME_STORAGE_KEY = 'impostorGameTheme';
+const LANGUAGE_STORAGE_KEY = 'impostorGameLanguage';
 
-// Pools embebidas con palabras de impostores [palabra_civil, palabra_impostor]
+// ---------- Internationalization system ----------
+const TRANSLATIONS = {
+  es: {
+    gameTitle: 'Juego del Impostor',
+    gameSubtitle: '¿Podrás descubrir quién es el impostor?',
+    play: 'Jugar',
+    rules: 'Reglas',
+    createdBy: 'Creado por Darío Sevilla',
+    rulesTitle: 'Reglas del Juego',
+    objective: 'Objetivo',
+    objectiveText: 'Los <strong>civiles</strong> deben identificar a los <strong>impostores</strong> antes de que termine el tiempo.',
+    preparation: 'Preparación',
+    preparationSteps: ['Cada jugador recibe una palabra secreta', 'Los civiles reciben la misma palabra', 'Los impostores reciben una palabra diferente pero relacionada'],
+    gameplay: 'Partida',
+    gameplaySteps: ['Por turnos, cada jugador da un sinónimo o descripción de su palabra', 'Intenta ser específico pero no revelar tu palabra exacta', 'Los impostores deben intentar pasar desapercibidos'],
+    voting: 'Votación',
+    votingSteps: ['Tras el tiempo de juego y deliberación, vota en secreto', 'Los más votados son eliminados', 'Si todos los impostores son eliminados, ganan los civiles', 'Si queda algún impostor, ellos ganan'],
+    back: 'Volver',
+    configuration: 'Configuración',
+    players: 'Jugadores',
+    impostors: 'Impostores',
+    gameTime: 'Tiempo de partida (seg)',
+    deliberationTime: 'Deliberación (seg)',
+    pools: 'Pools (toca para seleccionar)',
+    next: 'Siguiente',
+    playerNames: 'Nombres de jugadores',
+    startGame: 'Comenzar partida',
+    player: 'Jugador',
+    readyToReveal: 'Listo para revelar',
+    eachPlayerSecret: 'Cada jugador debe ver su rol en secreto. Desliza la cortina hacia arriba para revelar.',
+    startReveal: 'Empezar revelación',
+    revelation: 'Revelación',
+    turnOf: 'Turno de',
+    othersLookAway: 'Los demás, no miréis. Mantén levantada la cortina para ver tu rol.',
+    liftCurtain: 'LEVANTA LA CORTINA',
+    nextPlayer: 'Siguiente jugador',
+    startMatch: '¡Iniciar partida!',
+    gameInProgress: 'Partida en curso',
+    giveSynonyms: 'A decir sinónimos!',
+    skipToDeliberation: 'Saltar a deliberación',
+    deliberation: 'Deliberación',
+    lastArguments: 'Últimos argumentos antes de votar.',
+    goToVoting: 'Ir a votación',
+    secretVoting: 'Votación secreta',
+    passMobileTo: 'Pasa el móvil a',
+    chooseSuspects: 'Elige',
+    suspect: 'sospechoso(s)',
+    confirmVote: 'Confirmar voto',
+    votes: 'Votos',
+    results: 'Resultados',
+    civiliansWin: '¡GANAN LOS CIVILES!',
+    impostorsWin: '¡GANAN LOS IMPOSTORES!',
+    executed: 'Ejecutados',
+    nobody: 'Nadie',
+    noVotes: 'Sin votos',
+    revealedRoles: 'Roles revelados',
+    newMatch: 'Nueva partida',
+    civil: 'CIVIL',
+    impostor: 'IMPOSTOR',
+    civilians: 'civiles',
+    poolsLabel: 'Pools',
+    starts: 'Empieza',
+    order: 'Orden',
+    clockwise: 'Horario',
+    counterclockwise: 'Antihorario',
+    impostorsMustBeLess: 'Impostores debe ser menor que jugadores',
+    animalsNature: 'Animales y Naturaleza',
+    everydayObjects: 'Objetos Cotidianos'
+  },
+  en: {
+    gameTitle: 'The Impostor Game',
+    gameSubtitle: 'Can you figure out who the impostor is?',
+    play: 'Play',
+    rules: 'Rules',
+    createdBy: 'Created by Darío Sevilla',
+    rulesTitle: 'Game Rules',
+    objective: 'Objective',
+    objectiveText: '<strong>Civilians</strong> must identify the <strong>impostors</strong> before time runs out.',
+    preparation: 'Setup',
+    preparationSteps: ['Each player receives a secret word', 'Civilians receive the same word', 'Impostors receive a different but related word'],
+    gameplay: 'Gameplay',
+    gameplaySteps: ['Taking turns, each player gives a synonym or description of their word', 'Try to be specific but don\'t reveal your exact word', 'Impostors must try to blend in'],
+    voting: 'Voting',
+    votingSteps: ['After game time and deliberation, vote in secret', 'The most voted players are eliminated', 'If all impostors are eliminated, civilians win', 'If any impostor remains, they win'],
+    back: 'Back',
+    configuration: 'Setup',
+    players: 'Players',
+    impostors: 'Impostors',
+    gameTime: 'Game time (sec)',
+    deliberationTime: 'Deliberation (sec)',
+    pools: 'Pools (tap to select)',
+    next: 'Next',
+    playerNames: 'Player names',
+    startGame: 'Start game',
+    player: 'Player',
+    readyToReveal: 'Ready to reveal',
+    eachPlayerSecret: 'Each player must see their role in secret. Swipe the curtain up to reveal.',
+    startReveal: 'Start reveal',
+    revelation: 'Revelation',
+    turnOf: 'Turn of',
+    othersLookAway: 'Others, look away. Keep the curtain lifted to see your role.',
+    liftCurtain: 'LIFT THE CURTAIN',
+    nextPlayer: 'Next player',
+    startMatch: 'Start match!',
+    gameInProgress: 'Game in progress',
+    giveSynonyms: 'Give synonyms!',
+    skipToDeliberation: 'Skip to deliberation',
+    deliberation: 'Deliberation',
+    lastArguments: 'Last arguments before voting.',
+    goToVoting: 'Go to voting',
+    secretVoting: 'Secret voting',
+    passMobileTo: 'Pass the phone to',
+    chooseSuspects: 'Choose',
+    suspect: 'suspect(s)',
+    confirmVote: 'Confirm vote',
+    votes: 'Votes',
+    results: 'Results',
+    civiliansWin: 'CIVILIANS WIN!',
+    impostorsWin: 'IMPOSTORS WIN!',
+    executed: 'Executed',
+    nobody: 'Nobody',
+    noVotes: 'No votes',
+    revealedRoles: 'Revealed roles',
+    newMatch: 'New match',
+    civil: 'CIVILIAN',
+    impostor: 'IMPOSTOR',
+    civilians: 'civilians',
+    poolsLabel: 'Pools',
+    starts: 'Starts',
+    order: 'Order',
+    clockwise: 'Clockwise',
+    counterclockwise: 'Counterclockwise',
+    impostorsMustBeLess: 'Impostors must be less than players',
+    animalsNature: 'Animals and Nature',
+    everydayObjects: 'Everyday Objects'
+  }
+};
+
+let currentLanguage = 'es';
+
+function getBrowserLanguage() {
+  const lang = navigator.language || navigator.userLanguage;
+  return lang.startsWith('es') ? 'es' : 'en';
+}
+
+function loadLanguage() {
+  const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+  return saved || getBrowserLanguage();
+}
+
+function saveLanguage(lang) {
+  localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+}
+
+function t(key) {
+  return TRANSLATIONS[currentLanguage][key] || key;
+}
+
+function setLanguage(lang) {
+  currentLanguage = lang;
+  saveLanguage(lang);
+  document.documentElement.setAttribute('lang', lang);
+  updateUI();
+}
+
+function toggleLanguage() {
+  const newLang = currentLanguage === 'es' ? 'en' : 'es';
+  setLanguage(newLang);
+}
+
+async function updateUI() {
+  // Update language button
+  const langText = document.querySelector('.language-text');
+  if (langText) {
+    langText.textContent = currentLanguage.toUpperCase();
+  }
+
+  // Update all static text elements
+  updateStaticTexts();
+
+  // Reload pools for the new language (wait for it to complete)
+  await loadPoolsList();
+
+  // Re-render dynamic content if in specific phases
+  if (state.phase === 'names') {
+    buildNameInputs();
+  } else if (state.phase === 'pre-reveal') {
+    renderSummary();
+  } else if (state.phase === 'voting') {
+    renderVoting();
+  } else if (state.phase === 'results') {
+    showResults();
+  }
+}
+
+function updateStaticTexts() {
+  // Welcome screen
+  const welcomeTitle = document.querySelector('.welcome-title');
+  if (welcomeTitle) welcomeTitle.innerHTML = `🎭 ${t('gameTitle')}`;
+
+  const welcomeSubtitle = document.querySelector('.welcome-subtitle');
+  if (welcomeSubtitle) welcomeSubtitle.textContent = t('gameSubtitle');
+
+  const playBtn = document.querySelector('.btn-primary');
+  if (playBtn) playBtn.innerHTML = `▶️ ${t('play')}`;
+
+  const rulesBtn = document.querySelector('.btn-secondary');
+  if (rulesBtn) rulesBtn.innerHTML = `📖 ${t('rules')}`;
+
+  const credits = document.querySelector('.welcome-credits');
+  if (credits) credits.textContent = t('createdBy');
+
+  // Rules screen
+  const rulesTitle = document.querySelector('#rules-screen h1');
+  if (rulesTitle) rulesTitle.innerHTML = `📖 ${t('rulesTitle')}`;
+
+  const ruleSections = document.querySelectorAll('.rule-section');
+  if (ruleSections.length >= 4) {
+    ruleSections[0].querySelector('h3').innerHTML = `🎯 ${t('objective')}`;
+    ruleSections[0].querySelector('p').innerHTML = t('objectiveText');
+
+    ruleSections[1].querySelector('h3').innerHTML = `🎲 ${t('preparation')}`;
+    const prepSteps = t('preparationSteps');
+    ruleSections[1].querySelectorAll('p').forEach((p, i) => {
+      if (prepSteps[i]) p.textContent = `${i + 1}. ${prepSteps[i]}`;
+    });
+
+    ruleSections[2].querySelector('h3').innerHTML = `🗣️ ${t('gameplay')}`;
+    const gameSteps = t('gameplaySteps');
+    ruleSections[2].querySelectorAll('p').forEach((p, i) => {
+      if (gameSteps[i]) p.textContent = `${i + 1}. ${gameSteps[i]}`;
+    });
+
+    ruleSections[3].querySelector('h3').innerHTML = `🗳️ ${t('voting')}`;
+    const voteSteps = t('votingSteps');
+    ruleSections[3].querySelectorAll('p').forEach((p, i) => {
+      if (voteSteps[i]) p.textContent = `${i + 1}. ${voteSteps[i]}`;
+    });
+  }
+
+  // Setup screen
+  const setupTitle = document.querySelector('#setup-screen h1');
+  if (setupTitle) setupTitle.innerHTML = `⚙️ ${t('configuration')}`;
+
+  const labels = {
+    'num-players': t('players'),
+    'num-impostors': t('impostors'),
+    'game-time': t('gameTime'),
+    'deliberation-time': t('deliberationTime')
+  };
+
+  Object.entries(labels).forEach(([id, text]) => {
+    const label = document.querySelector(`label[for="${id}"]`);
+    if (label) label.textContent = text + ':';
+  });
+
+  const poolsLabel = document.querySelector('#setup-screen .form-group:last-of-type label');
+  if (poolsLabel) poolsLabel.textContent = t('pools') + ':';
+
+  // Names screen
+  const namesTitle = document.querySelector('#names-screen h1');
+  if (namesTitle) namesTitle.innerHTML = `👥 ${t('playerNames')}`;
+
+  // Pre-reveal screen
+  const preRevealTitle = document.querySelector('#pre-reveal-screen h1');
+  if (preRevealTitle) preRevealTitle.innerHTML = `🎲 ${t('readyToReveal')}`;
+
+  const preRevealText = document.querySelector('#pre-reveal-screen .info-text:not(#config-summary)');
+  if (preRevealText) preRevealText.textContent = t('eachPlayerSecret');
+
+  // Reveal screen
+  const revealTitle = document.querySelector('#reveal-screen h1');
+  if (revealTitle) revealTitle.innerHTML = `🔍 ${t('revelation')}`;
+
+  // Game screen
+  const gameTitle = document.querySelector('#game-screen h1');
+  if (gameTitle) gameTitle.innerHTML = `🎮 ${t('gameInProgress')}`;
+
+  const gameText = document.querySelector('#game-screen .info-text');
+  if (gameText) gameText.textContent = t('giveSynonyms');
+
+  // Deliberation screen
+  const delibTitle = document.querySelector('#deliberation-screen h1');
+  if (delibTitle) delibTitle.innerHTML = `🗣️ ${t('deliberation')}`;
+
+  const delibText = document.querySelector('#deliberation-screen .info-text');
+  if (delibText) delibText.textContent = t('lastArguments');
+
+  // Voting screen
+  const votingTitle = document.querySelector('#voting-screen h1');
+  if (votingTitle) votingTitle.innerHTML = `🗳️ ${t('secretVoting')}`;
+
+  // Results screen
+  const resultsTitle = document.querySelector('#results-screen h1');
+  if (resultsTitle) resultsTitle.innerHTML = `🏆 ${t('results')}`;
+
+  // Buttons
+  const backButtons = document.querySelectorAll('button.ghost');
+  backButtons.forEach(btn => {
+    if (btn.textContent.includes('Volver') || btn.textContent.includes('Back')) {
+      btn.textContent = `← ${t('back')}`;
+    }
+  });
+
+  // Update all other buttons based on their onclick or content
+  document.querySelectorAll('button').forEach(btn => {
+    if (btn.getAttribute('onclick') === 'goToNames()') btn.textContent = t('next');
+    else if (btn.getAttribute('onclick') === 'startGame()') btn.textContent = t('startGame');
+    else if (btn.getAttribute('onclick') === "showScreen('reveal-screen'); loadCurrentReveal();") btn.textContent = t('startReveal');
+    else if (btn.id === 'next-player-btn') btn.textContent = t('nextPlayer') + ' →';
+    else if (btn.id === 'start-game-btn') btn.textContent = t('startMatch');
+    else if (btn.getAttribute('onclick') === 'skipToDeliberation()') btn.textContent = t('skipToDeliberation') + ' →';
+    else if (btn.getAttribute('onclick') === 'skipToVoting()') btn.textContent = t('goToVoting') + ' →';
+    else if (btn.id === 'confirm-vote-btn') btn.textContent = t('confirmVote');
+    else if (btn.getAttribute('onclick') === 'newMatch()') btn.textContent = t('newMatch');
+  });
+}
+
+// Embedded pools with impostor words [civilian_word, impostor_word]
 const EMBEDDED_POOLS = [
-  { id: 'animales_naturaleza', name: 'Animales y Naturaleza', emoji: '🌿', words: [['Oso','Pez'],['Pavo real','Abanico'],['Camello','Arena'],['Lirio','Rana'],['Lobo','Luna'],['Represa','Castor'],['Elefante','Safari'],['Flamenco','Camarón'],['Búho','Nieve'],['Canguro','Koala'],['Jungla','Serpiente'],['Muerte','Cuervo'],['Delfín','Orca'],['Zorro','Gallina'],['Tortuga','Galápagos'],['León','Sabana'],['Polo Sur','Pingüino'],['Hormiga','Trabajo'],['Abeja','Verano'],['Ballena','Dory'],['Mandíbula','Tiburón'],['Río de Janeiro','Loro'],['Caballo','Libertad'],['Gorila','Plata'],['Murciélago','Fruta'],['Venado','Tambor'],['Misisipi','Águila'],['Cisne','Lago'],['Grillo','Campo'],['Leopardo','Manchas'],['Mascarilla','Mapache'],['Chita','Velocidad'],['Araña','Nueva York'],['Playa','Medusa'],['Glaciar','Oso polar'],['Jirafa','Madagascar'],['Maine','Langosta'],['Pulpo','Pluma'],['Cuervo','Pantera'],['Foca','Rosa'],['Mariposa','Algodoncillo'],['Burro','Santorini'],['Lluvia','Caracol'],['Cangrejo','Araña'],['Rana','Grillo'],['Siberia','Tigre'],['Gaviota','Playa'],['Cocodrilo','Nilo'],['Pingüino','Nueva Zelanda'],['Loro','Gato'],['Cuervo','Bandada'],['Conejo','Agujero'],['Tiburón','Paleozoico'],['Trueno','Júpiter'],['Sol','Playa'],['Océano Atlántico','Huracán'],['Tsunami','Derrumbe'],['Ola','Hawái'],['Papel','Árbol'],['Universo','Energía'],['Vida','Tiempo'],['Océano','Tormenta'],['Lago','Sal'],['Oxígeno','Fuego'],['Biología','Célula'],['Tiza','Hielo'],['Clima','Invierno'],['Planeta','Gas'],['Era de hielo','Bellota'],['Avalancha','Montaña'],['Bisonte','Llanuras'],['Floración','Néctar'],['Cañón','Águila'],['Ardilla listada','Nueces'],['Coral','Arrecife'],['Desierto','Espejismo'],['Ecosistema','Equilibrio'],['Halcón','Picado'],['Luciérnaga','Brillo'],['Gecko','Hoja'],['Colibrí','Azúcar'],['Koala','Eucalipto'],['Meteoro','Cráter'],['Nutria','Río'],['Selva tropical','Dosel'],['Rinoceronte','Cuerno'],['Volcán','Ceniza'],['Naturaleza salvaje','Huellas']] },
-  { id: 'objetos_cotidianos', name: 'Objetos Cotidianos', emoji: '🏠', words: [['Martillo','Tiburón'],['Silla','Espalda'],['Mesa','Café'],['Cuchara','Crema'],['Tenedor','Posidón'],['Cuchillo','Mantequilla'],['Plata','Plato'],['Copa','Campeonato'],['Vidrio','Arena'],['Botella','Aerosol'],['Lata','Boda'],['Teléfono','Radio'],['Laptop','Tarjeta'],['Teclado','Piano'],['Ratón','Laboratorio'],['Marco','Pantalla'],['Control','Satélite'],['Lámpara','Aceite'],['Horno','Bombilla'],['Vela','Corona de flores'],['Carro','Espejo'],['Ventana','Caja'],['Puerta','Armario'],['Llave','Auto'],['Candado','Sello'],['Monedero','Piel'],['Cartera','Etiqueta'],['Mochila','Avión'],['Maleta','Toalla'],['Sombrero','Paja'],['Zapatos','Vela'],['Calcetas','Medida'],['Playera','Algodón'],['Cierre','Pantalón'],['Abrigo','Pelo'],['Paraguas','Ala'],['Vacaciones','Gafas de sol'],['Reloj de pulsera','Monitor'],['Rueda','Anillo'],['Collar','Tiara'],['Manga','Tatuaje'],['Cama','Monstruo'],['Funda','Media'],['Manta','Cuna'],['Colchón','Aire'],['Libro','Pop-up'],['Revista','Diario'],['Periódico','Columna'],['Pluma','Bola'],['Lápiz','Delineador'],['Borrador','Goma'],['Dibujo','Cuaderno'],['Tijeras','Cabello'],['Regla','Parrilla'],['Pegamento','Tubo'],['Cinta adhesiva','Clip'],['Pincel','Escoba'],['Cesto','Arco'],['Caja','Zapato'],['Sobre','Carta'],['Sello','Fecha'],['Calendario','Luna'],['Reloj','Campana'],['Radio','Onda'],['Bocina','Pared'],['DJ','Audífonos'],['Micrófono','Televisión'],['Televisión','Imagen'],['Cámara','Láser'],['Trípode','Pierna'],['Ventilador','Oxígeno'],['Calefactor','Secadora'],['Estufa','Carbón'],['Refrigerador','Leche'],['Congelador','Helado'],['Microondas','Radar'],['Tostadora','Horno'],['Licuadora','Espátula'],['Olla','Sopa'],['Acero','Sartén'],['Tetera','Cobre'],['Esponja','Gelatina'],['Jabón','Barra'],['Toalla','Ducha'],['Cepillo de dientes','Lengua'],['Pasta de dientes','Gel'],['Marfil','Peine'],['Cepillo','Rastrillo'],['Navaja','Jabón'],['Champú','Sábila'],['Acondicionador','Espuma'],['Loción','Seda'],['Balde','Tierra'],['Trapeador','Piso'],['Escoba','Avión'],['Recogedor','Nube'],['Basurero','Camión'],['Reciclaje','Papel'],['Escalera','Cuerda']] }
+  // Spanish pools
+  { id: 'animales_naturaleza', name: 'Animales y Naturaleza', emoji: '🌿', lang: 'es', words: [['Oso','Pez'],['Pavo real','Abanico'],['Camello','Arena'],['Lirio','Rana'],['Lobo','Luna'],['Represa','Castor'],['Elefante','Safari'],['Flamenco','Camarón'],['Búho','Nieve'],['Canguro','Koala'],['Jungla','Serpiente'],['Muerte','Cuervo'],['Delfín','Orca'],['Zorro','Gallina'],['Tortuga','Galápagos'],['León','Sabana'],['Polo Sur','Pingüino'],['Hormiga','Trabajo'],['Abeja','Verano'],['Ballena','Dory'],['Mandíbula','Tiburón'],['Río de Janeiro','Loro'],['Caballo','Libertad'],['Gorila','Plata'],['Murciélago','Fruta'],['Venado','Tambor'],['Misisipi','Águila'],['Cisne','Lago'],['Grillo','Campo'],['Leopardo','Manchas'],['Mascarilla','Mapache'],['Chita','Velocidad'],['Araña','Nueva York'],['Playa','Medusa'],['Glaciar','Oso polar'],['Jirafa','Madagascar'],['Maine','Langosta'],['Pulpo','Pluma'],['Cuervo','Pantera'],['Foca','Rosa'],['Mariposa','Algodoncillo'],['Burro','Santorini'],['Lluvia','Caracol'],['Cangrejo','Araña'],['Rana','Grillo'],['Siberia','Tigre'],['Gaviota','Playa'],['Cocodrilo','Nilo'],['Pingüino','Nueva Zelanda'],['Loro','Gato'],['Cuervo','Bandada'],['Conejo','Agujero'],['Tiburón','Paleozoico'],['Trueno','Júpiter'],['Sol','Playa'],['Océano Atlántico','Huracán'],['Tsunami','Derrumbe'],['Ola','Hawái'],['Papel','Árbol'],['Universo','Energía'],['Vida','Tiempo'],['Océano','Tormenta'],['Lago','Sal'],['Oxígeno','Fuego'],['Biología','Célula'],['Tiza','Hielo'],['Clima','Invierno'],['Planeta','Gas'],['Era de hielo','Bellota'],['Avalancha','Montaña'],['Bisonte','Llanuras'],['Floración','Néctar'],['Cañón','Águila'],['Ardilla listada','Nueces'],['Coral','Arrecife'],['Desierto','Espejismo'],['Ecosistema','Equilibrio'],['Halcón','Picado'],['Luciérnaga','Brillo'],['Gecko','Hoja'],['Colibrí','Azúcar'],['Koala','Eucalipto'],['Meteoro','Cráter'],['Nutria','Río'],['Selva tropical','Dosel'],['Rinoceronte','Cuerno'],['Volcán','Ceniza'],['Naturaleza salvaje','Huellas']] },
+  { id: 'objetos_cotidianos', name: 'Objetos Cotidianos', emoji: '🏠', lang: 'es', words: [['Martillo','Tiburón'],['Silla','Espalda'],['Mesa','Café'],['Cuchara','Crema'],['Tenedor','Posidón'],['Cuchillo','Mantequilla'],['Plata','Plato'],['Copa','Campeonato'],['Vidrio','Arena'],['Botella','Aerosol'],['Lata','Boda'],['Teléfono','Radio'],['Laptop','Tarjeta'],['Teclado','Piano'],['Ratón','Laboratorio'],['Marco','Pantalla'],['Control','Satélite'],['Lámpara','Aceite'],['Horno','Bombilla'],['Vela','Corona de flores'],['Carro','Espejo'],['Ventana','Caja'],['Puerta','Armario'],['Llave','Auto'],['Candado','Sello'],['Monedero','Piel'],['Cartera','Etiqueta'],['Mochila','Avión'],['Maleta','Toalla'],['Sombrero','Paja'],['Zapatos','Vela'],['Calcetas','Medida'],['Playera','Algodón'],['Cierre','Pantalón'],['Abrigo','Pelo'],['Paraguas','Ala'],['Vacaciones','Gafas de sol'],['Reloj de pulsera','Monitor'],['Rueda','Anillo'],['Collar','Tiara'],['Manga','Tatuaje'],['Cama','Monstruo'],['Funda','Media'],['Manta','Cuna'],['Colchón','Aire'],['Libro','Pop-up'],['Revista','Diario'],['Periódico','Columna'],['Pluma','Bola'],['Lápiz','Delineador'],['Borrador','Goma'],['Dibujo','Cuaderno'],['Tijeras','Cabello'],['Regla','Parrilla'],['Pegamento','Tubo'],['Cinta adhesiva','Clip'],['Pincel','Escoba'],['Cesto','Arco'],['Caja','Zapato'],['Sobre','Carta'],['Sello','Fecha'],['Calendario','Luna'],['Reloj','Campana'],['Radio','Onda'],['Bocina','Pared'],['DJ','Audífonos'],['Micrófono','Televisión'],['Televisión','Imagen'],['Cámara','Láser'],['Trípode','Pierna'],['Ventilador','Oxígeno'],['Calefactor','Secadora'],['Estufa','Carbón'],['Refrigerador','Leche'],['Congelador','Helado'],['Microondas','Radar'],['Tostadora','Horno'],['Licuadora','Espátula'],['Olla','Sopa'],['Acero','Sartén'],['Tetera','Cobre'],['Esponja','Gelatina'],['Jabón','Barra'],['Toalla','Ducha'],['Cepillo de dientes','Lengua'],['Pasta de dientes','Gel'],['Marfil','Peine'],['Cepillo','Rastrillo'],['Navaja','Jabón'],['Champú','Sábila'],['Acondicionador','Espuma'],['Loción','Seda'],['Balde','Tierra'],['Trapeador','Piso'],['Escoba','Avión'],['Recogedor','Nube'],['Basurero','Camión'],['Reciclaje','Papel'],['Escalera','Cuerda']] },
+
+  // English pools
+  { id: 'animals_nature_en', name: 'Animals and Nature', emoji: '🌿', lang: 'en', words: [['Bear','Fish'],['Peacock','Fan'],['Camel','Sand'],['Lily','Frog'],['Wolf','Moon'],['Dam','Beaver'],['Elephant','Safari'],['Flamingo','Shrimp'],['Owl','Snow'],['Kangaroo','Koala'],['Jungle','Snake'],['Death','Crow'],['Dolphin','Orca'],['Fox','Chicken'],['Turtle','Galapagos'],['Lion','Savanna'],['South Pole','Penguin'],['Ant','Work'],['Bee','Summer'],['Whale','Dory'],['Jaw','Shark'],['Rio','Parrot'],['Horse','Freedom'],['Gorilla','Silver'],['Bat','Fruit'],['Deer','Drum'],['Mississippi','Eagle'],['Swan','Lake'],['Cricket','Field'],['Leopard','Spots'],['Mask','Raccoon'],['Cheetah','Speed'],['Spider','New York'],['Beach','Jellyfish'],['Glacier','Polar bear'],['Giraffe','Madagascar'],['Maine','Lobster'],['Octopus','Feather'],['Raven','Panther'],['Seal','Rose'],['Butterfly','Milkweed'],['Donkey','Santorini'],['Rain','Snail'],['Crab','Spider'],['Frog','Cricket'],['Siberia','Tiger'],['Seagull','Beach'],['Crocodile','Nile'],['Penguin','New Zealand'],['Parrot','Cat'],['Crow','Flock'],['Rabbit','Hole'],['Shark','Paleozoic'],['Thunder','Jupiter'],['Sun','Beach'],['Atlantic','Hurricane'],['Tsunami','Landslide'],['Wave','Hawaii'],['Paper','Tree'],['Universe','Energy'],['Life','Time'],['Ocean','Storm'],['Lake','Salt'],['Oxygen','Fire'],['Biology','Cell'],['Chalk','Ice'],['Climate','Winter'],['Planet','Gas'],['Ice age','Acorn'],['Avalanche','Mountain'],['Bison','Plains'],['Bloom','Nectar'],['Canyon','Eagle'],['Chipmunk','Nuts'],['Coral','Reef'],['Desert','Mirage'],['Ecosystem','Balance'],['Falcon','Dive'],['Firefly','Glow'],['Gecko','Leaf'],['Hummingbird','Sugar'],['Koala','Eucalyptus'],['Meteor','Crater'],['Otter','River'],['Rainforest','Canopy'],['Rhino','Horn'],['Volcano','Ash'],['Wilderness','Tracks']] },
+  { id: 'everyday_objects_en', name: 'Everyday Objects', emoji: '🏠', lang: 'en', words: [['Hammer','Shark'],['Chair','Back'],['Table','Coffee'],['Spoon','Cream'],['Fork','Poseidon'],['Knife','Butter'],['Silver','Plate'],['Cup','Championship'],['Glass','Sand'],['Bottle','Spray'],['Can','Wedding'],['Phone','Radio'],['Laptop','Card'],['Keyboard','Piano'],['Mouse','Lab'],['Frame','Screen'],['Remote','Satellite'],['Lamp','Oil'],['Oven','Bulb'],['Candle','Wreath'],['Car','Mirror'],['Window','Box'],['Door','Closet'],['Key','Car'],['Lock','Seal'],['Wallet','Leather'],['Purse','Tag'],['Backpack','Airplane'],['Suitcase','Towel'],['Hat','Straw'],['Shoes','Sail'],['Socks','Measure'],['Shirt','Cotton'],['Zipper','Pants'],['Coat','Hair'],['Umbrella','Wing'],['Vacation','Sunglasses'],['Watch','Monitor'],['Wheel','Ring'],['Necklace','Tiara'],['Sleeve','Tattoo'],['Bed','Monster'],['Pillowcase','Stocking'],['Blanket','Cradle'],['Mattress','Air'],['Book','Pop-up'],['Magazine','Journal'],['Newspaper','Column'],['Pen','Ball'],['Pencil','Eyeliner'],['Eraser','Rubber'],['Notebook','Drawing'],['Scissors','Hair'],['Ruler','Grill'],['Glue','Tube'],['Tape','Clip'],['Brush','Broom'],['Basket','Arc'],['Box','Shoe'],['Envelope','Letter'],['Stamp','Date'],['Calendar','Moon'],['Clock','Bell'],['Radio','Wave'],['Speaker','Wall'],['DJ','Headphones'],['Microphone','TV'],['Television','Picture'],['Camera','Laser'],['Tripod','Leg'],['Fan','Oxygen'],['Heater','Dryer'],['Stove','Coal'],['Fridge','Milk'],['Freezer','Ice cream'],['Microwave','Radar'],['Toaster','Oven'],['Blender','Spatula'],['Pot','Soup'],['Pan','Steel'],['Kettle','Copper'],['Sponge','Jelly'],['Soap','Bar'],['Towel','Shower'],['Toothbrush','Tongue'],['Toothpaste','Gel'],['Comb','Ivory'],['Brush','Rake'],['Razor','Soap'],['Shampoo','Aloe'],['Conditioner','Foam'],['Lotion','Silk'],['Bucket','Earth'],['Mop','Floor'],['Broom','Airplane'],['Dustpan','Cloud'],['Trash can','Truck'],['Recycling','Paper'],['Ladder','Rope']] }
 ];
 
 let availablePools = [];
@@ -34,7 +358,7 @@ let state = {
   votingPlayer: 0,
   selections: [],
   executed: [],
-  selectedPools: ['animales_naturaleza', 'objetos_cotidianos'], // Ahora es un array para múltiples pools
+  selectedPools: [], // Now it's an array for multiple pools, will be populated based on language
   votingPool: null,
   isTiebreak: false,
   tiebreakCandidates: []
@@ -53,7 +377,7 @@ const loadPoolsCache = () => {
 };
 const savePoolsCache = () => localStorage.setItem(POOLS_CACHE_KEY, JSON.stringify(poolsCache));
 
-// ---------- Defaults ----------
+// ---------- Default values ----------
 function defaultImpostors(nPlayers) {
   const capped = Math.min(Math.max(nPlayers, MIN_PLAYERS), MAX_PLAYERS);
   let impostors = 1;
@@ -76,30 +400,68 @@ function defaultDeliberation(gameSeconds) {
   return Math.max(30, Math.round(gameSeconds / 3));
 }
 
-// ---------- Pools ----------
+// ---------- Word Pools ----------
 async function loadPoolsList() {
   loadPoolsCache();
-  let list = [];
+
+  // Start with embedded pools (always available)
+  let embeddedList = EMBEDDED_POOLS.map(p => ({
+    id: p.id,
+    name: p.name,
+    emoji: p.emoji,
+    count: p.words.length,
+    lang: p.lang
+  }));
+
+  // Try to load external pools from manifest
+  let externalList = [];
   try {
     const res = await fetch(POOLS_MANIFEST_URL);
-    if (res.ok) list = await res.json();
-  } catch (_) {}
-  if (!Array.isArray(list) || list.length === 0) {
-    list = EMBEDDED_POOLS.map(p => ({ id: p.id, name: p.name, emoji: p.emoji, count: p.words.length }));
+    if (res.ok) {
+      const manifest = await res.json();
+      if (Array.isArray(manifest)) {
+        externalList = manifest;
+      }
+    }
+  } catch (e) {
+    console.log('Failed to load manifest:', e);
   }
-  availablePools = list;
+
+  // Combine pools, avoiding duplicates (prefer embedded version over manifest)
+  const embeddedIds = new Set(embeddedList.map(p => p.id));
+  const uniqueExternal = externalList.filter(p => !embeddedIds.has(p.id));
+  const allPools = [...embeddedList, ...uniqueExternal];
+
+  // Filter pools by current language (only show pools matching current language)
+  availablePools = allPools.filter(p => p.lang === currentLanguage);
+
+  // Check if selected pools are valid for current language
+  const validSelectedPools = (state.selectedPools || []).filter(id =>
+    availablePools.some(p => p.id === id)
+  );
+
+  // If no valid pools or pools don't match current language, reset to defaults
+  if (validSelectedPools.length === 0) {
+    const defaultPools = availablePools.slice(0, 2).map(p => p.id);
+    state.selectedPools = defaultPools.length > 0 ? defaultPools : [];
+    saveState();
+  } else {
+    state.selectedPools = validSelectedPools;
+    saveState();
+  }
+
   renderPoolButtons();
 }
 
 function parseWordsFile(text) {
   const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith('#'));
   return lines.map(line => {
-    // Formato: palabra_civil|palabra_impostor
+    // Format: civilian_word|impostor_word
     if (line.includes('|')) {
       const [civil, impostor] = line.split('|').map(s => s.trim());
       return [civil, impostor];
     }
-    // Fallback: si no tiene pipe, usar la misma palabra para ambos
+    // Fallback: if no pipe, use the same word for both
     return [line, line];
   });
 }
@@ -108,11 +470,11 @@ async function pickWords() {
   const selectedIds = state.selectedPools && state.selectedPools.length > 0 ? state.selectedPools : ['animales_naturaleza'];
   let allWords = [];
 
-  // Recopilar palabras de todos los pools seleccionados
+  // Collect words from all selected pools
   for (const poolId of selectedIds) {
     let words = [];
 
-    // Buscar en pools embebidas primero
+    // Search embedded pools first
     const embeddedPool = EMBEDDED_POOLS.find(p => p.id === poolId);
     if (embeddedPool) {
       words = embeddedPool.words;
@@ -134,14 +496,14 @@ async function pickWords() {
   }
 
   if (allWords.length === 0) {
-    // Fallback a pool embebida
+    // Fallback to embedded pool
     allWords = EMBEDDED_POOLS[0].words;
   }
 
   const shuffled = [...allWords].sort(() => Math.random() - 0.5);
   const wordPair = shuffled[0];
 
-  // wordPair es [palabra_civil, palabra_impostor]
+  // wordPair is [civilian_word, impostor_word]
   return { civilian: wordPair[0], impostor: wordPair[1] };
 }
 
@@ -150,9 +512,22 @@ function renderPoolButtons() {
   if (!container) return;
   container.innerHTML = '';
 
-  // Asegurar que selectedPools sea un array
+  // Ensure selectedPools is an array and contains valid pools for current language
   if (!Array.isArray(state.selectedPools)) {
     state.selectedPools = [state.selectedPools || 'animales_naturaleza'];
+  }
+
+  // Filter out pools that don't exist in current language
+  const validSelectedPools = state.selectedPools.filter(id =>
+    availablePools.some(p => p.id === id)
+  );
+
+  // If no valid pools selected, select first 2 available
+  if (validSelectedPools.length === 0 && availablePools.length > 0) {
+    state.selectedPools = availablePools.slice(0, 2).map(p => p.id);
+    saveState();
+  } else {
+    state.selectedPools = validSelectedPools;
   }
 
   availablePools.forEach(pool => {
@@ -162,10 +537,10 @@ function renderPoolButtons() {
     btn.textContent = `${pool.emoji || '🎲'} ${pool.name || pool.id}`;
     if (state.selectedPools.includes(pool.id)) btn.classList.add('selected');
     btn.onclick = () => {
-      // Toggle selección múltiple
+      // Toggle multiple selection
       if (state.selectedPools.includes(pool.id)) {
         state.selectedPools = state.selectedPools.filter(id => id !== pool.id);
-        // Asegurar que al menos haya uno seleccionado
+        // Ensure at least one is selected
         if (state.selectedPools.length === 0) {
           state.selectedPools = [pool.id];
         }
@@ -179,7 +554,7 @@ function renderPoolButtons() {
   });
 }
 
-// ---------- Configuración y nombres ----------
+// ---------- Setup and player names ----------
 function goToNames() {
   let nPlayers = parseInt(document.getElementById('num-players').value) || MIN_PLAYERS;
   nPlayers = Math.min(Math.max(nPlayers, MIN_PLAYERS), MAX_PLAYERS);
@@ -190,7 +565,7 @@ function goToNames() {
   gTime = Math.min(Math.max(gTime, 60), 900);
   let dTime = parseInt(document.getElementById('deliberation-time').value) || defaultDeliberation(gTime);
   dTime = Math.min(Math.max(dTime, 30), Math.round(900 / 3));
-  if (nImpostors >= nPlayers) { alert('Impostores debe ser menor que jugadores'); return; }
+  if (nImpostors >= nPlayers) { alert(t('impostorsMustBeLess')); return; }
   state.numPlayers = nPlayers; state.numImpostors = nImpostors; state.gameTime = gTime; state.deliberationTime = dTime;
   buildNameInputs();
   showScreen('names-screen');
@@ -202,12 +577,13 @@ function buildNameInputs() {
   for (let i = 0; i < state.numPlayers; i++) {
     const div = document.createElement('div');
     div.className = 'player-name-item';
-    div.innerHTML = `<span>Jugador ${i+1}:</span><input id="player-name-${i}" value="${state.playerNames[i] || 'Jugador '+(i+1)}" />`;
+    const playerLabel = `${t('player')} ${i+1}`;
+    div.innerHTML = `<span>${playerLabel}:</span><input id="player-name-${i}" value="${state.playerNames[i] || playerLabel}" />`;
     list.appendChild(div);
   }
 }
 
-// ---------- Inicio de partida ----------
+// ---------- Game start ----------
 function startGame() {
   state.playerNames = [];
   for (let i = 0; i < state.numPlayers; i++) {
@@ -241,7 +617,7 @@ function finalizeStart() {
   showScreen('pre-reveal-screen');
 }
 
-// Ajustar defaults cuando se edita el nº de jugadores
+// Adjust defaults when player count is edited
 document.getElementById('num-players').addEventListener('change', () => {
   let nPlayers = parseInt(document.getElementById('num-players').value) || MIN_PLAYERS;
   nPlayers = Math.min(Math.max(nPlayers, MIN_PLAYERS), MAX_PLAYERS);
@@ -258,9 +634,9 @@ document.getElementById('num-players').addEventListener('change', () => {
 function renderSummary() {
   const el = document.getElementById('config-summary');
   const fmt = secs => `${Math.floor(secs/60)}:${(secs%60).toString().padStart(2,'0')}`;
-  const startName = state.playerNames[state.startPlayer] || `Jugador ${state.startPlayer+1}`;
+  const startName = state.playerNames[state.startPlayer] || `${t('player')} ${state.startPlayer+1}`;
 
-  // Generar lista de pools seleccionadas
+  // Generate list of selected pools
   const selectedIds = Array.isArray(state.selectedPools) ? state.selectedPools : [state.selectedPools || 'animales_naturaleza'];
   const poolsText = selectedIds.map(id => {
     const pool = availablePools.find(p => p.id === id) || EMBEDDED_POOLS.find(p => p.id === id);
@@ -268,16 +644,16 @@ function renderSummary() {
   }).join(', ');
 
   el.innerHTML = `
-    <p><strong>Jugadores:</strong> ${state.numPlayers}</p>
-    <p><strong>Impostores:</strong> ${state.numImpostors}</p>
-    <p><strong>Tiempo de partida:</strong> ${fmt(state.gameTime)}</p>
-    <p><strong>Tiempo de deliberación:</strong> ${fmt(state.deliberationTime)}</p>
-    <p><strong>Pools:</strong> ${poolsText}</p>
-    <p><strong>Empieza:</strong> ${startName} · <strong>Orden:</strong> ${state.turnDirection === 'horario' ? 'Horario' : 'Antihorario'}</p>
+    <p><strong>${t('players')}:</strong> ${state.numPlayers}</p>
+    <p><strong>${t('impostors')}:</strong> ${state.numImpostors}</p>
+    <p><strong>${t('gameTime')}:</strong> ${fmt(state.gameTime)}</p>
+    <p><strong>${t('deliberationTime')}:</strong> ${fmt(state.deliberationTime)}</p>
+    <p><strong>${t('poolsLabel')}:</strong> ${poolsText}</p>
+    <p><strong>${t('starts')}:</strong> ${startName} · <strong>${t('order')}:</strong> ${state.turnDirection === 'horario' ? t('clockwise') : t('counterclockwise')}</p>
   `;
 }
 
-// ---------- Revelación ----------
+// ---------- Role revelation ----------
 function loadCurrentReveal() {
   state.phase = 'reveal'; saveState();
   if (!state.revealOrder || state.revealOrder.length !== state.numPlayers) {
@@ -288,7 +664,18 @@ function loadCurrentReveal() {
   const name = state.playerNames[idx];
   document.getElementById('current-player-name').textContent = name;
 
-  // Resetear estado de la cortina
+  // Update curtain text
+  const revealText = document.querySelector('#reveal-screen .info-text');
+  if (revealText) {
+    revealText.innerHTML = `${t('turnOf')}: <strong><span id="current-player-name">${name}</span></strong><br><small>${t('othersLookAway')}</small>`;
+  }
+
+  const curtainText = document.querySelector('.curtain-cover div:last-child');
+  if (curtainText) {
+    curtainText.textContent = t('liftCurtain');
+  }
+
+  // Reset curtain state
   curtainState.isRevealed = false;
   const coverEl = document.getElementById('curtain-cover');
   coverEl.style.transform = 'translateY(0)';
@@ -302,7 +689,7 @@ function liftCurtain() {
   const cover = document.getElementById('curtain-cover');
   if (cover.classList.contains('lifted')) return;
 
-  // Restablecer la transición CSS y usar la clase
+  // Restore CSS transition and use the class
   cover.style.transition = '';
   cover.style.transform = '';
   cover.classList.add('lifted');
@@ -321,8 +708,8 @@ function liftCurtain() {
 
 function nextReveal() { state.currentReveal++; saveState(); loadCurrentReveal(); }
 
-// Sistema de cortina con GRAVEDAD - La cortina siempre tiende a bajar
-// Soporta tanto touch (móvil) como mouse (escritorio)
+// Curtain system with GRAVITY - The curtain always tends to fall
+// Supports both touch (mobile) and mouse (desktop)
 let curtainState = { isRevealed: false };
 
 (() => {
@@ -331,62 +718,63 @@ let curtainState = { isRevealed: false };
   let startY = null;
   let isDragging = false;
 
-  // Función para obtener la posición Y del evento (touch o mouse)
+  // Function to get Y position from event (touch or mouse)
   const getY = (e) => {
     return e.touches ? e.touches[0].clientY : e.clientY;
   };
 
-  // Función de inicio (touch y mouse)
+  // Start function (touch and mouse)
   const handleStart = (e) => {
     const coverEl = document.getElementById('curtain-cover');
     startY = getY(e);
     isDragging = true;
     if (e.type === 'mousedown') {
-      e.preventDefault(); // Prevenir selección de texto en escritorio
+      e.preventDefault(); // Prevent text selection on desktop
     }
   };
 
-  // Función de movimiento (touch y mouse)
+  // Move function (touch and mouse)
   const handleMove = (e) => {
     if (startY === null || !isDragging) return;
     const currentY = getY(e);
     const dy = currentY - startY;
     const coverEl = document.getElementById('curtain-cover');
 
-    // Calcular el desplazamiento: negativo = arriba, positivo = abajo
-    // Limitar el movimiento hacia arriba (no más allá de la altura de la cortina)
-    // y no permitir bajar más de la posición inicial (0)
+    // Calculate displacement: negative = up, positive = down
+    // Limit upward movement (not beyond curtain height)
+    // and don't allow going below initial position (0)
     const translateY = Math.max(Math.min(dy, 0), -cover.offsetHeight);
 
     coverEl.style.transform = `translateY(${translateY}px)`;
     coverEl.style.transition = 'none';
 
-    // Si levanta suficiente, mostrar contenido
+    // If lifted enough, show content
     if (translateY < -80 && !curtainState.isRevealed) {
       curtainState.isRevealed = true;
       const idx = state.revealOrder[state.currentReveal];
       const role = state.roles[idx];
       const word = role === 'CIVIL' ? state.civilianWord : state.impostorWord;
-      document.getElementById('role-text').textContent = role;
+      const roleText = t(role.toLowerCase());
+      document.getElementById('role-text').textContent = roleText;
       document.getElementById('role-text').className = 'role ' + (role === 'CIVIL' ? 'civil' : 'impostor');
       document.getElementById('word-text').textContent = word;
     }
 
     if (e.type === 'mousemove') {
-      e.preventDefault(); // Prevenir selección en escritorio
+      e.preventDefault(); // Prevent selection on desktop
     }
   };
 
-  // Función de finalización (touch y mouse)
+  // End function (touch and mouse)
   const handleEnd = (e) => {
     if (!isDragging || startY === null) return;
     const coverEl = document.getElementById('curtain-cover');
 
-    // SIEMPRE volver a bajar la cortina cuando se suelta (GRAVEDAD)
+    // ALWAYS bring the curtain down when released (GRAVITY)
     coverEl.style.transition = 'transform 0.4s ease';
     coverEl.style.transform = 'translateY(0)';
 
-    // Si ya se reveló el contenido, mostrar botón después de que baje
+    // If content was revealed, show button after it falls
     if (curtainState.isRevealed) {
       setTimeout(() => {
         if (state.currentReveal + 1 < state.numPlayers) {
@@ -401,18 +789,18 @@ let curtainState = { isRevealed: false };
     isDragging = false;
   };
 
-  // Eventos touch (móvil)
+  // Touch events (mobile)
   curtain.addEventListener('touchstart', handleStart, {passive:true});
   curtain.addEventListener('touchmove', handleMove, {passive:true});
   curtain.addEventListener('touchend', handleEnd, {passive:true});
   curtain.addEventListener('touchcancel', handleEnd, {passive:true});
 
-  // Eventos mouse (escritorio)
+  // Mouse events (desktop)
   curtain.addEventListener('mousedown', handleStart);
   curtain.addEventListener('mousemove', handleMove);
   curtain.addEventListener('mouseup', handleEnd);
   curtain.addEventListener('mouseleave', (e) => {
-    // Si el mouse sale del área mientras arrastra, soltar (gravedad)
+    // If mouse leaves area while dragging, release (gravity)
     if (isDragging) {
       handleEnd(e);
     }
@@ -460,7 +848,7 @@ function playBeep() {
   osc.start(); osc.stop(ctx.currentTime + 0.45);
 }
 
-// ---------- Fases ----------
+// ---------- Game phases ----------
 function startGamePhase() { state.phase = 'game'; saveState(); showScreen('game-screen'); startPhaseTimer('game', state.gameTime, 'game-timer', startDeliberationPhase); }
 function startDeliberationPhase() { state.phase = 'deliberation'; saveState(); showScreen('deliberation-screen'); startPhaseTimer('deliberation', state.deliberationTime, 'deliberation-timer', startVotingPhase); }
 function startVotingPhase(candidates = null, isTiebreak = false) {
@@ -484,19 +872,26 @@ function startTiebreakDeliberation(candidates) {
   startPhaseTimer('deliberation', 60, 'deliberation-timer', () => startVotingPhase(candidates, true));
 }
 
-// ---------- Votación secreta ----------
+// ---------- Secret voting ----------
 function renderVoting() {
   const pool = state.votingPool || Array.from({length: state.numPlayers}, (_, i) => i);
   const voter = state.playerNames[state.votingPlayer];
   document.getElementById('voter-name').textContent = voter;
   document.getElementById('votes-needed').textContent = state.numImpostors;
+
+  // Update voting instruction text
+  const votingInfo = document.querySelector('#voting-screen .info-text');
+  if (votingInfo) {
+    votingInfo.innerHTML = `${t('passMobileTo')} <strong id="voter-name">${voter}</strong>. ${t('chooseSuspects')} <span id="votes-needed">${state.numImpostors}</span> ${t('suspect')}.`;
+  }
+
   state.selections = state.selections || [];
   const list = document.getElementById('vote-list'); list.innerHTML = '';
   pool.forEach(i => {
      const item = document.createElement('div');
      item.className = 'player-item';
      item.textContent = state.playerNames[i];
-     if (state.votes[i]) item.innerHTML += `<span class="vote-count">Votos: ${state.votes[i]}</span>`;
+     if (state.votes[i]) item.innerHTML += `<span class="vote-count">${t('votes')}: ${state.votes[i]}</span>`;
      if (state.selections.includes(i)) item.classList.add('selected');
      if (i === state.votingPlayer) {
        item.classList.add('disabled');
@@ -535,7 +930,7 @@ function confirmCurrentVote() {
   renderVoting();
 }
 
-// ---------- Resolución de voto ----------
+// ---------- Vote resolution ----------
 function handleVoteOutcome() {
   const pool = state.votingPool || Array.from({length: state.numPlayers}, (_, i) => i);
   const counts = pool.map(idx => ({ idx, votes: state.votes[idx] || 0 }));
@@ -555,7 +950,7 @@ function handleVoteOutcome() {
     } else {
       // Tie for remaining slots
       if (state.isTiebreak) {
-        // segunda vez empatados: ganan impostores
+        // Second tie: impostors win
         state.executed = [];
         showResults(true);
         return;
@@ -569,7 +964,7 @@ function handleVoteOutcome() {
   showResults();
 }
 
-// ---------- Resultados ----------
+// ---------- Results ----------
 function showResults(isTiebreak = false) {
   state.phase = 'results'; saveState();
   const executed = state.executed || [];
@@ -577,21 +972,23 @@ function showResults(isTiebreak = false) {
   state.roles.forEach((r,i) => { if (r === 'IMPOSTOR' && !executed.includes(i)) impostorsAlive++; });
   const winner = impostorsAlive > 0 ? 'IMPOSTORES' : 'CIVILES';
   const results = document.getElementById('results-content');
+  const winText = winner === 'CIVILES' ? `✅ ${t('civiliansWin')}` : `❌ ${t('impostorsWin')}`;
   results.innerHTML = `
-    <h2>${winner === 'CIVILES' ? '✅ ¡GANAN LOS CIVILES!' : '❌ ¡GANAN LOS IMPOSTORES!'}</h2>
-    <p><strong>Ejecutados:</strong> ${executed.length ? executed.map(i => state.playerNames[i]).join(', ') : 'Nadie'}</p>
-    <p><strong>Votos:</strong> ${Object.keys(state.votes).length ? '' : 'Sin votos'}</p>
-    <h3 style="margin-top:18px;">Roles revelados</h3>
+    <h2>${winText}</h2>
+    <p><strong>${t('executed')}:</strong> ${executed.length ? executed.map(i => state.playerNames[i]).join(', ') : t('nobody')}</p>
+    <p><strong>${t('votes')}:</strong> ${Object.keys(state.votes).length ? '' : t('noVotes')}</p>
+    <h3 style="margin-top:18px;">${t('revealedRoles')}</h3>
     ${state.roles.map((role,i) => {
       const word = role === 'CIVIL' ? state.civilianWord : state.impostorWord;
       const killed = executed.includes(i) ? 'executed' : '';
-      return `<div class="role-reveal ${role === 'CIVIL' ? 'civil-reveal' : 'impostor-reveal'} ${killed}"><strong>${state.playerNames[i]}:</strong> ${role} — "${word}" ${killed ? '☠️' : ''}</div>`;
+      const roleText = t(role.toLowerCase());
+      return `<div class="role-reveal ${role === 'CIVIL' ? 'civil-reveal' : 'impostor-reveal'} ${killed}"><strong>${state.playerNames[i]}:</strong> ${roleText} — "${word}" ${killed ? '☠️' : ''}</div>`;
     }).join('')}
   `;
   showScreen('results-screen');
 }
 
-// ---------- Utilidades ----------
+// ---------- Utilities ----------
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -606,7 +1003,7 @@ function newMatch() {
   showScreen('welcome-screen');
 }
 
-// ---------- Sistema de temas ----------
+// ---------- Theme system ----------
 function getSystemTheme() {
   return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
@@ -635,34 +1032,43 @@ function toggleTheme() {
   saveTheme(newTheme);
 }
 
-// Inicializar tema
+// Initialize theme
 const initialTheme = loadTheme();
 applyTheme(initialTheme);
 
-// Event listener para el botón de tema
+// Event listener for theme and language buttons
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
   }
 
-  // Detectar cambios en el tema del sistema
+  const languageToggle = document.getElementById('language-toggle');
+  if (languageToggle) {
+    languageToggle.addEventListener('click', toggleLanguage);
+  }
+
+  // Initialize language
+  currentLanguage = loadLanguage();
+  setLanguage(currentLanguage);
+
+  // Detect system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    // Solo aplicar automáticamente si el usuario no ha seleccionado un tema manualmente
+    // Only apply automatically if user hasn't manually selected a theme
     if (!localStorage.getItem(THEME_STORAGE_KEY)) {
       applyTheme(e.matches ? 'dark' : 'light');
     }
   });
 });
 
-// ---------- Rehidratación ----------
+// ---------- State rehydration ----------
 (function init() {
   const restored = loadState();
   loadPoolsList();
   if (!state.turnDirection) state.turnDirection = 'horario';
   if (typeof state.startPlayer !== 'number') state.startPlayer = 0;
 
-  // Establecer valores por defecto en los inputs si estamos en setup
+  // Set default values in inputs if we're in setup
   if (state.phase === 'setup' || !restored) {
     const defaultPlayers = 6;
     const defaultImp = defaultImpostors(defaultPlayers);
@@ -676,12 +1082,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('deliberation-time').value = defaultDTime;
   }
 
-  // Determinar pantalla inicial
+  // Determine initial screen
   if (!restored || state.phase === 'setup' || state.phase === 'welcome') {
-    // Si no hay estado guardado o estamos en setup/welcome, mostrar bienvenida
+    // If no saved state or we're in setup/welcome, show welcome
     showScreen('welcome-screen');
   } else {
-    // Si hay una partida en curso, restaurarla
+    // If there's a game in progress, restore it
     switch (state.phase) {
       case 'names': buildNameInputs(); showScreen('names-screen'); break;
       case 'pre-reveal': renderSummary(); showScreen('pre-reveal-screen'); break;

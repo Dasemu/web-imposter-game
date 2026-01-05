@@ -1,6 +1,6 @@
-/* Variables de tema */
+/* Theme variables */
 :root {
-  /* Tema claro (por defecto) */
+  /* Light theme (default) */
   --bg-gradient-start: #667eea;
   --bg-gradient-end: #764ba2;
   --container-bg: rgba(255, 255, 255, 0.15);
@@ -25,7 +25,7 @@
   --pool-gradient: rgba(102, 126, 234, 0.4);
 }
 
-/* Tema oscuro */
+/* Dark theme */
 [data-theme="dark"] {
   --bg-gradient-start: #1a1a2e;
   --bg-gradient-end: #16213e;
@@ -51,7 +51,7 @@
   --pool-gradient: rgba(30, 30, 50, 0.6);
 }
 
-/* Estilos móviles y UI principal */
+/* Mobile styles and main UI */
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -59,16 +59,14 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 10px;
+  align-items: flex-start;
+  padding: 80px 10px 10px 10px;
   color: var(--text-primary);
-  overflow: hidden;
   transition: background 0.3s ease;
 }
 .container {
   width: 100%;
   max-width: 480px;
-  max-height: 100vh;
   background: var(--container-bg);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -78,6 +76,7 @@ body {
   display: flex;
   flex-direction: column;
   transition: background 0.3s ease, border 0.3s ease;
+  margin-bottom: 20px;
 }
 h1 { text-align: center; margin-bottom: 12px; font-size: 1.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 h2 { text-align: center; margin: 8px 0; font-size: 1.2em; }
@@ -157,7 +156,7 @@ button.ghost { background: var(--button-ghost-bg); color: var(--text-primary); f
   padding: 4px 0;
   -webkit-overflow-scrolling: touch;
 
-  /* Ocultar scrollbar en todos los navegadores */
+  /* Hide scrollbar in all browsers */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
@@ -165,7 +164,7 @@ button.ghost { background: var(--button-ghost-bg); color: var(--text-primary); f
   display: none; /* Chrome/Safari/Opera */
 }
 
-/* Wrapper para el efecto de degradado */
+/* Wrapper for gradient effect */
 .pool-buttons-wrapper {
   position: relative;
 }
@@ -333,5 +332,80 @@ button.ghost { background: var(--button-ghost-bg); color: var(--text-primary); f
 .theme-icon {
   transition: transform 0.3s ease;
   display: inline-block;
+}
+
+/* Language toggle button */
+.language-toggle {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: auto;
+  min-width: 50px;
+  height: 50px;
+  padding: 0 15px;
+  border-radius: 25px;
+  border: 2px solid var(--border-color);
+  background: var(--container-bg);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1em;
+  font-weight: 600;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.2s ease, background 0.3s ease, border 0.3s ease;
+  z-index: 1000;
+  color: var(--text-primary);
+  margin: 0;
+}
+.language-toggle:hover {
+  transform: scale(1.05);
+  background: var(--card-hover);
+}
+.language-toggle:active {
+  transform: scale(0.95);
+}
+.language-icon {
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+.language-text {
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  body {
+    padding: 70px 10px 10px 10px;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.3em;
+  }
+
+  .language-toggle {
+    top: 65px;
+    right: 10px;
+    min-width: 45px;
+    height: 45px;
+    padding: 0 12px;
+    font-size: 0.9em;
+  }
+
+  .language-icon {
+    font-size: 1.1em;
+  }
+
+  .language-text {
+    font-size: 0.85em;
+  }
 }
 

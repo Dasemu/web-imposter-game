@@ -12,8 +12,13 @@
         <span class="theme-icon">🌙</span>
     </button>
 
+    <button id="language-toggle" class="language-toggle" aria-label="Change language">
+        <span class="language-icon">🌐</span>
+        <span class="language-text">EN</span>
+    </button>
+
     <div class="container">
-        <!-- Pantalla de bienvenida -->
+        <!-- Welcome screen -->
         <div id="welcome-screen" class="screen active">
             <div class="welcome-content">
                 <img src="logo.png" alt="Logo" class="welcome-logo">
@@ -27,7 +32,7 @@
             </div>
         </div>
 
-        <!-- Pantalla de reglas -->
+        <!-- Rules screen -->
         <div id="rules-screen" class="screen">
             <h1>📖 Reglas del Juego</h1>
             <div class="rules-content">
@@ -61,7 +66,7 @@
             <button onclick="showScreen('welcome-screen')">← Volver</button>
         </div>
 
-        <!-- Pantalla de configuración -->
+        <!-- Setup screen -->
         <div id="setup-screen" class="screen">
             <h1>⚙️ Configuración</h1>
             <div class="form-group compact">
@@ -86,11 +91,11 @@
                     <div id="pool-buttons" class="pool-buttons"></div>
                 </div>
             </div>
-            <button onclick="goToNames()">Siguiente: nombres</button>
+            <button onclick="goToNames()">Siguiente</button>
             <button class="ghost" onclick="showScreen('welcome-screen')">← Volver</button>
         </div>
 
-        <!-- Pantalla de nombres -->
+        <!-- Player names screen -->
         <div id="names-screen" class="screen">
             <h1>👥 Nombres de jugadores</h1>
             <div class="player-names-list" id="player-names-list"></div>
@@ -98,7 +103,7 @@
             <button class="ghost" onclick="showScreen('setup-screen')">← Volver</button>
         </div>
 
-        <!-- Pre revelado -->
+        <!-- Pre-reveal screen -->
         <div id="pre-reveal-screen" class="screen">
             <h1>🎲 Listo para revelar</h1>
             <div class="info-text" id="config-summary"></div>
@@ -107,7 +112,7 @@
             <button class="ghost" onclick="showScreen('names-screen')">← Volver</button>
         </div>
 
-        <!-- Revelación -->
+        <!-- Revelation screen -->
         <div id="reveal-screen" class="screen">
             <h1>🔍 Revelación</h1>
             <p class="info-text">Turno de: <strong><span id="current-player-name">Jugador 1</span></strong><br><small>Los demás, no miréis. Mantén levantada la cortina para ver tu rol.</small></p>
@@ -125,7 +130,7 @@
             <button id="start-game-btn" style="display:none;" onclick="startGamePhase()">¡Iniciar partida!</button>
         </div>
 
-        <!-- Partida -->
+        <!-- Game screen -->
         <div id="game-screen" class="screen">
             <h1>🎮 Partida en curso</h1>
             <p class="info-text">A decir sinónimos!</p>
@@ -133,7 +138,7 @@
             <button class="secondary" onclick="skipToDeliberation()">Saltar a deliberación →</button>
         </div>
 
-        <!-- Deliberación -->
+        <!-- Deliberation screen -->
         <div id="deliberation-screen" class="screen">
             <h1>🗣️ Deliberación</h1>
             <p class="info-text">Últimos argumentos antes de votar.</p>
@@ -141,7 +146,7 @@
             <button class="secondary" onclick="skipToVoting()">Ir a votación →</button>
         </div>
 
-        <!-- Votación -->
+        <!-- Voting screen -->
         <div id="voting-screen" class="screen">
             <h1>🗳️ Votación secreta</h1>
             <p class="info-text">Pasa el móvil a <strong id="voter-name">Jugador</strong>. Elige <span id="votes-needed">1</span> sospechoso(s).</p>
@@ -149,7 +154,7 @@
             <button id="confirm-vote-btn" disabled onclick="confirmCurrentVote()">Confirmar voto</button>
         </div>
 
-        <!-- Resultados -->
+        <!-- Results screen -->
         <div id="results-screen" class="screen">
             <h1>🏆 Resultados</h1>
             <div class="results" id="results-content"></div>
