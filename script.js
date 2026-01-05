@@ -3,6 +3,7 @@ const MAX_PLAYERS = 10;
 const MIN_PLAYERS = 3;
 const POOLS_CACHE_KEY = 'impostorWordPoolsV1';
 const POOLS_MANIFEST_URL = 'word-pools/manifest.json';
+const THEME_STORAGE_KEY = 'impostorGameTheme';
 
 // Pools embebidas con palabras de impostores [palabra_civil, palabra_impostor]
 const EMBEDDED_POOLS = [
@@ -286,7 +287,13 @@ function loadCurrentReveal() {
   const idx = state.revealOrder[state.currentReveal];
   const name = state.playerNames[idx];
   document.getElementById('current-player-name').textContent = name;
-  document.getElementById('curtain-cover').classList.remove('lifted');
+
+  // Resetear estado de la cortina
+  curtainState.isRevealed = false;
+  const coverEl = document.getElementById('curtain-cover');
+  coverEl.style.transform = 'translateY(0)';
+  coverEl.style.transition = '';
+
   document.getElementById('next-player-btn').style.display = 'none';
   document.getElementById('start-game-btn').style.display = 'none';
 }
@@ -294,7 +301,12 @@ function loadCurrentReveal() {
 function liftCurtain() {
   const cover = document.getElementById('curtain-cover');
   if (cover.classList.contains('lifted')) return;
+
+  // Restablecer la transición CSS y usar la clase
+  cover.style.transition = '';
+  cover.style.transform = '';
   cover.classList.add('lifted');
+
   const idx = state.revealOrder[state.currentReveal];
   const role = state.roles[idx];
   const word = role === 'CIVIL' ? state.civilianWord : state.impostorWord;
@@ -309,13 +321,102 @@ function liftCurtain() {
 
 function nextReveal() { state.currentReveal++; saveState(); loadCurrentReveal(); }
 
-// swipe support
+// Sistema de cortina con GRAVEDAD - La cortina siempre tiende a bajar
+// Soporta tanto touch (móvil) como mouse (escritorio)
+let curtainState = { isRevealed: false };
+
 (() => {
   const curtain = document.getElementById('curtain');
+  const cover = document.getElementById('curtain-cover');
   let startY = null;
-  curtain.addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, {passive:true});
-  curtain.addEventListener('touchmove', e => { if (startY === null) return; const dy = e.touches[0].clientY - startY; if (dy < -40) { liftCurtain(); startY = null; } }, {passive:true});
-  curtain.addEventListener('click', liftCurtain);
+  let isDragging = false;
+
+  // Función para obtener la posición Y del evento (touch o mouse)
+  const getY = (e) => {
+    return e.touches ? e.touches[0].clientY : e.clientY;
+  };
+
+  // Función de inicio (touch y mouse)
+  const handleStart = (e) => {
+    const coverEl = document.getElementById('curtain-cover');
+    startY = getY(e);
+    isDragging = true;
+    if (e.type === 'mousedown') {
+      e.preventDefault(); // Prevenir selección de texto en escritorio
+    }
+  };
+
+  // Función de movimiento (touch y mouse)
+  const handleMove = (e) => {
+    if (startY === null || !isDragging) return;
+    const currentY = getY(e);
+    const dy = currentY - startY;
+    const coverEl = document.getElementById('curtain-cover');
+
+    // Calcular el desplazamiento: negativo = arriba, positivo = abajo
+    // Limitar el movimiento hacia arriba (no más allá de la altura de la cortina)
+    // y no permitir bajar más de la posición inicial (0)
+    const translateY = Math.max(Math.min(dy, 0), -cover.offsetHeight);
+
+    coverEl.style.transform = `translateY(${translateY}px)`;
+    coverEl.style.transition = 'none';
+
+    // Si levanta suficiente, mostrar contenido
+    if (translateY < -80 && !curtainState.isRevealed) {
+      curtainState.isRevealed = true;
+      const idx = state.revealOrder[state.currentReveal];
+      const role = state.roles[idx];
+      const word = role === 'CIVIL' ? state.civilianWord : state.impostorWord;
+      document.getElementById('role-text').textContent = role;
+      document.getElementById('role-text').className = 'role ' + (role === 'CIVIL' ? 'civil' : 'impostor');
+      document.getElementById('word-text').textContent = word;
+    }
+
+    if (e.type === 'mousemove') {
+      e.preventDefault(); // Prevenir selección en escritorio
+    }
+  };
+
+  // Función de finalización (touch y mouse)
+  const handleEnd = (e) => {
+    if (!isDragging || startY === null) return;
+    const coverEl = document.getElementById('curtain-cover');
+
+    // SIEMPRE volver a bajar la cortina cuando se suelta (GRAVEDAD)
+    coverEl.style.transition = 'transform 0.4s ease';
+    coverEl.style.transform = 'translateY(0)';
+
+    // Si ya se reveló el contenido, mostrar botón después de que baje
+    if (curtainState.isRevealed) {
+      setTimeout(() => {
+        if (state.currentReveal + 1 < state.numPlayers) {
+          document.getElementById('next-player-btn').style.display = 'block';
+        } else {
+          document.getElementById('start-game-btn').style.display = 'block';
+        }
+      }, 400);
+    }
+
+    startY = null;
+    isDragging = false;
+  };
+
+  // Eventos touch (móvil)
+  curtain.addEventListener('touchstart', handleStart, {passive:true});
+  curtain.addEventListener('touchmove', handleMove, {passive:true});
+  curtain.addEventListener('touchend', handleEnd, {passive:true});
+  curtain.addEventListener('touchcancel', handleEnd, {passive:true});
+
+  // Eventos mouse (escritorio)
+  curtain.addEventListener('mousedown', handleStart);
+  curtain.addEventListener('mousemove', handleMove);
+  curtain.addEventListener('mouseup', handleEnd);
+  curtain.addEventListener('mouseleave', (e) => {
+    // Si el mouse sale del área mientras arrastra, soltar (gravedad)
+    if (isDragging) {
+      handleEnd(e);
+    }
+  });
 })();
 
 // ---------- Timers ----------
@@ -498,24 +599,98 @@ function showScreen(id) {
   saveState();
 }
 
-function newMatch() { clearState(); state = { ...state, phase:'setup', timerEndAt:null, timerPhase:null, votingPool:null, isTiebreak:false, tiebreakCandidates:[] }; location.reload(); }
+function newMatch() {
+  clearState();
+  state = { ...state, phase:'welcome', timerEndAt:null, timerPhase:null, votingPool:null, isTiebreak:false, tiebreakCandidates:[] };
+  saveState();
+  showScreen('welcome-screen');
+}
+
+// ---------- Sistema de temas ----------
+function getSystemTheme() {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  return savedTheme || getSystemTheme();
+}
+
+function saveTheme(theme) {
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  applyTheme(newTheme);
+  saveTheme(newTheme);
+}
+
+// Inicializar tema
+const initialTheme = loadTheme();
+applyTheme(initialTheme);
+
+// Event listener para el botón de tema
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // Detectar cambios en el tema del sistema
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    // Solo aplicar automáticamente si el usuario no ha seleccionado un tema manualmente
+    if (!localStorage.getItem(THEME_STORAGE_KEY)) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+});
 
 // ---------- Rehidratación ----------
 (function init() {
   const restored = loadState();
-  showScreen('setup-screen');
   loadPoolsList();
   if (!state.turnDirection) state.turnDirection = 'horario';
   if (typeof state.startPlayer !== 'number') state.startPlayer = 0;
-  switch (state.phase) {
-    case 'setup': showScreen('setup-screen'); break;
-    case 'names': buildNameInputs(); showScreen('names-screen'); break;
-    case 'pre-reveal': renderSummary(); showScreen('pre-reveal-screen'); break;
-    case 'reveal': showScreen('reveal-screen'); loadCurrentReveal(); break;
-    case 'game': showScreen('game-screen'); resumeTimerIfNeeded(); break;
-    case 'deliberation': showScreen('deliberation-screen'); resumeTimerIfNeeded(); break;
-    case 'voting': showScreen('voting-screen'); renderVoting(); break;
-    case 'results': showResults(); break;
-    default: showScreen('setup-screen');
+
+  // Establecer valores por defecto en los inputs si estamos en setup
+  if (state.phase === 'setup' || !restored) {
+    const defaultPlayers = 6;
+    const defaultImp = defaultImpostors(defaultPlayers);
+    const defaultGTime = defaultGameTime(defaultPlayers);
+    const defaultDTime = defaultDeliberation(defaultGTime);
+
+    document.getElementById('num-players').value = defaultPlayers;
+    document.getElementById('num-impostors').value = defaultImp;
+    document.getElementById('num-impostors').max = Math.max(1, Math.floor(defaultPlayers / 2));
+    document.getElementById('game-time').value = defaultGTime;
+    document.getElementById('deliberation-time').value = defaultDTime;
+  }
+
+  // Determinar pantalla inicial
+  if (!restored || state.phase === 'setup' || state.phase === 'welcome') {
+    // Si no hay estado guardado o estamos en setup/welcome, mostrar bienvenida
+    showScreen('welcome-screen');
+  } else {
+    // Si hay una partida en curso, restaurarla
+    switch (state.phase) {
+      case 'names': buildNameInputs(); showScreen('names-screen'); break;
+      case 'pre-reveal': renderSummary(); showScreen('pre-reveal-screen'); break;
+      case 'reveal': showScreen('reveal-screen'); loadCurrentReveal(); break;
+      case 'game': showScreen('game-screen'); resumeTimerIfNeeded(); break;
+      case 'deliberation': showScreen('deliberation-screen'); resumeTimerIfNeeded(); break;
+      case 'voting': showScreen('voting-screen'); renderVoting(); break;
+      case 'results': showResults(); break;
+      default: showScreen('welcome-screen');
+    }
   }
 })();

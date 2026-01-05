@@ -8,25 +8,77 @@
     <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <span class="theme-icon">🌙</span>
+    </button>
+
     <div class="container">
+        <!-- Pantalla de bienvenida -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <img src="logo.png" alt="Logo" class="welcome-logo">
+                <h1 class="welcome-title">🎭 Juego del Impostor</h1>
+                <p class="welcome-subtitle">¿Podrás descubrir quién es el impostor?</p>
+                <div class="welcome-buttons">
+                    <button onclick="showScreen('setup-screen')" class="btn-primary">▶️ Jugar</button>
+                    <button onclick="showScreen('rules-screen')" class="btn-secondary">📖 Reglas</button>
+                </div>
+                <p class="welcome-credits">Creado por Darío Sevilla</p>
+            </div>
+        </div>
+
+        <!-- Pantalla de reglas -->
+        <div id="rules-screen" class="screen">
+            <h1>📖 Reglas del Juego</h1>
+            <div class="rules-content">
+                <div class="rule-section">
+                    <h3>🎯 Objetivo</h3>
+                    <p>Los <strong>civiles</strong> deben identificar a los <strong>impostores</strong> antes de que termine el tiempo.</p>
+                </div>
+
+                <div class="rule-section">
+                    <h3>🎲 Preparación</h3>
+                    <p>1. Cada jugador recibe una palabra secreta</p>
+                    <p>2. Los civiles reciben la misma palabra</p>
+                    <p>3. Los impostores reciben una palabra diferente pero relacionada</p>
+                </div>
+
+                <div class="rule-section">
+                    <h3>🗣️ Partida</h3>
+                    <p>1. Por turnos, cada jugador da un sinónimo o descripción de su palabra</p>
+                    <p>2. Intenta ser específico pero no revelar tu palabra exacta</p>
+                    <p>3. Los impostores deben intentar pasar desapercibidos</p>
+                </div>
+
+                <div class="rule-section">
+                    <h3>🗳️ Votación</h3>
+                    <p>1. Tras el tiempo de juego y deliberación, vota en secreto</p>
+                    <p>2. Los más votados son eliminados</p>
+                    <p>3. Si todos los impostores son eliminados, ganan los civiles</p>
+                    <p>4. Si queda algún impostor, ellos ganan</p>
+                </div>
+            </div>
+            <button onclick="showScreen('welcome-screen')">← Volver</button>
+        </div>
+
         <!-- Pantalla de configuración -->
-        <div id="setup-screen" class="screen active">
-            <h1>🎭 Juego del Impostor</h1>
+        <div id="setup-screen" class="screen">
+            <h1>⚙️ Configuración</h1>
             <div class="form-group compact">
                 <label for="num-players">Jugadores:</label>
                 <input type="number" id="num-players" min="3" max="10" value="6">
             </div>
             <div class="form-group compact">
                 <label for="num-impostors">Impostores:</label>
-                <input type="number" id="num-impostors" min="1" max="5" value="1">
+                <input type="number" id="num-impostors" min="1" max="5" value="2">
             </div>
             <div class="form-group compact">
                 <label for="game-time">Tiempo de partida (seg):</label>
-                <input type="number" id="game-time" min="60" max="900" step="30" value="180">
+                <input type="number" id="game-time" min="60" max="900" step="30" value="510">
             </div>
             <div class="form-group compact">
                 <label for="deliberation-time">Deliberación (seg):</label>
-                <input type="number" id="deliberation-time" min="30" max="300" step="10" value="60">
+                <input type="number" id="deliberation-time" min="30" max="300" step="10" value="170">
             </div>
             <div class="form-group">
                 <label>Pools (toca para seleccionar):</label>
@@ -35,6 +87,7 @@
                 </div>
             </div>
             <button onclick="goToNames()">Siguiente: nombres</button>
+            <button class="ghost" onclick="showScreen('welcome-screen')">← Volver</button>
         </div>
 
         <!-- Pantalla de nombres -->
@@ -57,11 +110,11 @@
         <!-- Revelación -->
         <div id="reveal-screen" class="screen">
             <h1>🔍 Revelación</h1>
-            <p class="info-text">Turno de: <strong><span id="current-player-name">Jugador 1</span></strong><br><small>Los demás, no miréis. Desliza para ver.</small></p>
+            <p class="info-text">Turno de: <strong><span id="current-player-name">Jugador 1</span></strong><br><small>Los demás, no miréis. Mantén levantada la cortina para ver tu rol.</small></p>
             <div class="curtain" id="curtain">
                 <div class="curtain-cover" id="curtain-cover">
                     <div class="curtain-icon">⬆️</div>
-                    <div>DESLIZA PARA REVELAR</div>
+                    <div>LEVANTA LA CORTINA</div>
                 </div>
                 <div class="curtain-content">
                     <div class="role" id="role-text"></div>
