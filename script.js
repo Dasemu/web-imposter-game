@@ -73,7 +73,8 @@ const TRANSLATIONS = {
     counterclockwise: 'Antihorario',
     impostorsMustBeLess: 'Impostores debe ser menor que jugadores',
     animalsNature: 'Animales y Naturaleza',
-    everydayObjects: 'Objetos Cotidianos'
+    everydayObjects: 'Objetos Cotidianos',
+    exitGame: 'Salir de la partida'
   },
   en: {
     gameTitle: 'The Impostor Game',
@@ -140,7 +141,8 @@ const TRANSLATIONS = {
     counterclockwise: 'Counterclockwise',
     impostorsMustBeLess: 'Impostors must be less than players',
     animalsNature: 'Animals and Nature',
-    everydayObjects: 'Everyday Objects'
+    everydayObjects: 'Everyday Objects',
+    exitGame: 'Exit Game'
   }
 };
 
@@ -322,6 +324,10 @@ function updateStaticTexts() {
     else if (btn.id === 'confirm-vote-btn') btn.textContent = t('confirmVote');
     else if (btn.getAttribute('onclick') === 'newMatch()') btn.textContent = t('newMatch');
   });
+
+  // Exit game button
+  const exitText = document.querySelector('.exit-text');
+  if (exitText) exitText.textContent = t('exitGame');
 }
 
 // Embedded pools with impostor words [civilian_word, impostor_word]
@@ -994,6 +1000,7 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
   state.phase = id.replace('-screen','');
   saveState();
+  updateExitButtonVisibility();
 }
 
 function newMatch() {
@@ -1001,6 +1008,26 @@ function newMatch() {
   state = { ...state, phase:'welcome', timerEndAt:null, timerPhase:null, votingPool:null, isTiebreak:false, tiebreakCandidates:[] };
   saveState();
   showScreen('welcome-screen');
+}
+
+function confirmExitGame() {
+  const confirmMessage = currentLanguage === 'es'
+    ? '¿Estás seguro de que quieres salir de la partida? Se perderá todo el progreso actual.'
+    : 'Are you sure you want to exit the game? All current progress will be lost.';
+
+  if (confirm(confirmMessage)) {
+    newMatch();
+  }
+}
+
+function updateExitButtonVisibility() {
+  const exitBtn = document.getElementById('exit-game');
+  // Show exit button in all phases except welcome and setup
+  if (state.phase !== 'welcome' && state.phase !== 'setup') {
+    exitBtn.classList.add('visible');
+  } else {
+    exitBtn.classList.remove('visible');
+  }
 }
 
 // ---------- Theme system ----------
@@ -1099,4 +1126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       default: showScreen('welcome-screen');
     }
   }
+
+  // Initialize exit button visibility
+  updateExitButtonVisibility();
 })();

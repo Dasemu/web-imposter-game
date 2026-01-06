@@ -377,6 +377,47 @@ button.ghost { background: var(--button-ghost-bg); color: var(--text-primary); f
   letter-spacing: 0.5px;
 }
 
+/* Exit game button */
+.exit-game {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: auto;
+  height: 50px;
+  padding: 0 15px;
+  border-radius: 25px;
+  border: 2px solid var(--border-color);
+  background: var(--container-bg);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9em;
+  font-weight: 600;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.2s ease, background 0.3s ease, border 0.3s ease;
+  z-index: 1000;
+  color: var(--text-primary);
+}
+.exit-game.visible {
+  display: inline-flex;
+}
+.exit-game:hover {
+  transform: scale(1.05);
+  background: var(--card-hover);
+}
+.exit-game:active {
+  transform: scale(0.95);
+}
+.exit-icon {
+  font-size: 1.2em;
+}
+.exit-text {
+  font-size: 0.85em;
+}
+
 /* Mobile optimization */
 @media (max-width: 600px) {
   body {
@@ -406,6 +447,22 @@ button.ghost { background: var(--button-ghost-bg); color: var(--text-primary); f
 
   .language-text {
     font-size: 0.85em;
+  }
+
+  .exit-game {
+    top: 10px;
+    left: 10px;
+    height: 45px;
+    padding: 0 12px;
+    font-size: 0.85em;
+  }
+
+  .exit-icon {
+    font-size: 1.1em;
+  }
+
+  .exit-text {
+    font-size: 0.8em;
   }
 }
 
