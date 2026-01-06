@@ -1022,11 +1022,15 @@ function confirmExitGame() {
 
 function updateExitButtonVisibility() {
   const exitBtn = document.getElementById('exit-game');
-  // Show exit button in all phases except welcome and setup
+  const langBtn = document.getElementById('language-toggle');
+
+  // Show exit button and hide language toggle in all phases except welcome and setup
   if (state.phase !== 'welcome' && state.phase !== 'setup') {
     exitBtn.classList.add('visible');
+    if (langBtn) langBtn.style.display = 'none';
   } else {
     exitBtn.classList.remove('visible');
+    if (langBtn) langBtn.style.display = 'inline-flex';
   }
 }
 
