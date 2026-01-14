@@ -5,6 +5,7 @@ const POOLS_CACHE_KEY = 'impostorWordPoolsV1';
 const POOLS_MANIFEST_URL = 'word-pools/manifest.json';
 const THEME_STORAGE_KEY = 'impostorGameTheme';
 const LANGUAGE_STORAGE_KEY = 'impostorGameLanguage';
+const SCREEN_LOCK_STORAGE_KEY = 'impostorGameScreenLock';
 
 // ---------- Internationalization system ----------
 const TRANSLATIONS = {
@@ -74,7 +75,9 @@ const TRANSLATIONS = {
     impostorsMustBeLess: 'Impostores debe ser menor que jugadores',
     animalsNature: 'Animales y Naturaleza',
     everydayObjects: 'Objetos Cotidianos',
-    exitGame: 'Salir de la partida'
+    exitGame: 'Salir de la partida',
+    poolsSelection: 'Selección de Pools',
+    poolsSelectionText: 'Toca para seleccionar las categorías de palabras que quieres usar en la partida.'
   },
   en: {
     gameTitle: 'The Impostor Game',
@@ -142,7 +145,9 @@ const TRANSLATIONS = {
     impostorsMustBeLess: 'Impostors must be less than players',
     animalsNature: 'Animals and Nature',
     everydayObjects: 'Everyday Objects',
-    exitGame: 'Exit Game'
+    exitGame: 'Exit Game',
+    poolsSelection: 'Pool Selection',
+    poolsSelectionText: 'Tap to select the word categories you want to use in the game.'
   }
 };
 
@@ -206,42 +211,42 @@ async function updateUI() {
 function updateStaticTexts() {
   // Welcome screen
   const welcomeTitle = document.querySelector('.welcome-title');
-  if (welcomeTitle) welcomeTitle.innerHTML = `🎭 ${t('gameTitle')}`;
+  if (welcomeTitle) welcomeTitle.textContent = t('gameTitle');
 
   const welcomeSubtitle = document.querySelector('.welcome-subtitle');
   if (welcomeSubtitle) welcomeSubtitle.textContent = t('gameSubtitle');
 
   const playBtn = document.querySelector('.btn-primary');
-  if (playBtn) playBtn.innerHTML = `▶️ ${t('play')}`;
+  if (playBtn) playBtn.textContent = t('play');
 
   const rulesBtn = document.querySelector('.btn-secondary');
-  if (rulesBtn) rulesBtn.innerHTML = `📖 ${t('rules')}`;
+  if (rulesBtn) rulesBtn.textContent = t('rules');
 
   const credits = document.querySelector('.welcome-credits');
   if (credits) credits.textContent = t('createdBy');
 
   // Rules screen
   const rulesTitle = document.querySelector('#rules-screen h1');
-  if (rulesTitle) rulesTitle.innerHTML = `📖 ${t('rulesTitle')}`;
+  if (rulesTitle) rulesTitle.textContent = t('rulesTitle');
 
   const ruleSections = document.querySelectorAll('.rule-section');
   if (ruleSections.length >= 4) {
-    ruleSections[0].querySelector('h3').innerHTML = `🎯 ${t('objective')}`;
+    ruleSections[0].querySelector('h3').textContent = t('objective');
     ruleSections[0].querySelector('p').innerHTML = t('objectiveText');
 
-    ruleSections[1].querySelector('h3').innerHTML = `🎲 ${t('preparation')}`;
+    ruleSections[1].querySelector('h3').textContent = t('preparation');
     const prepSteps = t('preparationSteps');
     ruleSections[1].querySelectorAll('p').forEach((p, i) => {
       if (prepSteps[i]) p.textContent = `${i + 1}. ${prepSteps[i]}`;
     });
 
-    ruleSections[2].querySelector('h3').innerHTML = `🗣️ ${t('gameplay')}`;
+    ruleSections[2].querySelector('h3').textContent = t('gameplay');
     const gameSteps = t('gameplaySteps');
     ruleSections[2].querySelectorAll('p').forEach((p, i) => {
       if (gameSteps[i]) p.textContent = `${i + 1}. ${gameSteps[i]}`;
     });
 
-    ruleSections[3].querySelector('h3').innerHTML = `🗳️ ${t('voting')}`;
+    ruleSections[3].querySelector('h3').textContent = t('voting');
     const voteSteps = t('votingSteps');
     ruleSections[3].querySelectorAll('p').forEach((p, i) => {
       if (voteSteps[i]) p.textContent = `${i + 1}. ${voteSteps[i]}`;
@@ -250,7 +255,7 @@ function updateStaticTexts() {
 
   // Setup screen
   const setupTitle = document.querySelector('#setup-screen h1');
-  if (setupTitle) setupTitle.innerHTML = `⚙️ ${t('configuration')}`;
+  if (setupTitle) setupTitle.textContent = t('configuration');
 
   const labels = {
     'num-players': t('players'),
@@ -264,45 +269,49 @@ function updateStaticTexts() {
     if (label) label.textContent = text + ':';
   });
 
-  const poolsLabel = document.querySelector('#setup-screen .form-group:last-of-type label');
-  if (poolsLabel) poolsLabel.textContent = t('pools') + ':';
+  // Pools screen
+  const poolsTitle = document.querySelector('#pools-screen h1');
+  if (poolsTitle) poolsTitle.textContent = t('poolsSelection');
+
+  const poolsText = document.querySelector('#pools-screen .info-text');
+  if (poolsText) poolsText.textContent = t('poolsSelectionText');
 
   // Names screen
   const namesTitle = document.querySelector('#names-screen h1');
-  if (namesTitle) namesTitle.innerHTML = `👥 ${t('playerNames')}`;
+  if (namesTitle) namesTitle.textContent = t('playerNames');
 
   // Pre-reveal screen
   const preRevealTitle = document.querySelector('#pre-reveal-screen h1');
-  if (preRevealTitle) preRevealTitle.innerHTML = `🎲 ${t('readyToReveal')}`;
+  if (preRevealTitle) preRevealTitle.textContent = t('readyToReveal');
 
   const preRevealText = document.querySelector('#pre-reveal-screen .info-text:not(#config-summary)');
   if (preRevealText) preRevealText.textContent = t('eachPlayerSecret');
 
   // Reveal screen
   const revealTitle = document.querySelector('#reveal-screen h1');
-  if (revealTitle) revealTitle.innerHTML = `🔍 ${t('revelation')}`;
+  if (revealTitle) revealTitle.textContent = t('revelation');
 
   // Game screen
   const gameTitle = document.querySelector('#game-screen h1');
-  if (gameTitle) gameTitle.innerHTML = `🎮 ${t('gameInProgress')}`;
+  if (gameTitle) gameTitle.textContent = t('gameInProgress');
 
   const gameText = document.querySelector('#game-screen .info-text');
   if (gameText) gameText.textContent = t('giveSynonyms');
 
   // Deliberation screen
   const delibTitle = document.querySelector('#deliberation-screen h1');
-  if (delibTitle) delibTitle.innerHTML = `🗣️ ${t('deliberation')}`;
+  if (delibTitle) delibTitle.textContent = t('deliberation');
 
   const delibText = document.querySelector('#deliberation-screen .info-text');
   if (delibText) delibText.textContent = t('lastArguments');
 
   // Voting screen
   const votingTitle = document.querySelector('#voting-screen h1');
-  if (votingTitle) votingTitle.innerHTML = `🗳️ ${t('secretVoting')}`;
+  if (votingTitle) votingTitle.textContent = t('secretVoting');
 
   // Results screen
   const resultsTitle = document.querySelector('#results-screen h1');
-  if (resultsTitle) resultsTitle.innerHTML = `🏆 ${t('results')}`;
+  if (resultsTitle) resultsTitle.textContent = t('results');
 
   // Buttons
   const backButtons = document.querySelectorAll('button.ghost');
@@ -314,7 +323,8 @@ function updateStaticTexts() {
 
   // Update all other buttons based on their onclick or content
   document.querySelectorAll('button').forEach(btn => {
-    if (btn.getAttribute('onclick') === 'goToNames()') btn.textContent = t('next');
+    if (btn.getAttribute('onclick') === 'goToPools()') btn.textContent = t('next');
+    else if (btn.getAttribute('onclick') === 'goToNames()') btn.textContent = t('next');
     else if (btn.getAttribute('onclick') === 'startGame()') btn.textContent = t('startGame');
     else if (btn.getAttribute('onclick') === "showScreen('reveal-screen'); loadCurrentReveal();") btn.textContent = t('startReveal');
     else if (btn.id === 'next-player-btn') btn.textContent = t('nextPlayer') + ' →';
@@ -561,7 +571,7 @@ function renderPoolButtons() {
 }
 
 // ---------- Setup and player names ----------
-function goToNames() {
+function goToPools() {
   let nPlayers = parseInt(document.getElementById('num-players').value) || MIN_PLAYERS;
   nPlayers = Math.min(Math.max(nPlayers, MIN_PLAYERS), MAX_PLAYERS);
   const maxImpostors = Math.max(1, Math.floor(nPlayers / 2));
@@ -572,7 +582,14 @@ function goToNames() {
   let dTime = parseInt(document.getElementById('deliberation-time').value) || defaultDeliberation(gTime);
   dTime = Math.min(Math.max(dTime, 30), Math.round(900 / 3));
   if (nImpostors >= nPlayers) { alert(t('impostorsMustBeLess')); return; }
-  state.numPlayers = nPlayers; state.numImpostors = nImpostors; state.gameTime = gTime; state.deliberationTime = dTime;
+  state.numPlayers = nPlayers;
+  state.numImpostors = nImpostors;
+  state.gameTime = gTime;
+  state.deliberationTime = dTime;
+  showScreen('pools-screen');
+}
+
+function goToNames() {
   buildNameInputs();
   showScreen('names-screen');
 }
@@ -662,6 +679,10 @@ function renderSummary() {
 // ---------- Role revelation ----------
 function loadCurrentReveal() {
   state.phase = 'reveal'; saveState();
+
+  // Activar Wake Lock para mantener pantalla encendida durante el juego
+  requestWakeLock();
+
   if (!state.revealOrder || state.revealOrder.length !== state.numPlayers) {
     const step = state.turnDirection === 'horario' ? 1 : -1;
     state.revealOrder = Array.from({length: state.numPlayers}, (_, k) => (state.startPlayer + step * k + state.numPlayers) % state.numPlayers);
@@ -716,13 +737,17 @@ function nextReveal() { state.currentReveal++; saveState(); loadCurrentReveal();
 
 // Curtain system with GRAVITY - The curtain always tends to fall
 // Supports both touch (mobile) and mouse (desktop)
+// On desktop: curtain stays up while mouse button is held, even if cursor leaves the area
 let curtainState = { isRevealed: false };
+let curtainDragState = {
+  startY: null,
+  isDragging: false,
+  currentTranslateY: 0
+};
 
-(() => {
+function initCurtainHandlers() {
   const curtain = document.getElementById('curtain');
-  const cover = document.getElementById('curtain-cover');
-  let startY = null;
-  let isDragging = false;
+  if (!curtain) return;
 
   // Function to get Y position from event (touch or mouse)
   const getY = (e) => {
@@ -731,9 +756,9 @@ let curtainState = { isRevealed: false };
 
   // Start function (touch and mouse)
   const handleStart = (e) => {
-    const coverEl = document.getElementById('curtain-cover');
-    startY = getY(e);
-    isDragging = true;
+    curtainDragState.startY = getY(e);
+    curtainDragState.isDragging = true;
+    curtainDragState.currentTranslateY = 0;
     if (e.type === 'mousedown') {
       e.preventDefault(); // Prevent text selection on desktop
     }
@@ -741,21 +766,22 @@ let curtainState = { isRevealed: false };
 
   // Move function (touch and mouse)
   const handleMove = (e) => {
-    if (startY === null || !isDragging) return;
+    if (curtainDragState.startY === null || !curtainDragState.isDragging) return;
     const currentY = getY(e);
-    const dy = currentY - startY;
+    const dy = currentY - curtainDragState.startY;
     const coverEl = document.getElementById('curtain-cover');
+    if (!coverEl) return;
 
     // Calculate displacement: negative = up, positive = down
-    // Limit upward movement (not beyond curtain height)
-    // and don't allow going below initial position (0)
-    const translateY = Math.max(Math.min(dy, 0), -cover.offsetHeight);
+    // Allow going further up than the curtain height (user can keep dragging up)
+    // but don't allow going below initial position (0)
+    curtainDragState.currentTranslateY = Math.min(dy, 0);
 
-    coverEl.style.transform = `translateY(${translateY}px)`;
+    coverEl.style.transform = `translateY(${curtainDragState.currentTranslateY}px)`;
     coverEl.style.transition = 'none';
 
     // If lifted enough, show content
-    if (translateY < -80 && !curtainState.isRevealed) {
+    if (curtainDragState.currentTranslateY < -80 && !curtainState.isRevealed) {
       curtainState.isRevealed = true;
       const idx = state.revealOrder[state.currentReveal];
       const role = state.roles[idx];
@@ -766,15 +792,14 @@ let curtainState = { isRevealed: false };
       document.getElementById('word-text').textContent = word;
     }
 
-    if (e.type === 'mousemove') {
-      e.preventDefault(); // Prevent selection on desktop
-    }
+    e.preventDefault(); // Prevent selection
   };
 
   // End function (touch and mouse)
   const handleEnd = (e) => {
-    if (!isDragging || startY === null) return;
+    if (!curtainDragState.isDragging || curtainDragState.startY === null) return;
     const coverEl = document.getElementById('curtain-cover');
+    if (!coverEl) return;
 
     // ALWAYS bring the curtain down when released (GRAVITY)
     coverEl.style.transition = 'transform 0.4s ease';
@@ -791,32 +816,126 @@ let curtainState = { isRevealed: false };
       }, 400);
     }
 
-    startY = null;
-    isDragging = false;
+    curtainDragState.startY = null;
+    curtainDragState.isDragging = false;
+    curtainDragState.currentTranslateY = 0;
   };
 
   // Touch events (mobile)
-  curtain.addEventListener('touchstart', handleStart, {passive:true});
-  curtain.addEventListener('touchmove', handleMove, {passive:true});
-  curtain.addEventListener('touchend', handleEnd, {passive:true});
-  curtain.addEventListener('touchcancel', handleEnd, {passive:true});
+  curtain.addEventListener('touchstart', handleStart, {passive: false});
+  curtain.addEventListener('touchmove', handleMove, {passive: false});
+  curtain.addEventListener('touchend', handleEnd, {passive: true});
+  curtain.addEventListener('touchcancel', handleEnd, {passive: true});
 
-  // Mouse events (desktop)
+  // Mouse events (desktop) - start on curtain only
   curtain.addEventListener('mousedown', handleStart);
-  curtain.addEventListener('mousemove', handleMove);
-  curtain.addEventListener('mouseup', handleEnd);
-  curtain.addEventListener('mouseleave', (e) => {
-    // If mouse leaves area while dragging, release (gravity)
-    if (isDragging) {
-      handleEnd(e);
+
+  // Mouse move and up events on WINDOW so we can track even when cursor leaves everything
+  window.addEventListener('mousemove', handleMove);
+  window.addEventListener('mouseup', handleEnd);
+}
+
+// Initialize curtain handlers when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCurtainHandlers);
+} else {
+  initCurtainHandlers();
+}
+
+// ---------- Screen Wake Lock (prevent screen from sleeping during timers) ----------
+let wakeLock = null;
+let wakeLockVideo = null; // For iOS workaround
+
+// Detect if device is iOS
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+// Check if screen lock is enabled in settings
+function isScreenLockEnabled() {
+  const saved = localStorage.getItem(SCREEN_LOCK_STORAGE_KEY);
+  return saved === null ? true : saved === 'true'; // Default enabled
+}
+
+// Save screen lock preference
+function setScreenLockEnabled(enabled) {
+  localStorage.setItem(SCREEN_LOCK_STORAGE_KEY, enabled.toString());
+  updateScreenLockButton();
+}
+
+async function requestWakeLock() {
+  if (!isScreenLockEnabled()) return;
+
+  // Try native Wake Lock API first (works on Android Chrome, etc.)
+  if ('wakeLock' in navigator) {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', () => {
+        wakeLock = null;
+      });
+      console.log('Wake Lock activated (native API)');
+      return;
+    } catch (err) {
+      console.log('Wake lock request failed:', err);
     }
-  });
-})();
+  }
+
+  // Fallback for iOS - use hidden video loop
+  if (isIOS() && !wakeLockVideo) {
+    try {
+      wakeLockVideo = document.createElement('video');
+      wakeLockVideo.setAttribute('playsinline', '');
+      wakeLockVideo.setAttribute('muted', '');
+      wakeLockVideo.style.position = 'fixed';
+      wakeLockVideo.style.opacity = '0';
+      wakeLockVideo.style.pointerEvents = 'none';
+      wakeLockVideo.style.width = '1px';
+      wakeLockVideo.style.height = '1px';
+
+      // Minimal base64 encoded video (1 frame, silent)
+      wakeLockVideo.src = 'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAu1tZGF0AAACrQYF//+p3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE1NSByMjkwMSA3ZDBmZjIyIC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxOCAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTMgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTI1IHNjZW5lY3V0PTQwIGludHJhX3JlZnJlc2g9MCByY19sb29rYWhlYWQ9NDAgcmM9Y3JmIG1idHJlZT0xIGNyZj0yMy4wIHFjb21wPTAuNjAgcXBtaW49MCBxcG1heD02OSBxcHN0ZXA9NCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAAwWWIhAAz//727L4FNf2f0JcRLMXaSnA+KqSAgHc0wAAAAwAAAwAAJuKiZ0WFMeJsgAAAHGAFBCwCPCVC';
+      wakeLockVideo.loop = true;
+
+      document.body.appendChild(wakeLockVideo);
+      await wakeLockVideo.play();
+      console.log('Wake Lock activated (iOS video workaround)');
+    } catch (err) {
+      console.log('iOS wake lock workaround failed:', err);
+    }
+  }
+}
+
+function releaseWakeLock() {
+  // Release native Wake Lock
+  if (wakeLock) {
+    wakeLock.release();
+    wakeLock = null;
+  }
+
+  // Stop iOS video workaround
+  if (wakeLockVideo) {
+    wakeLockVideo.pause();
+    wakeLockVideo.remove();
+    wakeLockVideo = null;
+  }
+}
+
+// Re-request wake lock when page becomes visible again
+document.addEventListener('visibilitychange', async () => {
+  if (document.visibilityState === 'visible' && (wakeLock !== null || wakeLockVideo !== null)) {
+    await requestWakeLock();
+  }
+});
 
 // ---------- Timers ----------
 let timerInterval = null;
-function startPhaseTimer(phase, seconds, elementId, onEnd) {
+async function startPhaseTimer(phase, seconds, elementId, onEnd) {
   if (timerInterval) clearInterval(timerInterval);
+
+  // Request wake lock to keep screen on during timer
+  await requestWakeLock();
+
   const now = Date.now();
   state.timerPhase = phase;
   state.timerEndAt = now + seconds*1000;
@@ -825,7 +944,12 @@ function startPhaseTimer(phase, seconds, elementId, onEnd) {
   const tick = () => {
     const remaining = Math.max(0, Math.round((state.timerEndAt - Date.now())/1000));
     updateTimerDisplay(el, remaining);
-    if (remaining <= 0) { clearInterval(timerInterval); playBeep(); onEnd(); }
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      releaseWakeLock(); // Release wake lock when timer ends
+      playBeep();
+      onEnd();
+    }
   };
   tick();
   timerInterval = setInterval(tick, 1000);
@@ -847,17 +971,48 @@ function updateTimerDisplay(el, remaining) {
 }
 
 function playBeep() {
+  // Play alarm sound - 3 ascending beeps pattern repeated twice
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const osc = ctx.createOscillator(); const gain = ctx.createGain();
-  osc.connect(gain); gain.connect(ctx.destination); osc.frequency.value = 820; osc.type = 'sine';
-  gain.gain.setValueAtTime(0.3, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.45);
-  osc.start(); osc.stop(ctx.currentTime + 0.45);
+  const now = ctx.currentTime;
+
+  // Frequencies for alarm pattern (ascending)
+  const frequencies = [523, 659, 784]; // C5, E5, G5
+  const beepDuration = 0.15;
+  const gapDuration = 0.08;
+  const patternGap = 0.3;
+
+  let time = now;
+
+  // Play pattern twice
+  for (let pattern = 0; pattern < 2; pattern++) {
+    for (let i = 0; i < frequencies.length; i++) {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = frequencies[i];
+      osc.type = 'square'; // More alarm-like sound
+
+      gain.gain.setValueAtTime(0, time);
+      gain.gain.linearRampToValueAtTime(0.25, time + 0.02);
+      gain.gain.setValueAtTime(0.25, time + beepDuration - 0.02);
+      gain.gain.linearRampToValueAtTime(0, time + beepDuration);
+
+      osc.start(time);
+      osc.stop(time + beepDuration);
+
+      time += beepDuration + gapDuration;
+    }
+    time += patternGap;
+  }
 }
 
 // ---------- Game phases ----------
 function startGamePhase() { state.phase = 'game'; saveState(); showScreen('game-screen'); startPhaseTimer('game', state.gameTime, 'game-timer', startDeliberationPhase); }
 function startDeliberationPhase() { state.phase = 'deliberation'; saveState(); showScreen('deliberation-screen'); startPhaseTimer('deliberation', state.deliberationTime, 'deliberation-timer', startVotingPhase); }
 function startVotingPhase(candidates = null, isTiebreak = false) {
+  releaseWakeLock(); // Release wake lock when voting starts (no timer)
   state.phase = 'voting';
   state.votingPlayer = 0;
   state.votes = {};
@@ -868,8 +1023,8 @@ function startVotingPhase(candidates = null, isTiebreak = false) {
   renderVoting();
   showScreen('voting-screen');
 }
-function skipToDeliberation() { if (timerInterval) clearInterval(timerInterval); startDeliberationPhase(); }
-function skipToVoting() { if (timerInterval) clearInterval(timerInterval); startVotingPhase(); }
+function skipToDeliberation() { if (timerInterval) clearInterval(timerInterval); releaseWakeLock(); startDeliberationPhase(); }
+function skipToVoting() { if (timerInterval) clearInterval(timerInterval); releaseWakeLock(); startVotingPhase(); }
 function startTiebreakDeliberation(candidates) {
   state.phase = 'deliberation';
   state.tiebreakCandidates = candidates;
@@ -896,16 +1051,22 @@ function renderVoting() {
   pool.forEach(i => {
      const item = document.createElement('div');
      item.className = 'player-item';
+
+     // Marcar como disabled ANTES de añadir al DOM para que la animación correcta se aplique
+     if (i === state.votingPlayer) {
+       item.classList.add('disabled');
+       // NO aplicar opacity inline - dejamos que CSS lo maneje con la animación
+       item.style.pointerEvents = 'none';
+     }
+
      item.textContent = state.playerNames[i];
      if (state.votes[i]) item.innerHTML += `<span class="vote-count">${t('votes')}: ${state.votes[i]}</span>`;
      if (state.selections.includes(i)) item.classList.add('selected');
-     if (i === state.votingPlayer) {
-       item.classList.add('disabled');
-       item.style.opacity = '0.5';
-       item.style.pointerEvents = 'none';
-    } else {
-      item.onclick = () => toggleSelection(i, item);
-    }
+
+     if (i !== state.votingPlayer) {
+       item.onclick = () => toggleSelection(i, item);
+     }
+
     list.appendChild(item);
   });
   updateConfirmButton();
@@ -973,6 +1134,10 @@ function handleVoteOutcome() {
 // ---------- Results ----------
 function showResults(isTiebreak = false) {
   state.phase = 'results'; saveState();
+
+  // Liberar Wake Lock cuando termina la partida
+  releaseWakeLock();
+
   const executed = state.executed || [];
   let impostorsAlive = 0;
   state.roles.forEach((r,i) => { if (r === 'IMPOSTOR' && !executed.includes(i)) impostorsAlive++; });
@@ -1005,6 +1170,8 @@ function showScreen(id) {
 
 function newMatch() {
   clearState();
+  releaseWakeLock(); // Make sure wake lock is released when exiting game
+  if (timerInterval) clearInterval(timerInterval);
   state = { ...state, phase:'welcome', timerEndAt:null, timerPhase:null, votingPool:null, isTiebreak:false, tiebreakCandidates:[] };
   saveState();
   showScreen('welcome-screen');
@@ -1023,14 +1190,20 @@ function confirmExitGame() {
 function updateExitButtonVisibility() {
   const exitBtn = document.getElementById('exit-game');
   const langBtn = document.getElementById('language-toggle');
+  const screenLockBtn = document.getElementById('screen-lock-toggle');
 
-  // Show exit button and hide language toggle in all phases except welcome and setup
+  // Show exit button and hide language/screen-lock toggles in all phases except welcome and setup
   if (state.phase !== 'welcome' && state.phase !== 'setup') {
     exitBtn.classList.add('visible');
     if (langBtn) langBtn.style.display = 'none';
+    if (screenLockBtn) screenLockBtn.classList.remove('visible');
   } else {
     exitBtn.classList.remove('visible');
     if (langBtn) langBtn.style.display = 'inline-flex';
+    // Only show screen lock button on iOS
+    if (screenLockBtn && isIOS()) {
+      screenLockBtn.classList.add('visible');
+    }
   }
 }
 
@@ -1067,6 +1240,35 @@ function toggleTheme() {
 const initialTheme = loadTheme();
 applyTheme(initialTheme);
 
+// ---------- Screen Lock Button ----------
+function updateScreenLockButton() {
+  const btn = document.getElementById('screen-lock-toggle');
+  if (!btn) return;
+
+  const enabled = isScreenLockEnabled();
+  const icon = btn.querySelector('.screen-lock-icon');
+
+  if (enabled) {
+    btn.classList.add('active');
+    btn.setAttribute('title', 'Bloqueo de pantalla activado');
+    if (icon) icon.textContent = '🔒';
+  } else {
+    btn.classList.remove('active');
+    btn.setAttribute('title', 'Bloqueo de pantalla desactivado');
+    if (icon) icon.textContent = '🔓';
+  }
+}
+
+function toggleScreenLock() {
+  const currentState = isScreenLockEnabled();
+  setScreenLockEnabled(!currentState);
+
+  // If disabling, release any active wake lock
+  if (currentState) {
+    releaseWakeLock();
+  }
+}
+
 // Event listener for theme and language buttons
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
@@ -1077,6 +1279,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const languageToggle = document.getElementById('language-toggle');
   if (languageToggle) {
     languageToggle.addEventListener('click', toggleLanguage);
+  }
+
+  const screenLockToggle = document.getElementById('screen-lock-toggle');
+  if (screenLockToggle) {
+    screenLockToggle.addEventListener('click', toggleScreenLock);
+    updateScreenLockButton();
   }
 
   // Initialize language
@@ -1133,4 +1341,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize exit button visibility
   updateExitButtonVisibility();
+
+  // Initialize screen lock button for iOS
+  initScreenLockButton();
 })();
