@@ -8,6 +8,9 @@ on:
       - 'script.js'
       - 'styles.css'
       - 'logo.png'
+      - 'index.html'
+      - 'version-assets.sh'
+      - '.github/workflows/version-assets.yml'
 
 jobs:
   version-assets:
