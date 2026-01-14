@@ -49,17 +49,21 @@ for asset in "${ASSETS[@]}"; do
     echo "📦 Versionando: $asset → $versioned"
     cp "$asset" "$versioned"
 
-    # Actualizar referencia en HTML
+    # Obtener nombre base y extensión para el patrón
+    base="${asset%.*}"
+    ext="${asset##*.}"
+
+    # Actualizar referencia en HTML (busca versión original o hasheada)
     case "$asset" in
         *.js)
-            sed -i "s|src=\"${asset}\"|src=\"${versioned}\"|g" "$HTML_FILE"
+            sed -i -E "s|src=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|src=\"${versioned}\"|g" "$HTML_FILE"
             ;;
         *.css)
-            sed -i "s|href=\"${asset}\"|href=\"${versioned}\"|g" "$HTML_FILE"
+            sed -i -E "s|href=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|href=\"${versioned}\"|g" "$HTML_FILE"
             ;;
         *.png)
-            sed -i "s|href=\"${asset}\"|href=\"${versioned}\"|g" "$HTML_FILE"
-            sed -i "s|src=\"${asset}\"|src=\"${versioned}\"|g" "$HTML_FILE"
+            sed -i -E "s|href=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|href=\"${versioned}\"|g" "$HTML_FILE"
+            sed -i -E "s|src=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|src=\"${versioned}\"|g" "$HTML_FILE"
             ;;
     esac
 
