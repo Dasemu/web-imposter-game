@@ -1,0 +1,18 @@
+# Robots.txt for Juego del Impostor
+# https://impostor.dariosevilla.es
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://impostor.dariosevilla.es/sitemap.xml
+
+# Allow all crawlers to access the main content
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl-delay for polite crawling (optional)
+Crawl-delay: 1
