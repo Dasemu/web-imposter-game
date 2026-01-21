@@ -1,0 +1,26 @@
+{
+  "name": "web-imposter-game",
+  "version": "1.0.0",
+  "description": "Role-based impostor-style game for mobile, 100% in the browser with no backend.",
+  "main": "script.js",
+  "scripts": {
+    "cap:sync": "npx cap sync",
+    "cap:open:android": "npx cap open android",
+    "cap:run:android": "npx cap run android"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.dariosevilla.es/dasemu/web-imposter-game"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/android": "^8.0.1",
+    "@capacitor/cli": "^8.0.1",
+    "@capacitor/core": "^8.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

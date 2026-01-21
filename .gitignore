@@ -1,1 +1,20 @@
 .idea/
+
+# Dependencies
+node_modules/
+
+# Android build artifacts
+android/app/build/
+android/.gradle/
+android/local.properties
+android/keystore.properties
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# iOS build artifacts (if added later)
+ios/App/Pods/
+ios/App/App.xcworkspace/
+ios/DerivedData/
+*.ipa
