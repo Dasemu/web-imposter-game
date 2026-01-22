@@ -7,6 +7,17 @@ const THEME_STORAGE_KEY = 'impostorGameTheme';
 const LANGUAGE_STORAGE_KEY = 'impostorGameLanguage';
 const SCREEN_LOCK_STORAGE_KEY = 'impostorGameScreenLock';
 
+// Detect if running as a native app (Capacitor/Cordova)
+(function detectNativeApp() {
+  const isCapacitor = window.Capacitor !== undefined;
+  const isCordova = window.cordova !== undefined;
+  const isNativeApp = isCapacitor || isCordova;
+
+  if (isNativeApp) {
+    document.documentElement.classList.add('native-app');
+  }
+})();
+
 // ---------- Internationalization system ----------
 const TRANSLATIONS = {
   es: {

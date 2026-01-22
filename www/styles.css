@@ -111,6 +111,27 @@ body {
   transition: background 0.5s ease, color 0.3s ease;
 }
 
+/* Native app (Capacitor/Cordova) status bar adjustment */
+.native-app body {
+  padding-top: calc(70px + 32px);
+}
+
+.native-app .theme-toggle {
+  top: calc(20px + 32px);
+}
+
+.native-app .language-toggle {
+  top: calc(86px + 32px);
+}
+
+.native-app .exit-game {
+  top: calc(20px + 32px);
+}
+
+.native-app .screen-lock-toggle {
+  top: calc(152px + 32px);
+}
+
 /* Film grain texture overlay */
 body::before {
   content: '';
