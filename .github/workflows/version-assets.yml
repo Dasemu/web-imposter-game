@@ -15,12 +15,13 @@ on:
 jobs:
   version-assets:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.APP_SECRET }}
           fetch-depth: 0
 
       - name: Delete old versioned assets
