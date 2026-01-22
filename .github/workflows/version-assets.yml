@@ -5,10 +5,10 @@ on:
     branches:
       - main
     paths:
-      - 'script.js'
-      - 'styles.css'
-      - 'logo.png'
-      - 'index.html'
+      - 'www/script.js'
+      - 'www/styles.css'
+      - 'www/logo.png'
+      - 'www/index.html'
       - 'version-assets.sh'
       - '.github/workflows/version-assets.yml'
 
@@ -26,7 +26,7 @@ jobs:
       - name: Delete old versioned assets
         run: |
           echo "🗑️ Borrando archivos hasheados antiguos..."
-          rm -f *.*.js *.*.css *.*.png || true
+          rm -f www/*.*.js www/*.*.css www/*.*.png || true
           git add -A
 
       - name: Run asset versioning
@@ -49,6 +49,6 @@ jobs:
         run: |
           git config --local user.email "ci@dariosevilla.es"
           git config --local user.name "CI Action"
-          git add *.*.js *.*.css *.*.png index.html
+          git add www/*.*.js www/*.*.css www/*.*.png www/index.html
           git commit -m "chore: update asset versions [skip ci]"
           git push

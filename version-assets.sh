@@ -7,6 +7,9 @@ set -e
 echo "🚀 Iniciando versionado de archivos estáticos..."
 echo ""
 
+# Directorio de trabajo
+WWW_DIR="www"
+
 # Archivos a versionar
 ASSETS=("script.js" "styles.css" "logo.png")
 HTML_FILE="index.html"
@@ -28,26 +31,29 @@ get_versioned_name() {
 
 # Limpiar archivos versionados antiguos
 echo "🗑️  Limpiando versiones antiguas..."
-rm -f *.*.js *.*.css *.*.png 2>/dev/null || true
+rm -f "$WWW_DIR"/*.*.js "$WWW_DIR"/*.*.css "$WWW_DIR"/*.*.png 2>/dev/null || true
 echo ""
 
 # Crear backup del HTML
-cp "$HTML_FILE" "${HTML_FILE}.bak"
+cp "$WWW_DIR/$HTML_FILE" "$WWW_DIR/${HTML_FILE}.bak"
 
 # Versionar cada archivo
 for asset in "${ASSETS[@]}"; do
-    if [[ ! -f "$asset" ]]; then
-        echo "⚠️  Advertencia: $asset no encontrado, saltando..."
+    asset_path="$WWW_DIR/$asset"
+
+    if [[ ! -f "$asset_path" ]]; then
+        echo "⚠️  Advertencia: $asset_path no encontrado, saltando..."
         continue
     fi
 
     # Generar hash
-    hash=$(generate_hash "$asset")
+    hash=$(generate_hash "$asset_path")
     versioned=$(get_versioned_name "$asset" "$hash")
+    versioned_path="$WWW_DIR/$versioned"
 
     # Copiar archivo con versión
     echo "📦 Versionando: $asset → $versioned"
-    cp "$asset" "$versioned"
+    cp "$asset_path" "$versioned_path"
 
     # Obtener nombre base y extensión para el patrón
     base="${asset%.*}"
@@ -56,14 +62,14 @@ for asset in "${ASSETS[@]}"; do
     # Actualizar referencia en HTML (busca versión original o hasheada)
     case "$asset" in
         *.js)
-            sed -i -E "s|src=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|src=\"${versioned}\"|g" "$HTML_FILE"
+            sed -i -E "s|src=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|src=\"${versioned}\"|g" "$WWW_DIR/$HTML_FILE"
             ;;
         *.css)
-            sed -i -E "s|href=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|href=\"${versioned}\"|g" "$HTML_FILE"
+            sed -i -E "s|href=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|href=\"${versioned}\"|g" "$WWW_DIR/$HTML_FILE"
             ;;
         *.png)
-            sed -i -E "s|href=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|href=\"${versioned}\"|g" "$HTML_FILE"
-            sed -i -E "s|src=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|src=\"${versioned}\"|g" "$HTML_FILE"
+            sed -i -E "s|href=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|href=\"${versioned}\"|g" "$WWW_DIR/$HTML_FILE"
+            sed -i -E "s|src=\"${base}(\.[a-f0-9]{8})?\.${ext}\"|src=\"${versioned}\"|g" "$WWW_DIR/$HTML_FILE"
             ;;
     esac
 
@@ -72,9 +78,9 @@ for asset in "${ASSETS[@]}"; do
 done
 
 # Limpiar backup
-rm -f "${HTML_FILE}.bak"
+rm -f "$WWW_DIR/${HTML_FILE}.bak"
 
 echo "✅ Versionado completado exitosamente!"
 echo ""
 echo "📋 Archivos versionados:"
-ls -1 *.*.{js,css,png} 2>/dev/null || echo "   (ninguno)"
+ls -1 "$WWW_DIR"/*.*.{js,css,png} 2>/dev/null || echo "   (ninguno)"
