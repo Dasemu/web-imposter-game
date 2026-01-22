@@ -34,13 +34,24 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
 
+      - name: Check if keystore exists
+        id: keystore-check
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+
       - name: Decode keystore
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        if: steps.keystore-check.outputs.exists == 'true'
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > android/impostor.keystore
 
       - name: Create keystore.properties
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        if: steps.keystore-check.outputs.exists == 'true'
         run: |
           cat > android/keystore.properties << EOF
           storeFile=../impostor.keystore
@@ -50,17 +61,17 @@ jobs:
           EOF
 
       - name: Build Release APK
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        if: steps.keystore-check.outputs.exists == 'true'
         working-directory: android
         run: ./gradlew assembleRelease --no-daemon
 
       - name: Build Debug APK (fallback)
-        if: ${{ secrets.KEYSTORE_BASE64 == '' }}
+        if: steps.keystore-check.outputs.exists == 'false'
         working-directory: android
         run: ./gradlew assembleDebug --no-daemon
 
       - name: Upload Release APK
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        if: steps.keystore-check.outputs.exists == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: impostor-game-release
@@ -68,7 +79,7 @@ jobs:
           retention-days: 30
 
       - name: Upload Debug APK (fallback)
-        if: ${{ secrets.KEYSTORE_BASE64 == '' }}
+        if: steps.keystore-check.outputs.exists == 'false'
         uses: actions/upload-artifact@v4
         with:
           name: impostor-game-debug
