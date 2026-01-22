@@ -10,18 +10,17 @@ on:
       - 'www/logo.png'
       - 'www/index.html'
       - 'version-assets.sh'
-      - '.github/workflows/version-assets.yml'
+      - '.gitea/workflows/version-assets.yml'
 
 jobs:
   version-assets:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.APP_SECRET }}
           fetch-depth: 0
 
       - name: Delete old versioned assets
