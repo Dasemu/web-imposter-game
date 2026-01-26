@@ -77,10 +77,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600;700&family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.3a5cdf49.css">
+    <link rel="stylesheet" href="styles.715a864d.css">
     <link rel="icon" type="image/png" href="logo.78f51359.png">
     <link rel="sitemap" type="application/xml" href="/www/sitemap.xml">
-    <link rel="stylesheet" href="styles.3a5cdf49.css">
+    <link rel="stylesheet" href="styles.715a864d.css">
     <link rel="icon" type="image/png" href="logo.78f51359.png">
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#ff4444">
@@ -183,6 +183,19 @@
                 <label for="deliberation-time">Deliberación (seg):</label>
                 <input type="number" id="deliberation-time" min="30" max="300" step="10" value="170">
             </div>
+            <div class="form-group compact">
+                <label id="voting-mode-label">Modo de votación:</label>
+                <div class="voting-mode-selector" id="voting-mode-selector">
+                    <button type="button" class="voting-mode-btn selected" id="voting-mode-individual" onclick="setVotingMode('individual')">
+                        <span class="voting-mode-icon">🗳️</span>
+                        <span class="voting-mode-name">Individual</span>
+                    </button>
+                    <button type="button" class="voting-mode-btn" id="voting-mode-raisedHand" onclick="setVotingMode('raisedHand')">
+                        <span class="voting-mode-icon">✋</span>
+                        <span class="voting-mode-name">Mano alzada</span>
+                    </button>
+                </div>
+            </div>
             <button onclick="goToPools()">Siguiente</button>
             <button class="ghost" onclick="showScreen('welcome-screen')">← Volver</button>
         </div>
@@ -190,7 +203,6 @@
         <!-- Pools selection screen -->
         <div id="pools-screen" class="screen">
             <h1>Selección de Pools</h1>
-            <p class="info-text">Toca para seleccionar las categorías de palabras que quieres usar en la partida.</p>
             <div class="pool-buttons-wrapper">
                 <div id="pool-buttons" class="pool-buttons"></div>
             </div>
@@ -210,7 +222,6 @@
         <div id="pre-reveal-screen" class="screen">
             <h1>Listo para revelar</h1>
             <div class="info-text" id="config-summary"></div>
-            <p class="info-text">Cada jugador debe ver su rol en secreto. Desliza la cortina hacia arriba para revelar.</p>
             <button onclick="showScreen('reveal-screen'); loadCurrentReveal();">Empezar revelación</button>
             <button class="ghost" onclick="showScreen('names-screen')">← Volver</button>
         </div>
@@ -218,7 +229,7 @@
         <!-- Revelation screen -->
         <div id="reveal-screen" class="screen">
             <h1>Revelación</h1>
-            <p class="info-text">Turno de: <strong><span id="current-player-name">Jugador 1</span></strong><br><small>Los demás, no miréis. Mantén levantada la cortina para ver tu rol.</small></p>
+            <p class="info-text">Turno de: <strong><span id="current-player-name">Jugador 1</span></strong></p>
             <div class="curtain" id="curtain">
                 <div class="curtain-cover" id="curtain-cover">
                     <div class="curtain-icon">▲</div>
@@ -265,7 +276,7 @@
         </div>
     </div>
 
-    <script src="script.52beba25.js"></script>
+    <script src="script.8a765c63.js"></script>
 </body>
 </html>
 

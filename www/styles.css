@@ -740,7 +740,7 @@ button:disabled {
   margin: 8px 0;
   color: var(--text-secondary);
   line-height: 1.7;
-  font-size: 0.85em;
+  font-size: 1em;
   letter-spacing: 0.3px;
 }
 
@@ -1107,7 +1107,7 @@ button:disabled {
 .info-text {
   text-align: center;
   margin: 14px 0;
-  font-size: 0.85em;
+  font-size: 1em;
   line-height: 1.7;
   background: var(--surface-card);
   padding: 14px 16px;
@@ -1143,14 +1143,14 @@ button:disabled {
 
 .player-item {
   padding: 18px 14px;
-  min-height: 80px; /* Altura fija para evitar cambios de tamaño con vote-count */
+  min-height: 80px;
   background: var(--surface-card);
   border-radius: 0;
   text-align: center;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   font-weight: 800;
-  font-size: 0.85em;
+  font-size: 1em;
   border: 3px solid var(--border-medium);
   box-shadow: var(--shadow-sm);
   letter-spacing: 0.5px;
@@ -1456,6 +1456,60 @@ button:disabled {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VOTING MODE SELECTOR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.voting-mode-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.voting-mode-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border: 2px solid var(--border-medium);
+  background: var(--surface-card);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+  width: 100%;
+  clip-path: none;
+}
+
+.voting-mode-btn:hover {
+  background: var(--surface-hover);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.05);
+}
+
+.voting-mode-btn.selected {
+  border-color: var(--text-primary);
+  background: var(--accent-warning);
+  color: var(--text-inverted);
+  box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.3), 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.voting-mode-icon {
+  font-size: 1.5em;
+}
+
+.voting-mode-name {
+  font-size: 0.85em;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    FIXED UI CONTROLS (Theme, Language, Exit)
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
@@ -1657,11 +1711,11 @@ button:disabled {
 @media (max-width: 600px) {
   body {
     padding: 60px 10px 10px 10px;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   h1 {
-    font-size: 1.7em;
+    font-size: 2em;
     margin-bottom: 14px;
   }
 
@@ -1717,22 +1771,23 @@ button:disabled {
   }
 
   .timer {
-    font-size: 2.5em;
-    padding: 16px;
+    font-size: 3em;
+    padding: 18px;
   }
 
   .welcome-title {
-    font-size: 1.8em;
+    font-size: 2.2em;
   }
 
   .role {
-    font-size: 1.6em;
-    padding: 10px 18px;
+    font-size: 2em;
+    padding: 12px 20px;
+    letter-spacing: 4px;
   }
 
   .word {
-    font-size: 1.3em;
-    padding: 12px 20px;
+    font-size: 1.8em;
+    padding: 14px 24px;
   }
 
   .form-group {
@@ -1754,34 +1809,38 @@ button:disabled {
   }
 
   .rule-section h3 {
-    font-size: 0.85em;
+    font-size: 1em;
     margin-bottom: 10px;
   }
 
   .rule-section p {
-    font-size: 0.8em;
+    font-size: 0.95em;
     margin: 6px 0;
   }
 
   .player-name-item {
-    padding: 10px;
-    margin-bottom: 6px;
+    padding: 12px;
+    margin-bottom: 8px;
   }
 
   .player-name-item span {
-    font-size: 0.75em;
+    font-size: 0.9em;
     min-width: 70px;
   }
 
+  .player-name-item input {
+    font-size: 1em;
+  }
+
   .player-item {
-    padding: 14px 10px;
-    min-height: 72px; /* Altura fija también en móvil */
-    font-size: 0.8em;
+    padding: 16px 12px;
+    min-height: 80px;
+    font-size: 1em;
   }
 
   .pool-btn {
-    padding: 10px 8px;
-    font-size: 0.75em;
+    padding: 12px 10px;
+    font-size: 0.95em;
   }
 
   .pool-buttons-wrapper {
@@ -1796,14 +1855,32 @@ button:disabled {
   }
 
   .info-text {
-    padding: 12px 14px;
-    font-size: 0.8em;
+    padding: 14px 16px;
+    font-size: 1em;
     margin: 10px 0;
   }
 
   .curtain {
-    height: 240px;
+    height: 260px;
     margin: 10px 0;
+  }
+
+  .curtain-cover {
+    font-size: 1.3em;
+  }
+
+  .curtain-icon {
+    font-size: 2em;
+  }
+
+  /* Labels más grandes en móvil */
+  label {
+    font-size: 0.95em;
+  }
+
+  /* Botones más grandes */
+  button {
+    font-size: 1em;
   }
 }
 

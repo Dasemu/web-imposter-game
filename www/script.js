@@ -88,7 +88,15 @@ const TRANSLATIONS = {
     everydayObjects: 'Objetos Cotidianos',
     exitGame: 'Salir de la partida',
     poolsSelection: 'Selección de Pools',
-    poolsSelectionText: 'Toca para seleccionar las categorías de palabras que quieres usar en la partida.'
+    poolsSelectionText: 'Toca para seleccionar las categorías de palabras que quieres usar en la partida.',
+    votingMode: 'Modo de votación',
+    individualVoting: 'Individual',
+    individualVotingDesc: 'Cada jugador vota en secreto',
+    raisedHandVoting: 'Mano alzada',
+    raisedHandVotingDesc: 'Votación grupal única',
+    groupVotingTitle: 'Votación a mano alzada',
+    groupVotingInstruction: 'Decidid en grupo a quién eliminar. Seleccionad',
+    groupVotingSuspects: 'sospechoso(s)'
   },
   en: {
     gameTitle: 'The Impostor Game',
@@ -158,7 +166,15 @@ const TRANSLATIONS = {
     everydayObjects: 'Everyday Objects',
     exitGame: 'Exit Game',
     poolsSelection: 'Pool Selection',
-    poolsSelectionText: 'Tap to select the word categories you want to use in the game.'
+    poolsSelectionText: 'Tap to select the word categories you want to use in the game.',
+    votingMode: 'Voting mode',
+    individualVoting: 'Individual',
+    individualVotingDesc: 'Each player votes secretly',
+    raisedHandVoting: 'Raised hand',
+    raisedHandVotingDesc: 'Single group vote',
+    groupVotingTitle: 'Raised hand voting',
+    groupVotingInstruction: 'Decide as a group who to eliminate. Select',
+    groupVotingSuspects: 'suspect(s)'
   }
 };
 
@@ -169,7 +185,21 @@ function getBrowserLanguage() {
   return lang.startsWith('es') ? 'es' : 'en';
 }
 
+function getUrlLanguage() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const lang = urlParams.get('lang');
+  if (lang === 'en' || lang === 'es') {
+    return lang;
+  }
+  return null;
+}
+
 function loadLanguage() {
+  // Priority: URL param > localStorage > browser language
+  const urlLang = getUrlLanguage();
+  if (urlLang) {
+    return urlLang;
+  }
   const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY);
   return saved || getBrowserLanguage();
 }
@@ -203,6 +233,9 @@ async function updateUI() {
 
   // Update all static text elements
   updateStaticTexts();
+
+  // Update voting mode buttons
+  updateVotingModeButtons();
 
   // Reload pools for the new language (wait for it to complete)
   await loadPoolsList();
@@ -284,9 +317,6 @@ function updateStaticTexts() {
   const poolsTitle = document.querySelector('#pools-screen h1');
   if (poolsTitle) poolsTitle.textContent = t('poolsSelection');
 
-  const poolsText = document.querySelector('#pools-screen .info-text');
-  if (poolsText) poolsText.textContent = t('poolsSelectionText');
-
   // Names screen
   const namesTitle = document.querySelector('#names-screen h1');
   if (namesTitle) namesTitle.textContent = t('playerNames');
@@ -294,9 +324,6 @@ function updateStaticTexts() {
   // Pre-reveal screen
   const preRevealTitle = document.querySelector('#pre-reveal-screen h1');
   if (preRevealTitle) preRevealTitle.textContent = t('readyToReveal');
-
-  const preRevealText = document.querySelector('#pre-reveal-screen .info-text:not(#config-summary)');
-  if (preRevealText) preRevealText.textContent = t('eachPlayerSecret');
 
   // Reveal screen
   const revealTitle = document.querySelector('#reveal-screen h1');
@@ -388,7 +415,8 @@ let state = {
   selectedPools: [], // Now it's an array for multiple pools, will be populated based on language
   votingPool: null,
   isTiebreak: false,
-  tiebreakCandidates: []
+  tiebreakCandidates: [],
+  votingMode: 'individual' // 'individual' or 'raisedHand'
 };
 
 const saveState = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -532,6 +560,33 @@ async function pickWords() {
 
   // wordPair is [civilian_word, impostor_word]
   return { civilian: wordPair[0], impostor: wordPair[1] };
+}
+
+// ---------- Voting Mode ----------
+function setVotingMode(mode) {
+  state.votingMode = mode;
+  saveState();
+  updateVotingModeButtons();
+}
+
+function updateVotingModeButtons() {
+  const individualBtn = document.getElementById('voting-mode-individual');
+  const raisedHandBtn = document.getElementById('voting-mode-raisedHand');
+
+  if (individualBtn && raisedHandBtn) {
+    individualBtn.classList.toggle('selected', state.votingMode === 'individual');
+    raisedHandBtn.classList.toggle('selected', state.votingMode === 'raisedHand');
+
+    // Update text based on language
+    individualBtn.querySelector('.voting-mode-name').textContent = t('individualVoting');
+    raisedHandBtn.querySelector('.voting-mode-name').textContent = t('raisedHandVoting');
+  }
+
+  // Update label
+  const label = document.getElementById('voting-mode-label');
+  if (label) {
+    label.textContent = t('votingMode') + ':';
+  }
 }
 
 function renderPoolButtons() {
@@ -705,7 +760,7 @@ function loadCurrentReveal() {
   // Update curtain text
   const revealText = document.querySelector('#reveal-screen .info-text');
   if (revealText) {
-    revealText.innerHTML = `${t('turnOf')}: <strong><span id="current-player-name">${name}</span></strong><br><small>${t('othersLookAway')}</small>`;
+    revealText.innerHTML = `${t('turnOf')}: <strong><span id="current-player-name">${name}</span></strong>`;
   }
 
   const curtainText = document.querySelector('.curtain-cover div:last-child');
@@ -1047,6 +1102,14 @@ function startTiebreakDeliberation(candidates) {
 // ---------- Secret voting ----------
 function renderVoting() {
   const pool = state.votingPool || Array.from({length: state.numPlayers}, (_, i) => i);
+
+  // Check if we're in raised hand mode
+  if (state.votingMode === 'raisedHand') {
+    renderRaisedHandVoting(pool);
+    return;
+  }
+
+  // Individual voting mode
   const voter = state.playerNames[state.votingPlayer];
   document.getElementById('voter-name').textContent = voter;
   document.getElementById('votes-needed').textContent = state.numImpostors;
@@ -1055,6 +1118,12 @@ function renderVoting() {
   const votingInfo = document.querySelector('#voting-screen .info-text');
   if (votingInfo) {
     votingInfo.innerHTML = `${t('passMobileTo')} <strong id="voter-name">${voter}</strong>. ${t('chooseSuspects')} <span id="votes-needed">${state.numImpostors}</span> ${t('suspect')}.`;
+  }
+
+  // Update title
+  const votingTitle = document.querySelector('#voting-screen h1');
+  if (votingTitle) {
+    votingTitle.textContent = t('secretVoting');
   }
 
   state.selections = state.selections || [];
@@ -1083,6 +1152,50 @@ function renderVoting() {
   updateConfirmButton();
 }
 
+function renderRaisedHandVoting(pool) {
+  // Update title
+  const votingTitle = document.querySelector('#voting-screen h1');
+  if (votingTitle) {
+    votingTitle.textContent = t('groupVotingTitle');
+  }
+
+  // Update voting instruction text
+  const votingInfo = document.querySelector('#voting-screen .info-text');
+  if (votingInfo) {
+    votingInfo.innerHTML = `${t('groupVotingInstruction')} <span id="votes-needed">${state.numImpostors}</span> ${t('groupVotingSuspects')}.`;
+  }
+
+  state.selections = state.selections || [];
+  const list = document.getElementById('vote-list');
+  list.innerHTML = '';
+
+  pool.forEach(i => {
+    const item = document.createElement('div');
+    item.className = 'player-item';
+    item.textContent = state.playerNames[i];
+
+    if (state.selections.includes(i)) {
+      item.classList.add('selected');
+    }
+
+    item.onclick = () => toggleRaisedHandSelection(i);
+    list.appendChild(item);
+  });
+
+  updateConfirmButton();
+}
+
+function toggleRaisedHandSelection(idx) {
+  if (state.selections.includes(idx)) {
+    state.selections = state.selections.filter(x => x !== idx);
+  } else {
+    if (state.selections.length >= state.numImpostors) return;
+    state.selections.push(idx);
+  }
+  saveState();
+  renderVoting();
+}
+
 function toggleSelection(idx, el) {
   if (idx === state.votingPlayer) return;
   if (state.selections.includes(idx)) state.selections = state.selections.filter(x => x !== idx);
@@ -1100,6 +1213,14 @@ function updateConfirmButton() {
 }
 
 function confirmCurrentVote() {
+  // Raised hand mode: direct execution
+  if (state.votingMode === 'raisedHand') {
+    state.executed = [...state.selections];
+    showResults();
+    return;
+  }
+
+  // Individual mode: count votes
   state.selections.forEach(t => { state.votes[t] = (state.votes[t] || 0) + 1; });
   state.votingPlayer++;
   state.selections = [];
@@ -1344,6 +1465,10 @@ if ('serviceWorker' in navigator) {
     document.getElementById('game-time').value = defaultGTime;
     document.getElementById('deliberation-time').value = defaultDTime;
   }
+
+  // Initialize voting mode buttons
+  if (!state.votingMode) state.votingMode = 'individual';
+  updateVotingModeButtons();
 
   // Determine initial screen
   if (!restored || state.phase === 'setup' || state.phase === 'welcome') {
