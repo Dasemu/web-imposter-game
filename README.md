@@ -82,3 +82,4 @@ This makes the game more interesting as impostors have a related word to work wi
 - State is saved in `localStorage` (`impostorGameStateV2`). Use "New match" to clear it.
 - Mobile optimized: **No scrolling required** on setup screen, reveal via swipe or tap, compact adaptive UI.
 - Pool selection grid has vertical scroll when needed to fit all 22 categories.
+
