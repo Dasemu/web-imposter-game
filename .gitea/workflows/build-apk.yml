@@ -1,6 +1,9 @@
 name: Build Android APK
 
 on:
+  push:
+    branches:
+      - main
   workflow_run:
     workflows: ["Version Static Assets"]
     types:
@@ -14,9 +17,10 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Only run if triggered by workflow_dispatch or successful completion of version-assets
+    # Only run if triggered by workflow_dispatch, push to main, or successful completion of version-assets
     if: >
       github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push' ||
       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
 
     steps:
