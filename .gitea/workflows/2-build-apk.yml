@@ -84,15 +84,67 @@ jobs:
             cp android/app/build/outputs/apk/debug/app-debug.apk impostor-game.apk
           fi
 
-      - name: Update latest release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: latest
-          name: Latest Build
-          body: |
-            Última versión del APK generada automáticamente.
+      - name: Update latest release (Gitea API)
+        env:
+          TOKEN: ${{ secrets.GITEA_TOKEN }}
+        run: |
+          set -euo pipefail
 
-            Commit: ${{ github.sha }}
-          files: impostor-game.apk
-          prerelease: false
-          make_latest: true
+          API_BASE="${GITEA_API_URL:-${GITHUB_API_URL:-}}"
+          if [ -z "$API_BASE" ]; then
+            if [ -n "${GITEA_SERVER_URL:-}" ]; then
+              API_BASE="${GITEA_SERVER_URL}/api/v1"
+            elif [ -n "${GITHUB_SERVER_URL:-}" ]; then
+              API_BASE="${GITHUB_SERVER_URL}/api/v1"
+            else
+              echo "::error::Missing API base (GITEA_API_URL/GITHUB_API_URL)."
+              exit 1
+            fi
+          fi
+
+          TOKEN="${TOKEN:-${GITHUB_TOKEN:-}}"
+          if [ -z "$TOKEN" ]; then
+            echo "::error::Missing API token (GITHUB_TOKEN or secrets.GITEA_TOKEN)."
+            exit 1
+          fi
+
+          REPO="${GITHUB_REPOSITORY}"
+          TAG="latest"
+          NAME="Latest Build"
+          BODY=$'Última versión del APK generada automáticamente.\n\nCommit: '"${GITHUB_SHA}"
+          ASSET_NAME="impostor-game.apk"
+          AUTH_HEADER="Authorization: token ${TOKEN}"
+          export TAG NAME BODY ASSET_NAME
+
+          tmp_file="$(mktemp)"
+          status="$(curl -s -o "$tmp_file" -w "%{http_code}" -H "$AUTH_HEADER" \
+            "$API_BASE/repos/$REPO/releases/tags/$TAG")"
+
+          if [ "$status" = "200" ]; then
+            release_id="$(node -e 'const fs=require("fs");const r=JSON.parse(fs.readFileSync(0,"utf8"));console.log(r.id);' < "$tmp_file")"
+            update_payload="$(node -e 'console.log(JSON.stringify({name:process.env.NAME,body:process.env.BODY,prerelease:false,draft:false}))')"
+            curl -fsSL -X PATCH -H "$AUTH_HEADER" -H "Content-Type: application/json" \
+              -d "$update_payload" "$API_BASE/repos/$REPO/releases/$release_id" >/dev/null
+          elif [ "$status" = "404" ]; then
+            create_payload="$(node -e 'console.log(JSON.stringify({tag_name:process.env.TAG,name:process.env.NAME,body:process.env.BODY,prerelease:false,draft:false}))')"
+            release_id="$(curl -fsSL -X POST -H "$AUTH_HEADER" -H "Content-Type: application/json" \
+              -d "$create_payload" "$API_BASE/repos/$REPO/releases" \
+              | node -e 'const fs=require("fs");const r=JSON.parse(fs.readFileSync(0,"utf8"));console.log(r.id);')"
+          else
+            echo "::error::Failed to fetch release tag (${status})."
+            cat "$tmp_file"
+            exit 1
+          fi
+          rm -f "$tmp_file"
+
+          assets_json="$(curl -fsSL -H "$AUTH_HEADER" "$API_BASE/repos/$REPO/releases/$release_id/assets")"
+          asset_id="$(node -e 'const fs=require("fs");const assets=JSON.parse(fs.readFileSync(0,"utf8"));const name=process.env.ASSET_NAME;const match=assets.find(a=>a.name===name);if (match) console.log(match.id);' <<<"$assets_json")"
+
+          if [ -n "${asset_id:-}" ]; then
+            curl -fsSL -X DELETE -H "$AUTH_HEADER" \
+              "$API_BASE/repos/$REPO/releases/$release_id/assets/$asset_id" >/dev/null
+          fi
+
+          curl -fsSL -X POST -H "$AUTH_HEADER" \
+            -F "attachment=@${ASSET_NAME}" \
+            "$API_BASE/repos/$REPO/releases/$release_id/assets?name=${ASSET_NAME}" >/dev/null
