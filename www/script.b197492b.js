@@ -6,15 +6,20 @@ const POOLS_MANIFEST_URL = 'word-pools/manifest.json';
 const THEME_STORAGE_KEY = 'impostorGameTheme';
 const LANGUAGE_STORAGE_KEY = 'impostorGameLanguage';
 const SCREEN_LOCK_STORAGE_KEY = 'impostorGameScreenLock';
+const APP_VERSION = 1; // Simple incremental version number.
+const LATEST_VERSION_URL = 'https://git.dariosevilla.es/api/v1/repos/dasemu/web-imposter-game/releases/latest';
+const APK_DOWNLOAD_URL = 'https://git.dariosevilla.es/dasemu/web-imposter-game/releases/download/latest/impostor-game.apk';
 
 // Detect if running as a native app (Capacitor/Cordova)
+let isNativeApp = false;
 (function detectNativeApp() {
   const isCapacitor = window.Capacitor !== undefined;
   const isCordova = window.cordova !== undefined;
-  const isNativeApp = isCapacitor || isCordova;
+  isNativeApp = isCapacitor || isCordova;
 
   if (isNativeApp) {
     document.documentElement.classList.add('native-app');
+    checkAppVersion();
   }
 })();
 
@@ -96,7 +101,15 @@ const TRANSLATIONS = {
     raisedHandVotingDesc: 'Votación grupal única',
     groupVotingTitle: 'Votación a mano alzada',
     groupVotingInstruction: 'Decidid en grupo a quién eliminar. Seleccionad',
-    groupVotingSuspects: 'sospechoso(s)'
+    groupVotingSuspects: 'sospechoso(s)',
+    tie: 'EMPATE',
+    eliminatedPlayers: 'JUGADOR/ES ELIMINADOS:',
+    goToTiebreaker: 'IR A DESEMPATE',
+    downloadApp: 'Descargar App Android',
+    updateAvailable: 'Actualización disponible',
+    updateMessage: 'Hay una nueva versión de la app disponible. ¿Quieres actualizar ahora?',
+    update: 'Actualizar',
+    later: 'Más tarde'
   },
   en: {
     gameTitle: 'The Impostor Game',
@@ -174,7 +187,15 @@ const TRANSLATIONS = {
     raisedHandVotingDesc: 'Single group vote',
     groupVotingTitle: 'Raised hand voting',
     groupVotingInstruction: 'Decide as a group who to eliminate. Select',
-    groupVotingSuspects: 'suspect(s)'
+    groupVotingSuspects: 'suspect(s)',
+    tie: 'TIE',
+    eliminatedPlayers: 'ELIMINATED PLAYER(S):',
+    goToTiebreaker: 'GO TO TIEBREAKER',
+    downloadApp: 'Download Android App',
+    updateAvailable: 'Update available',
+    updateMessage: 'A new version of the app is available. Do you want to update now?',
+    update: 'Update',
+    later: 'Later'
   }
 };
 
@@ -249,6 +270,8 @@ async function updateUI() {
     renderVoting();
   } else if (state.phase === 'results') {
     showResults();
+  } else if (state.phase === 'tie') {
+    showTieScreen();
   }
 }
 
@@ -347,6 +370,10 @@ function updateStaticTexts() {
   const votingTitle = document.querySelector('#voting-screen h1');
   if (votingTitle) votingTitle.textContent = t('secretVoting');
 
+  // Tie screen
+  const tieTitle = document.querySelector('#tie-screen h1');
+  if (tieTitle) tieTitle.textContent = t('tie');
+
   // Results screen
   const resultsTitle = document.querySelector('#results-screen h1');
   if (resultsTitle) resultsTitle.textContent = t('results');
@@ -371,11 +398,18 @@ function updateStaticTexts() {
     else if (btn.getAttribute('onclick') === 'skipToVoting()') btn.textContent = t('goToVoting') + ' →';
     else if (btn.id === 'confirm-vote-btn') btn.textContent = t('confirmVote');
     else if (btn.getAttribute('onclick') === 'newMatch()') btn.textContent = t('newMatch');
+    else if (btn.getAttribute('onclick') === 'proceedToTiebreaker()') btn.textContent = t('goToTiebreaker');
   });
 
   // Exit game button
   const exitText = document.querySelector('.exit-text');
   if (exitText) exitText.textContent = t('exitGame');
+
+  // Download app button
+  const downloadBtn = document.getElementById('download-app-btn');
+  if (downloadBtn && !isNativeApp) {
+    downloadBtn.textContent = `📱 ${t('downloadApp')}`;
+  }
 }
 
 // Embedded pools with impostor words [civilian_word, impostor_word]
@@ -1110,6 +1144,18 @@ function renderVoting() {
   }
 
   // Individual voting mode
+  const eliminated = state.executed || [];
+
+  // Skip eliminated players in tiebreaker
+  while (state.isTiebreak && eliminated.includes(state.votingPlayer) && state.votingPlayer < state.numPlayers) {
+    state.votingPlayer++;
+  }
+
+  if (state.votingPlayer >= state.numPlayers) {
+    handleVoteOutcome();
+    return;
+  }
+
   const voter = state.playerNames[state.votingPlayer];
   document.getElementById('voter-name').textContent = voter;
   document.getElementById('votes-needed').textContent = state.numImpostors;
@@ -1225,7 +1271,18 @@ function confirmCurrentVote() {
   state.votingPlayer++;
   state.selections = [];
   saveState();
-  if (state.votingPlayer >= state.numPlayers) { handleVoteOutcome(); return; }
+
+  const eliminated = state.executed || [];
+
+  // Skip eliminated players in tiebreaker
+  while (state.isTiebreak && eliminated.includes(state.votingPlayer) && state.votingPlayer < state.numPlayers) {
+    state.votingPlayer++;
+  }
+
+  if (state.votingPlayer >= state.numPlayers) {
+    handleVoteOutcome();
+    return;
+  }
   renderVoting();
 }
 
@@ -1254,7 +1311,10 @@ function handleVoteOutcome() {
         showResults(true);
         return;
       }
-      startTiebreakDeliberation(group);
+      // Show tie screen with eliminated players
+      state.executed = executed;
+      state.tiebreakCandidates = group;
+      showTieScreen();
       return;
     }
   }
@@ -1289,6 +1349,28 @@ function showResults(isTiebreak = false) {
     }).join('')}
   `;
   showScreen('results-screen');
+}
+
+// ---------- Tie screen ----------
+function showTieScreen() {
+  state.phase = 'tie';
+  saveState();
+
+  const eliminated = state.executed || [];
+  const tieScreen = document.getElementById('tie-screen');
+  const eliminatedLabel = document.getElementById('tie-eliminated-label');
+  const eliminatedPlayers = document.getElementById('tie-eliminated-players');
+
+  eliminatedLabel.textContent = t('eliminatedPlayers');
+  eliminatedPlayers.textContent = eliminated.length > 0
+    ? eliminated.map(i => state.playerNames[i]).join(', ')
+    : t('nobody');
+
+  showScreen('tie-screen');
+}
+
+function proceedToTiebreaker() {
+  startTiebreakDeliberation(state.tiebreakCandidates);
 }
 
 // ---------- Utilities ----------
@@ -1402,6 +1484,65 @@ function toggleScreenLock() {
 }
 
 // Event listener for theme and language buttons
+// ---------- App version checking ----------
+async function checkAppVersion() {
+  if (!isNativeApp) return;
+
+  try {
+    const response = await fetch(LATEST_VERSION_URL);
+    if (!response.ok) return;
+
+    const releaseData = await response.json();
+    const latestVersion = parseInt(releaseData.name) || 0;
+
+    if (latestVersion > APP_VERSION) {
+      showUpdateNotification();
+    }
+  } catch (error) {
+    console.error('Error checking app version:', error);
+  }
+}
+
+function showUpdateNotification() {
+  const message = t('updateMessage');
+  const updateBtn = t('update');
+  const laterBtn = t('later');
+
+  // Create custom notification overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'update-notification-overlay';
+  overlay.innerHTML = `
+    <div class="update-notification">
+      <h2>${t('updateAvailable')}</h2>
+      <p>${message}</p>
+      <div class="update-buttons">
+        <button class="btn-update" onclick="downloadUpdate()">${updateBtn}</button>
+        <button class="btn-later" onclick="dismissUpdate()">${laterBtn}</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+}
+
+function downloadUpdate() {
+  window.location.href = APK_DOWNLOAD_URL;
+  dismissUpdate();
+}
+
+function dismissUpdate() {
+  const overlay = document.querySelector('.update-notification-overlay');
+  if (overlay) overlay.remove();
+}
+
+// Show download button only on web (not native app)
+function initDownloadButton() {
+  const downloadBtn = document.getElementById('download-app-btn');
+  if (downloadBtn && !isNativeApp) {
+    downloadBtn.style.display = 'inline-block';
+    downloadBtn.textContent = `📱 ${t('downloadApp')}`;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
@@ -1422,6 +1563,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize language
   currentLanguage = loadLanguage();
   setLanguage(currentLanguage);
+
+  // Initialize download button
+  initDownloadButton();
 
   // Detect system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
