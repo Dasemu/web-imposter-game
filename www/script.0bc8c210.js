@@ -1,3 +1,4 @@
+// Game configuration constants
 const STORAGE_KEY = 'impostorGameStateV2';
 const MAX_PLAYERS = 10;
 const MIN_PLAYERS = 3;
