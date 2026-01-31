@@ -10,7 +10,7 @@ on:
       - 'www/logo.png'
       - 'www/index.html'
       - 'version-assets.sh'
-      - '.gitea/workflows/version-assets.yml'
+      - '.gitea/workflows/1-version-assets.yml'
 
 jobs:
   version-assets:
