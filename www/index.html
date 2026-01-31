@@ -123,6 +123,12 @@
                 <div class="welcome-buttons">
                     <button onclick="showScreen('setup-screen')" class="btn-primary">Jugar</button>
                     <button onclick="showScreen('rules-screen')" class="btn-secondary">Reglas</button>
+                    <a href="https://git.dariosevilla.es/dasemu/web-imposter-game/releases/download/latest/impostor-game.apk"
+                       class="btn-download"
+                       id="download-app-btn"
+                       style="display: none;">
+                        📱 Descargar App Android
+                    </a>
                 </div>
                 <p class="welcome-credits">Creado por Darío Sevilla</p>
             </div>
@@ -266,6 +272,16 @@
             <p class="info-text">Pasa el móvil a <strong id="voter-name">Jugador</strong>. Elige <span id="votes-needed">1</span> sospechoso(s).</p>
             <div class="player-list" id="vote-list"></div>
             <button id="confirm-vote-btn" disabled onclick="confirmCurrentVote()">Confirmar voto</button>
+        </div>
+
+        <!-- Tie screen -->
+        <div id="tie-screen" class="screen">
+            <h1>EMPATE</h1>
+            <div class="tie-info">
+                <p class="info-text"><strong id="tie-eliminated-label">JUGADOR/ES ELIMINADOS:</strong></p>
+                <p class="eliminated-players" id="tie-eliminated-players"></p>
+            </div>
+            <button onclick="proceedToTiebreaker()">IR A DESEMPATE</button>
         </div>
 
         <!-- Results screen -->
