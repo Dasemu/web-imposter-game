@@ -6,7 +6,7 @@ const POOLS_MANIFEST_URL = 'word-pools/manifest.json';
 const THEME_STORAGE_KEY = 'impostorGameTheme';
 const LANGUAGE_STORAGE_KEY = 'impostorGameLanguage';
 const SCREEN_LOCK_STORAGE_KEY = 'impostorGameScreenLock';
-const APP_VERSION = 1; // Simple incremental version number
+const APP_VERSION = 1; // Simple incremental version number.
 const LATEST_VERSION_URL = 'https://git.dariosevilla.es/api/v1/repos/dasemu/web-imposter-game/releases/latest';
 const APK_DOWNLOAD_URL = 'https://git.dariosevilla.es/dasemu/web-imposter-game/releases/download/latest/impostor-game.apk';
 
